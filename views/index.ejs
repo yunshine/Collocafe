@@ -1,1 +1,7 @@
 <h3>this is the index page...</h3>
+
+<ul>
+  <% cafes.forEach(cafe => { %>
+  <li><%= cafe.name %></li>
+  <% }); %>
+</ul>

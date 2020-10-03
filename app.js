@@ -6,6 +6,17 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }))
 // app.set('view engine', 'ejs');
 
+let cafes = [
+  {
+    name: "Cafe Kitsune",
+    area: "Aoyama"
+  },
+  {
+    name: "Trichromatic Coffee",
+    area: "Nakano-Shimbashi Station"
+  },
+];
+
 //  ***** ROUTES *****
 
 // Root Route
@@ -15,7 +26,7 @@ app.get('/', function (req, res) {
 
 // Index Route
 app.get('/cafes', function (req, res) {
-  res.render('index.ejs');
+  res.render('index.ejs', { cafes: cafes });
 });
 
 // Default Route
