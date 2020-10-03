@@ -24,14 +24,14 @@ var cafeSchema = new mongoose.Schema({
 
 var Cafe = mongoose.model('Cafe', cafeSchema);
 
-Cafe.create({ name: "Cafe Kitsune", area: "Aoyama" }, function (err, cafe) {
-  if (err) {
-    console.log(error);
-  } else {
-    console.log("New Cafe: ");
-    console.log(cafe);
-  }
-});
+// Cafe.create({ name: "Cafe Kitsune", area: "Aoyama" }, function (err, cafe) {
+//   if (err) {
+//     console.log(error);
+//   } else {
+//     console.log("New Cafe: ");
+//     console.log(cafe);
+//   }
+// });
 
 
 let cafes = [
