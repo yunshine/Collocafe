@@ -60,7 +60,7 @@ app.get('/cafes', function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("index", { cafes: allCafes });
+      res.render('index.ejs', { cafes: allCafes });
     }
   });
 });
