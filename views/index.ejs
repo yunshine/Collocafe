@@ -1,7 +1,11 @@
+<%- include("partials/header") %>
+
 <h3>this is the index page...</h3>
 
 <ul>
   <% cafes.forEach(cafe => { %>
-  <li><%= cafe.name %></li>
+  <li><strong><%= cafe.name %></strong> - <%= cafe.area %></li>
   <% }); %>
 </ul>
+
+<%- include("partials/footer") %>
