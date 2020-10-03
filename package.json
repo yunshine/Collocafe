@@ -1,18 +1,24 @@
 {
-  "name": "Collocafe",
-  "private": true,
-  "dependencies": {
-    "@rails/actioncable": "^6.0.0",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.2.2",
-    "bootstrap": "^4.5.0",
-    "jquery": "^3.5.1",
-    "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0"
+  "name": "collocafe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "0.1.0",
-  "devDependencies": {
-    "webpack-dev-server": "^3.11.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yunshine/Collocafe.git"
+  },
+  "author": "Yun Chung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yunshine/Collocafe/issues"
+  },
+  "homepage": "https://github.com/yunshine/Collocafe#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
   }
 }
