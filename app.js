@@ -2,14 +2,42 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/collocafe', {
+  // mongoose.connect('mongodb://localhost/collocafe', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Connected to DB!'))
+  .catch(error => console.log(error.message));
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }))
 // app.set('view engine', 'ejs');
 
+
+// SCHEMA SETUP
+var cafeSchema = new mongoose.Schema({
+  name: String,
+  area: String
+});
+
+var Cafe = mongoose.model('Cafe', cafeSchema);
+
+Cafe.create({ name: "Cafe Kitsune", area: "Aoyama" }, function (err, cafe) {
+  if (err) {
+    console.log(error);
+  } else {
+    console.log("New Cafe: ");
+    console.log(cafe);
+  }
+});
+
+
 let cafes = [
   {
-    name: "Cafe Kitsune",
-    area: "Aoyama"
+    name: "Blue Bottle",
+    area: "Apgujeong"
   },
   {
     name: "Trichromatic Coffee",
