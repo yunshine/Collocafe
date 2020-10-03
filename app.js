@@ -5,10 +5,11 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/collocafe', {
   // mongoose.connect('mongodb://localhost/collocafe', {
+  // mongoose.connect('mongodb://localhost:3000/collocafe', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then(() => console.log('Connected to DB!'))
+  .then(() => console.log('Connected to database!'))
   .catch(error => console.log(error.message));
 
 app.use(express.static('public'));
@@ -17,12 +18,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 // SCHEMA SETUP
-var cafeSchema = new mongoose.Schema({
+const cafeSchema = new mongoose.Schema({
   name: String,
   area: String
 });
 
-var Cafe = mongoose.model('Cafe', cafeSchema);
+const Cafe = mongoose.model('Cafe', cafeSchema);
 
 // Cafe.create({ name: "Cafe Kitsune", area: "Aoyama" }, function (err, cafe) {
 //   if (err) {
@@ -54,8 +55,19 @@ app.get('/', function (req, res) {
 
 // Index Route
 app.get('/cafes', function (req, res) {
-  res.render('index.ejs', { cafes: cafes });
+  // Get all cafes from DB
+  Cafe.find(function (err, allCafes) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("index", { cafes: allCafes });
+    }
+  });
 });
+
+// app.get('/cafes', function (req, res) {
+//   res.render('index.ejs', { cafes: cafes });
+// });
 
 // New Route - goes to new cafe form
 app.get("/cafes/new", function (req, res) {
