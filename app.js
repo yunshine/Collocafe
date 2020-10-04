@@ -1,6 +1,7 @@
 var express = require('express');
-var app = express();
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var app = express();
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/collocafe', {
@@ -11,7 +12,8 @@ mongoose.connect('mongodb://localhost:27017/collocafe', {
   .catch(error => console.log(error.message));
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 // app.set('view engine', 'ejs');
 
 
@@ -94,7 +96,7 @@ app.post("/cafes", function (req, res) {
 });
 
 // SHOW Route - shows one cafe
-app.get("/cafe/:id", function (req, res) {
+app.get("/cafes/:id", function (req, res) {
   // *** Finds a cafe in the DB by its id & passes that cafe to the show page***
   Cafe.findById(req.params.id, function (err, foundCafe) {
     if (err) {
@@ -120,15 +122,15 @@ app.get("/cafes/:id/edit", function (req, res) {
 
 // UPDATE Route - saves the updated info about one cafe into the DB
 app.put("/cafes/:id", function (req, res) {
-  // var name = req.body.name;
-  // var area = req.body.area;
-  // var newCafe = { name: name, area: area }
-  req.body.cafe.body = req.sanitize(req.body.cafe.body)
-  Cafe.findByIdAndUpdate(req.params.id, req.body.cafe, function (err, updatedCafe) {
+  let name = req.body.name;
+  let area = req.body.area;
+  let newCafe = { name: name, area: area }
+  // req.body.cafe.body = req.sanitize(req.body.cafe.body)
+  Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {
     if (err) {
       res.redirect("/cafes");
     } else {
-      res.redirect("/cafes/" + req.params.id);
+      res.redirect(`/cafes/${req.params.id}`);
     }
   });
 });

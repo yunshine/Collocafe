@@ -5,7 +5,7 @@
 <ul>
   <% cafes.forEach(cafe => { %>
   <li><strong><%= cafe.name %></strong> - <%= cafe.area %>
-    <a href="/cafe/<%= cafe._id %>"><button>See More</button></a></li>
+    <a href="/cafes/<%= cafe._id %>"><button>See More</button></a></li>
   <% }); %>
 </ul>
 
