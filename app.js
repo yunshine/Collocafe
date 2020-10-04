@@ -50,7 +50,7 @@ let cafes = [
 
 // Root Route
 app.get('/', function (req, res) {
-  res.send('This is the root route...');
+  res.render('landing.ejs');
 });
 
 // Index Route
