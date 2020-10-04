@@ -73,12 +73,12 @@ app.get("/cafes/new", function (req, res) {
   res.render("new.ejs");
 });
 
-// CREATE Route - makes and saves a new cafe
+// CREATE Route - makes and saves a new cafe to the DB
 app.post("/cafes", function (req, res) {
   // *** gets data from new cafe form and adds to Cafe DB ***
   var name = req.body.name;
   var area = req.body.area;
-  var newCafe = { name: name, area: area }
+  var newCafe = { name: name, area: area };
   // *** Makes and saves a new cafe to the Cafe DB ***
   Cafe.create(newCafe, function (err, cafe) {
     if (err) {
@@ -108,6 +108,7 @@ app.get("/cafe/:id", function (req, res) {
 
 // EDIT Route - goes to edit cafe form
 app.get("/cafes/:id/edit", function (req, res) {
+  // *** Finds a cafe in the DB by its id & passes that cafe to the edit page***
   Cafe.findById(req.params.id, function (err, foundCafe) {
     if (err) {
       res.redirect("/cafes");
@@ -116,6 +117,21 @@ app.get("/cafes/:id/edit", function (req, res) {
     }
   });
 })
+
+// UPDATE Route - saves the updated info about one cafe into the DB
+app.put("/cafes/:id", function (req, res) {
+  // var name = req.body.name;
+  // var area = req.body.area;
+  // var newCafe = { name: name, area: area }
+  req.body.cafe.body = req.sanitize(req.body.cafe.body)
+  Cafe.findByIdAndUpdate(req.params.id, req.body.cafe, function (err, updatedCafe) {
+    if (err) {
+      res.redirect("/cafes");
+    } else {
+      res.redirect("/cafes/" + req.params.id);
+    }
+  });
+});
 
 // Default Route
 app.get('*', function (req, res) {
