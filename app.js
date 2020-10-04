@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var expressSanitizer = require('express-sanitizer');
 var app = express();
 
 const mongoose = require('mongoose');
@@ -14,6 +15,7 @@ mongoose.connect('mongodb://localhost:27017/collocafe', {
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.use(expressSanitizer());
 // app.set('view engine', 'ejs');
 
 
@@ -77,10 +79,11 @@ app.get("/cafes/new", function (req, res) {
 
 // CREATE Route - makes and saves a new cafe to the DB
 app.post("/cafes", function (req, res) {
-  // *** gets data from new cafe form and adds to Cafe DB ***
-  var name = req.body.name;
-  var area = req.body.area;
+  // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
+  let name = req.sanitize(req.body.name);
+  let area = req.sanitize(req.body.area);
   var newCafe = { name: name, area: area };
+  // req.body.cafe.body = req.sanitize(req.body.cafe.body);
   // *** Makes and saves a new cafe to the Cafe DB ***
   Cafe.create(newCafe, function (err, cafe) {
     if (err) {
@@ -123,10 +126,10 @@ app.get("/cafes/:id/edit", function (req, res) {
 
 // UPDATE Route - saves the updated info about one cafe into the DB
 app.put("/cafes/:id", function (req, res) {
-  let name = req.body.name;
-  let area = req.body.area;
+  // *** gets SANITIZED data from edit cafe form and updates the Cafe DB ***
+  let name = req.sanitize(req.body.name);
+  let area = req.sanitize(req.body.area);
   let newCafe = { name: name, area: area }
-  // req.body.cafe.body = req.sanitize(req.body.cafe.body)
   Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {
     if (err) {
       console.log(error);
