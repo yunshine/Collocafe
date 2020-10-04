@@ -113,6 +113,7 @@ app.get("/cafes/:id/edit", function (req, res) {
   // *** Finds a cafe in the DB by its id & passes that cafe to the edit page***
   Cafe.findById(req.params.id, function (err, foundCafe) {
     if (err) {
+      console.log(error);
       res.redirect("/cafes");
     } else {
       res.render('edit.ejs', { cafe: foundCafe });
@@ -128,11 +129,26 @@ app.put("/cafes/:id", function (req, res) {
   // req.body.cafe.body = req.sanitize(req.body.cafe.body)
   Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {
     if (err) {
+      console.log(error);
       res.redirect("/cafes");
     } else {
       res.redirect(`/cafes/${req.params.id}`);
     }
   });
+});
+
+// DELETE Route
+app.delete("/cafes/:id", function (req, res) {
+  //destroy blog
+  Cafe.findByIdAndRemove(req.params.id, function (err) {
+    if (err) {
+      console.log(error);
+      res.redirect("/cafes");
+    } else {
+      res.redirect("/cafes");
+    }
+  })
+  //redirect somewhere
 });
 
 // Default Route
