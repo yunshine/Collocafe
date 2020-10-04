@@ -91,6 +91,19 @@ app.post("/cafes", function (req, res) {
   // res.redirect("/cafes");
 });
 
+// Show Route - shows one cafe
+app.get("/cafe/:id", function (req, res) {
+  // *** Finds a cafe in the DB by its id & passes that cafe to the show page***
+  Cafe.findById(req.params.id, function (err, foundCafe) {
+    if (err) {
+      console.log(err);
+    } else {
+      // renders the show page view with the one cafe from the DB
+      res.render("show.ejs", { cafe: foundCafe });
+    }
+  });
+})
+
 // Default Route
 app.get('*', function (req, res) {
   res.send('Are you lost?');
