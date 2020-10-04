@@ -15,10 +15,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // app.set('view engine', 'ejs');
 
 
-// SCHEMA SETUP
+// Mongoose/SCHEMA SETUP
 const cafeSchema = new mongoose.Schema({
   name: String,
-  area: String
+  area: String,
+  // how to set a default value in the schema...
+  // created:  {type: Date, default: Date.now},
 });
 
 const Cafe = mongoose.model('Cafe', cafeSchema);
@@ -32,17 +34,17 @@ const Cafe = mongoose.model('Cafe', cafeSchema);
 //   }
 // });
 
+// let cafes = [
+//   {
+//     name: "Blue Bottle",
+//     area: "Apgujeong"
+//   },
+//   {
+//     name: "Trichromatic Coffee",
+//     area: "Nakano-Shimbashi Station"
+//   },
+// ];
 
-let cafes = [
-  {
-    name: "Blue Bottle",
-    area: "Apgujeong"
-  },
-  {
-    name: "Trichromatic Coffee",
-    area: "Nakano-Shimbashi Station"
-  },
-];
 
 //  ***** ROUTES *****
 
@@ -51,7 +53,7 @@ app.get('/', function (req, res) {
   res.render('landing.ejs');
 });
 
-// Index Route
+// INDEX Route
 app.get('/cafes', function (req, res) {
   // *** Get all cafes from DB ***
   Cafe.find(function (err, allCafes) {
@@ -66,22 +68,22 @@ app.get('/cafes', function (req, res) {
 //   res.render('index.ejs', { cafes: cafes });
 // });
 
-// New Route - goes to new cafe form
+// NEW Route - goes to new cafe form
 app.get("/cafes/new", function (req, res) {
   res.render("new.ejs");
 });
 
-// Create Route - makes and saves a new cafe
+// CREATE Route - makes and saves a new cafe
 app.post("/cafes", function (req, res) {
   // *** gets data from new cafe form and adds to Cafe DB ***
   var name = req.body.name;
   var area = req.body.area;
   var newCafe = { name: name, area: area }
-
   // *** Makes and saves a new cafe to the Cafe DB ***
   Cafe.create(newCafe, function (err, cafe) {
     if (err) {
       console.log(error);
+      // or...   res.render("new.ejs");
     } else {
       console.log("New Cafe: ", cafe);
       res.redirect("/cafes");
@@ -91,7 +93,7 @@ app.post("/cafes", function (req, res) {
   // res.redirect("/cafes");
 });
 
-// Show Route - shows one cafe
+// SHOW Route - shows one cafe
 app.get("/cafe/:id", function (req, res) {
   // *** Finds a cafe in the DB by its id & passes that cafe to the show page***
   Cafe.findById(req.params.id, function (err, foundCafe) {
@@ -100,6 +102,17 @@ app.get("/cafe/:id", function (req, res) {
     } else {
       // renders the show page view with the one cafe from the DB
       res.render("show.ejs", { cafe: foundCafe });
+    }
+  });
+})
+
+// EDIT Route - goes to edit cafe form
+app.get("/cafes/:id/edit", function (req, res) {
+  Cafe.findById(req.params.id, function (err, foundCafe) {
+    if (err) {
+      res.redirect("/cafes");
+    } else {
+      res.render('edit.ejs', { cafe: foundCafe });
     }
   });
 })
