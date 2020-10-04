@@ -4,8 +4,6 @@ var bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/collocafe', {
-  // mongoose.connect('mongodb://localhost/collocafe', {
-  // mongoose.connect('mongodb://localhost:3000/collocafe', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -55,7 +53,7 @@ app.get('/', function (req, res) {
 
 // Index Route
 app.get('/cafes', function (req, res) {
-  // Get all cafes from DB
+  // *** Get all cafes from DB ***
   Cafe.find(function (err, allCafes) {
     if (err) {
       console.log(err);
@@ -64,7 +62,6 @@ app.get('/cafes', function (req, res) {
     }
   });
 });
-
 // app.get('/cafes', function (req, res) {
 //   res.render('index.ejs', { cafes: cafes });
 // });
@@ -76,22 +73,22 @@ app.get("/cafes/new", function (req, res) {
 
 // Create Route - makes and saves a new cafe
 app.post("/cafes", function (req, res) {
-  // get data from form and add to cafes array
+  // *** gets data from new cafe form and adds to Cafe DB ***
   var name = req.body.name;
   var area = req.body.area;
   var newCafe = { name: name, area: area }
-  cafes.push(newCafe);
-  res.redirect("/cafes");
 
-  // *****  Create a new campground and save to DB  *****
-  // Cafe.create(newCafe, function (err, newlyCreated) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     //redirect back to cafes page
-  //     res.redirect("/cafes");
-  //   }
-  // });
+  // *** Makes and saves a new cafe to the Cafe DB ***
+  Cafe.create(newCafe, function (err, cafe) {
+    if (err) {
+      console.log(error);
+    } else {
+      console.log("New Cafe: ", cafe);
+      res.redirect("/cafes");
+    }
+  });
+  // cafes.push(newCafe);
+  // res.redirect("/cafes");
 });
 
 // Default Route
