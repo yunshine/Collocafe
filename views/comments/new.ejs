@@ -1,3 +1,14 @@
-<%- include("partials/header") %>
+<%- include("../partials/header") %>
+
 <h3>this is the new comment form</h3>
-<%- include("partials/footer") %>
+<h3>Add a comment for <%= cafe.name %></h3>
+
+<form method='POST' action='/cafes/<%= cafe._id %>/comments'>
+  <input type="text" name='author' placeholder="your name" required>
+  <input type="text" name='text' placeholder="your comment" required>
+  <button>submit</button>
+</form>
+<br>
+<a href="/cafes"><button>See All Cafes</button></a>
+
+<%- include("../partials/footer") %>

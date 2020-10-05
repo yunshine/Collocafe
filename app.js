@@ -170,15 +170,22 @@ app.delete("/cafes/:id", function (req, res) {
 
 // NEW Route - nested route that goes to new comment form
 app.get("/cafes/:id/comments/new", function (req, res) {
-  res.render("comments/new.ejs");
+  Cafe.findById(req.params.id, function (err, cafe) {
+    if (err) {
+      console.log(err);
+    } else {
+
+      res.render("comments/new.ejs", { cafe: cafe });
+    }
+  });
 });
 
 // CREATE Route - makes and saves a new cafe to the DB
-app.post("/cafes", function (req, res) {
+app.post("/cafes/:id/comments", function (req, res) {
   // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
-  let name = req.sanitize(req.body.name);
-  let area = req.sanitize(req.body.area);
-  var newCafe = { name: name, area: area };
+  let author = req.sanitize(req.body.author);
+  let text = req.sanitize(req.body.text);
+  var newComment = { author: author, text: text };
   // req.body.cafe.body = req.sanitize(req.body.cafe.body);
   // *** Makes and saves a new cafe to the Cafe DB ***
   Cafe.create(newCafe, function (err, cafe) {
@@ -193,6 +200,7 @@ app.post("/cafes", function (req, res) {
   // cafes.push(newCafe);
   // res.redirect("/cafes");
 });
+
 // ======================================================================
 
 
