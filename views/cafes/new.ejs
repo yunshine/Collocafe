@@ -1,3 +1,5 @@
+<%- include("../partials/header") %>
+
 <form method='POST' action='/cafes'>
   <input type="text" name='name' placeholder="cafe name" required>
   <input type="text" name='area' placeholder="area, neighborhood, or nearest station">
@@ -5,3 +7,5 @@
 </form>
 <br>
 <a href="/cafes"><button>See All Cafes</button></a>
+
+<%- include("../partials/footer") %>

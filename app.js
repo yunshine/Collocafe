@@ -72,7 +72,7 @@ app.get('/cafes', function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render('index.ejs', { cafes: allCafes });
+      res.render('cafes/index.ejs', { cafes: allCafes });
     }
   });
 });
@@ -82,7 +82,7 @@ app.get('/cafes', function (req, res) {
 
 // NEW Route - goes to new cafe form
 app.get("/cafes/new", function (req, res) {
-  res.render("new.ejs");
+  res.render("cafes/new.ejs");
 });
 
 // CREATE Route - makes and saves a new cafe to the DB
@@ -117,7 +117,7 @@ app.get("/cafes/:id", function (req, res) {
       console.log(err);
     } else {
       // renders the show page view with the one cafe from the DB
-      res.render("show.ejs", { cafe: foundCafe });
+      res.render("cafes/show.ejs", { cafe: foundCafe });
     }
   });
 })
@@ -130,7 +130,7 @@ app.get("/cafes/:id/edit", function (req, res) {
       console.log(error);
       res.redirect("/cafes");
     } else {
-      res.render('edit.ejs', { cafe: foundCafe });
+      res.render('cafes/edit.ejs', { cafe: foundCafe });
     }
   });
 })
@@ -164,6 +164,37 @@ app.delete("/cafes/:id", function (req, res) {
   })
   //redirect somewhere
 });
+
+// Comments Routes (nested...)
+// ======================================================================
+
+// NEW Route - nested route that goes to new comment form
+app.get("/cafes/:id/comments/new", function (req, res) {
+  res.render("comments/new.ejs");
+});
+
+// CREATE Route - makes and saves a new cafe to the DB
+app.post("/cafes", function (req, res) {
+  // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
+  let name = req.sanitize(req.body.name);
+  let area = req.sanitize(req.body.area);
+  var newCafe = { name: name, area: area };
+  // req.body.cafe.body = req.sanitize(req.body.cafe.body);
+  // *** Makes and saves a new cafe to the Cafe DB ***
+  Cafe.create(newCafe, function (err, cafe) {
+    if (err) {
+      console.log(error);
+      // or...   res.render("new.ejs");
+    } else {
+      console.log("New Cafe: ", cafe);
+      res.redirect("/cafes");
+    }
+  });
+  // cafes.push(newCafe);
+  // res.redirect("/cafes");
+});
+// ======================================================================
+
 
 // Default Route
 app.get('*', function (req, res) {
