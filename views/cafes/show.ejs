@@ -14,6 +14,10 @@
 <p><%= comment.text %></p>
 <% }); %>
 
+<br>
+<a href='/cafes/<%= cafe._id %>/comments/new'><button>Leave a Comment</button></a>
+
+
 
 <!-- A form is needed for the DESTROY route... -->
 <!-- The method on a delete is POST, not DELETE because we need to work around the fact that HTML does not support DELETE by adding ?_method=DELTE... -->

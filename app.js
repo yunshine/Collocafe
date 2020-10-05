@@ -174,7 +174,7 @@ app.get("/cafes/:id/comments/new", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-
+      // passes the cafe found above & passes it to new comment form to associate comments to a cafe
       res.render("comments/new.ejs", { cafe: cafe });
     }
   });
