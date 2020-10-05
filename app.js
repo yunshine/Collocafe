@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var expressSanitizer = require('express-sanitizer');
 var app = express();
+const Cafe = require('./models/cafe');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/collocafe', {
@@ -20,14 +21,15 @@ app.use(expressSanitizer());
 
 
 // Mongoose/SCHEMA SETUP
-const cafeSchema = new mongoose.Schema({
-  name: String,
-  area: String,
-  // how to set a default value in the schema...
-  // created:  {type: Date, default: Date.now},
-});
+// const cafeSchema = new mongoose.Schema({
+//   name: String,
+//   area: String,
+//   // how to set a default value in the schema...
+//   // created:  {type: Date, default: Date.now},
+// });
 
-const Cafe = mongoose.model('Cafe', cafeSchema);
+// // Creates the model from the schema that we've designated
+// const Cafe = mongoose.model('Cafe', cafeSchema);
 
 // Cafe.create({ name: "Cafe Kitsune", area: "Aoyama" }, function (err, cafe) {
 //   if (err) {
