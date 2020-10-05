@@ -1,9 +1,9 @@
 // Mongoose/SCHEMA SETUP
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
-  name: String,
-  area: String,
+  text: String,
+  author: String
   // how to set a default value in the schema...
   // created:  {type: Date, default: Date.now},
 });

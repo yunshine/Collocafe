@@ -4,8 +4,12 @@ var methodOverride = require('method-override');
 var expressSanitizer = require('express-sanitizer');
 var app = express();
 const Cafe = require('./models/cafe');
-// const Comment = require('./models/comment');
+const Comment = require('./models/comment');
 // const User = require('./models/user);
+const seedDB = require('./seeds');
+
+// Seed the database...
+seedDB();
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/collocafe', {
@@ -105,7 +109,10 @@ app.post("/cafes", function (req, res) {
 // SHOW Route - shows one cafe
 app.get("/cafes/:id", function (req, res) {
   // *** Finds a cafe in the DB by its id & passes that cafe to the show page***
-  Cafe.findById(req.params.id, function (err, foundCafe) {
+  // Cafe.findById(req.params.id, function (err, foundCafe) {
+
+  // *** Finds a cafe in the DB by its id & passes that cafe to the edit page with associated comments using .populate("comments").exec ***
+  Cafe.findById(req.params.id).populate("comments").exec(function (err, foundCafe) {
     if (err) {
       console.log(err);
     } else {
