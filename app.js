@@ -4,6 +4,8 @@ var methodOverride = require('method-override');
 var expressSanitizer = require('express-sanitizer');
 var app = express();
 const Cafe = require('./models/cafe');
+// const Comment = require('./models/comment');
+// const User = require('./models/user);
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/collocafe', {

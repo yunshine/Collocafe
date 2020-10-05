@@ -1,7 +1,7 @@
 // Mongoose/SCHEMA SETUP
 // const mongoose = require('mongoose');
 
-const cafeSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
   name: String,
   area: String,
   // how to set a default value in the schema...
@@ -9,8 +9,8 @@ const cafeSchema = new mongoose.Schema({
 });
 
 // Creates the model from the schema that we've designated
-// const Cafe = mongoose.model('Cafe', cafeSchema);
+// const Comment = mongoose.model('Comment', commentSchema);
 
 
 // Creates and exports the model from the schema that we've designated
-module.exports = mongoose.model('Cafe', cafeSchema);
+module.exports = mongoose.model('Comment', commentSchema);
