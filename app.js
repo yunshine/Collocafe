@@ -170,6 +170,7 @@ app.delete("/cafes/:id", function (req, res) {
 
 // NEW Route - nested route that goes to new comment form
 app.get("/cafes/:id/comments/new", function (req, res) {
+  // finds the cafe that the comment is associated with
   Cafe.findById(req.params.id, function (err, cafe) {
     if (err) {
       console.log(err);
@@ -180,29 +181,35 @@ app.get("/cafes/:id/comments/new", function (req, res) {
   });
 });
 
-// CREATE Route - makes and saves a new cafe to the DB
+// CREATE Route - nested route that makes and saves a new nested comment to the DB
 app.post("/cafes/:id/comments", function (req, res) {
-  // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
-  let author = req.sanitize(req.body.author);
-  let text = req.sanitize(req.body.text);
-  var newComment = { author: author, text: text };
-  // req.body.cafe.body = req.sanitize(req.body.cafe.body);
-  // *** Makes and saves a new cafe to the Cafe DB ***
-  Cafe.create(newCafe, function (err, cafe) {
+  // finds the cafe that the comment is associated with
+  Cafe.findById(req.params.id, function (err, cafe) {
     if (err) {
-      console.log(error);
-      // or...   res.render("new.ejs");
+      console.log(err);
     } else {
-      console.log("New Cafe: ", cafe);
-      res.redirect("/cafes");
+      // *** gets SANITIZED data from nested new comment form & adds to DB ***
+      // the information passed from the nested new comment form...
+      let author = req.sanitize(req.body.author);
+      let text = req.sanitize(req.body.text);
+      let newComment = { author: author, text: text };
+
+      Comment.create(newComment, function (err, comment) {
+        if (err) {
+          console.log(err);
+        } else {
+          // associates the nested new comment with the new cafe and redirects
+          cafe.comments.push(comment);
+          cafe.save();
+          res.redirect(`/cafes/${cafe._id}`);
+        }
+      });
     }
   });
-  // cafes.push(newCafe);
-  // res.redirect("/cafes");
 });
 
-// ======================================================================
 
+// ======================================================================
 
 // Default Route
 app.get('*', function (req, res) {
