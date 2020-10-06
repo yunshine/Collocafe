@@ -237,6 +237,7 @@ app.post('/register', function (req, res) {
   // from passport local mongoose package...
   const newUser = new User({ username: req.body.username });
   // the password as the second parameter, will be scrambled in the DB...
+  // also, Passport does things ike checks to see if the usename is already taken
   User.register(newUser, req.body.password, function (err, user) {
     if (err) {
       console.log(err);
@@ -247,6 +248,12 @@ app.post('/register', function (req, res) {
       res.redirect('/cafes');
     });
   });
+});
+
+// SHOW Route - shows the login form...
+app.get('/login', function (req, res) {
+  res.render('login.ejs');
+
 });
 
 // ======================================================================
