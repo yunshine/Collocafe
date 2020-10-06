@@ -39,7 +39,6 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
 // ==================================================================
 
 
@@ -76,7 +75,7 @@ passport.deserializeUser(User.deserializeUser());
 
 
 //  ***** ROUTES *****
-
+// ==================================================================
 // Root Route
 app.get('/', function (req, res) {
   res.render('landing.ejs');
@@ -182,9 +181,8 @@ app.delete("/cafes/:id", function (req, res) {
   //redirect somewhere
 });
 
-// Comments Routes (nested...)
+// COMMENTS Routes (NESTED...)
 // ======================================================================
-
 // NEW Route - nested route that goes to new comment form
 app.get("/cafes/:id/comments/new", function (req, res) {
   // finds the cafe that the comment is associated with
@@ -224,7 +222,15 @@ app.post("/cafes/:id/comments", function (req, res) {
     }
   });
 });
+// ======================================================================
 
+
+// /AUTHENTICATION Routes (nested...)
+// ======================================================================
+// NEW Route - goes to new user form (AKA register...)
+app.get('/register', function (req, res) {
+  res.render('register.ejs');
+});
 
 // ======================================================================
 
