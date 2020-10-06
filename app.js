@@ -232,6 +232,23 @@ app.get('/register', function (req, res) {
   res.render('register.ejs');
 });
 
+// CREATE Route - creates a new user (AKA register...) and handles  sign-up logic...
+app.post('/register', function (req, res) {
+  // from passport local mongoose package...
+  const newUser = new User({ username: req.body.username });
+  // the password as the second parameter, will be scrambled in the DB...
+  User.register(newUser, req.body.password, function (err, user) {
+    if (err) {
+      console.log(err);
+      return res.render('register.ejs');
+    }
+    // again, this below is from passport local mongoose package...
+    passport.authenticate('local')(req, res, function () {
+      res.redirect('/cafes');
+    });
+  });
+});
+
 // ======================================================================
 
 // Default Route
