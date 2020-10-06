@@ -1,12 +1,18 @@
 // Mongoose/SCHEMA SETUP
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
+// for authentication...
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new mongoose.Schema({
-  name: String,
-  area: String,
+  username: String,
+  password: String,
   // how to set a default value in the schema...
   // created:  {type: Date, default: Date.now},
 });
+
+// for authentication - adds methods to our user...
+userSchema.plugin(passportLocalMongoose);
+
 
 // Creates the model from the schema that we've designated
 // const User = mongoose.model('User', userSchema);

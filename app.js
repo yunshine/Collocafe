@@ -1,17 +1,19 @@
 var express = require('express');
+var app = express();
 var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 var methodOverride = require('method-override');
 var expressSanitizer = require('express-sanitizer');
-var app = express();
 const Cafe = require('./models/cafe');
 const Comment = require('./models/comment');
-// const User = require('./models/user);
+const User = require('./models/user');
 const seedDB = require('./seeds');
 
 // Seed the database...
 seedDB();
 
-const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/collocafe', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
