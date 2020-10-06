@@ -39,6 +39,12 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+// passes currentUser to EVERY route, which we need for our navbar links
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
 // ==================================================================
 
 
@@ -78,7 +84,17 @@ passport.deserializeUser(User.deserializeUser());
 // ==================================================================
 // Root Route
 app.get('/', function (req, res) {
-  res.render('landing.ejs');
+  // res.render('landing.ejs');
+  // });
+  // *** Get all cafes from DB ***
+  Cafe.find(function (err, allCafes) {
+    if (err) {
+      console.log(err);
+    } else {
+      // the req.user below is needed to check if the user is logged in or not...
+      res.render('cafes/index.ejs', { cafes: allCafes });
+    }
+  });
 });
 
 // INDEX Route
@@ -88,6 +104,7 @@ app.get('/cafes', function (req, res) {
     if (err) {
       console.log(err);
     } else {
+      // the req.user below is needed to check if the user is logged in or not...
       res.render('cafes/index.ejs', { cafes: allCafes });
     }
   });
@@ -198,7 +215,8 @@ app.get("/cafes/:id/comments/new", isLoggedIn, function (req, res) {
 });
 
 // CREATE Comment Route - nested route that makes and saves a new nested comment to the DB
-app.post("/cafes/:id/comments", function (req, res) {
+// "isLoggedIn" is a mddleware function that's at the bottom of this page...
+app.post("/cafes/:id/comments", isLoggedIn, function (req, res) {
   // finds the cafe that the comment is associated with
   Cafe.findById(req.params.id, function (err, cafe) {
     if (err) {
