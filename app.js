@@ -227,12 +227,12 @@ app.post("/cafes/:id/comments", function (req, res) {
 
 // /AUTHENTICATION Routes (nested...)
 // ======================================================================
-// NEW Route - goes to new user form (AKA register...)
+// NEW Route - goes to new user registration form (AKA register...)
 app.get('/register', function (req, res) {
   res.render('register.ejs');
 });
 
-// CREATE Route - creates a new user (AKA register...) and handles  sign-up logic...
+// CREATE Route - creates/registers a new user AND handles  sign-up logic...
 app.post('/register', function (req, res) {
   // from passport local mongoose package...
   const newUser = new User({ username: req.body.username });
@@ -250,12 +250,21 @@ app.post('/register', function (req, res) {
   });
 });
 
-// SHOW Route - shows the login form...
+// ??? Route - shows the login form...
 app.get('/login', function (req, res) {
   res.render('login.ejs');
-
 });
 
+// ??? Route - handles login logic...
+// middleware needed to run login authentication logic prior to rendering the next view....
+// app.post('/login, middlware, callback);
+app.post('/login', passport.authenticate('local',
+  {
+    successRedirect: '/cafes',
+    failureRedirect: '/login',
+  }),
+  function (req, res) {
+  });
 // ======================================================================
 
 // Default Route
