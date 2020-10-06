@@ -183,8 +183,9 @@ app.delete("/cafes/:id", function (req, res) {
 
 // COMMENTS Routes (NESTED...)
 // ======================================================================
-// NEW Route - nested route that goes to new comment form
-app.get("/cafes/:id/comments/new", function (req, res) {
+// NEW Comment Route - nested route that goes to new comment form
+// "isLoggedIn" is a mddleware function that's at the bottom of this page...
+app.get("/cafes/:id/comments/new", isLoggedIn, function (req, res) {
   // finds the cafe that the comment is associated with
   Cafe.findById(req.params.id, function (err, cafe) {
     if (err) {
@@ -196,7 +197,7 @@ app.get("/cafes/:id/comments/new", function (req, res) {
   });
 });
 
-// CREATE Route - nested route that makes and saves a new nested comment to the DB
+// CREATE Comment Route - nested route that makes and saves a new nested comment to the DB
 app.post("/cafes/:id/comments", function (req, res) {
   // finds the cafe that the comment is associated with
   Cafe.findById(req.params.id, function (err, cafe) {
@@ -227,12 +228,12 @@ app.post("/cafes/:id/comments", function (req, res) {
 
 // /AUTHENTICATION Routes (nested...)
 // ======================================================================
-// NEW Route - goes to new user registration form (AKA register...)
+// NEW User Route - goes to new user registration form (AKA register...)
 app.get('/register', function (req, res) {
   res.render('register.ejs');
 });
 
-// CREATE Route - creates/registers a new user AND handles  sign-up logic...
+// CREATE User Route - creates/registers a new user AND handles  sign-up logic...
 app.post('/register', function (req, res) {
   // from passport local mongoose package...
   const newUser = new User({ username: req.body.username });
@@ -250,12 +251,12 @@ app.post('/register', function (req, res) {
   });
 });
 
-// ??? Route - shows the login form...
+// LOGIN Route 1 - shows the login form...
 app.get('/login', function (req, res) {
   res.render('login.ejs');
 });
 
-// ??? Route - handles login logic...
+// LOGIN Route 2 - handles login logic...
 // middleware needed to run login authentication logic prior to rendering the next view....
 // app.post('/login, middlware, callback);
 app.post('/login', passport.authenticate('local',
@@ -266,6 +267,27 @@ app.post('/login', passport.authenticate('local',
   function (req, res) {
   });
 // ======================================================================
+
+
+// LOG OUT Route and Logic
+// ======================================================================
+app.get('/logout', function (req, res) {
+  // again, this below is from passport local mongoose package...
+  req.logout();
+  res.redirect('/cafes');
+});
+// ======================================================================
+
+// Lots of actions and routes need to check if a user is looged in or not. So, use middleware (like this below...) & use it wherever needed (ie. creating comments)...
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    // If the user is logged in, then go whatever's next...
+    return next();
+  }
+  // If the user is not logged in, then go to login form...
+  res.redirect('/login');
+}
+
 
 // Default Route
 app.get('*', function (req, res) {
