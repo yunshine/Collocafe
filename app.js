@@ -27,6 +27,21 @@ app.use(methodOverride('_method'));
 app.use(expressSanitizer());
 // app.set('view engine', 'ejs');
 
+// PASSPORT CONFIGURATIONS ========================================
+// set up express session...
+app.use(require('express-session')({
+  secret: 'Rusty is the cutest dog!',
+  resave: false,
+  saveUninitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// ==================================================================
+
 
 // Mongoose/SCHEMA SETUP
 // const cafeSchema = new mongoose.Schema({
