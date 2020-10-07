@@ -28,41 +28,41 @@ var data = [
 function seedDB() {
   //Removes/Deletes all cafes
   Cafe.deleteMany({}, function (err) {
-    if (err) {
-      console.log(err);
-    }
-    console.log("removed cafes!");
-    //Removes/Deletes all ccmments
-    Comment.deleteMany({}, function (err) {
-      if (err) {
-        console.log(err);
-      }
-      console.log("removed comments!");
-      //add a few cafes
-      data.forEach(function (seed) {
-        Cafe.create(seed, function (err, cafe) {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log("added a cafe");
-            //create a comment
-            Comment.create(
-              {
-                text: "This place is great, but I wish there was internet",
-                author: "Yun"
-              }, function (err, comment) {
-                if (err) {
-                  console.log(err);
-                } else {
-                  cafe.comments.push(comment);
-                  cafe.save();
-                  console.log("Created new comment");
-                }
-              });
-          }
-        });
-      });
-    });
+    // if (err) {
+    //   console.log(err);
+    // }
+    // console.log("removed cafes!");
+    // //Removes/Deletes all ccmments
+    // Comment.deleteMany({}, function (err) {
+    //   if (err) {
+    //     console.log(err);
+    //   }
+    //   console.log("removed comments!");
+    //   //add a few cafes
+    //   data.forEach(function (seed) {
+    //     Cafe.create(seed, function (err, cafe) {
+    //       if (err) {
+    //         console.log(err)
+    //       } else {
+    //         console.log("added a cafe");
+    //         //create a comment
+    //         Comment.create(
+    //           {
+    //             text: "This place is great, but I wish there was internet",
+    //             author: "Yun"
+    //           }, function (err, comment) {
+    //             if (err) {
+    //               console.log(err);
+    //             } else {
+    //               cafe.comments.push(comment);
+    //               cafe.save();
+    //               console.log("Created new comment");
+    //             }
+    //           });
+    //       }
+    //     });
+    //   });
+    // });
   });
   //add a few comments
 }

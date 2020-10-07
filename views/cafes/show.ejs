@@ -10,7 +10,7 @@
 <br>
 
 <% cafe.comments.forEach(comment => { %>
-<p><strong><%= comment.author %></strong></p>
+<p><strong><%= comment.author.username %></strong></p>
 <p><%= comment.text %></p>
 <% }); %>
 

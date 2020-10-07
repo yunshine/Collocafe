@@ -18,7 +18,7 @@ const indexRoutes = require('./routes/index');
 
 
 // Seed the database...
-seedDB();
+// seedDB();
 
 mongoose.connect('mongodb://localhost:27017/collocafe', {
   useNewUrlParser: true,

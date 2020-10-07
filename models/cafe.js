@@ -10,7 +10,7 @@ const cafeSchema = new mongoose.Schema({
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment"
+      ref: "Comment", // refers to the model that we're referring to...
     }
   ]
 });

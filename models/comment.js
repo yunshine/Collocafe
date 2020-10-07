@@ -3,7 +3,14 @@ const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
   text: String,
-  author: String
+  author: {
+    id:
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // refers to the model we're referring to...
+    },
+    username: String,
+  }
   // how to set a default value in the schema...
   // created:  {type: Date, default: Date.now},
 });
