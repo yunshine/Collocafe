@@ -41,6 +41,7 @@ router.post('/register', function (req, res) {
     }
     // again, this below is from passport local mongoose package...
     passport.authenticate('local')(req, res, function () {
+      console.log("New User: ", user);
       res.redirect('/cafes');
     });
   });

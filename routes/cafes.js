@@ -73,16 +73,27 @@ router.get("/cafes/:id", function (req, res) {
 
 // EDIT Route - goes to edit cafe form
 router.get("/cafes/:id/edit", function (req, res) {
-  // *** Finds a cafe in the DB by its id & passes that cafe to the edit page***
-  Cafe.findById(req.params.id, function (err, foundCafe) {
-    if (err) {
-      console.log(error);
-      res.redirect("/cafes");
-    } else {
-      res.render('cafes/edit.ejs', { cafe: foundCafe });
-    }
-  });
-})
+  // Q: first, before editing, is the user logged in?
+  if (req.isAuthenticated()) {
+    // *** Finds a cafe in the DB by its id & passes that cafe to the edit page***
+    Cafe.findById(req.params.id, function (err, foundCafe) {
+      if (err) {
+        console.log(error);
+        res.redirect("/cafes");
+      } else {
+        // Q: if logged in, did the current user author the cafe?
+        // if (foundCafe.author.id === req.params.id) => doesn't work because req.params.id is an object, not a string... so we need...
+        if (foundCafe.author.id.equals(re.params.id)) {
+          res.render('cafes/edit.ejs', { cafe: foundCafe });
+        } else {
+          res.send("Sorry. You don't have permission to edit this cafe.");
+        }
+      }
+    });
+  } else {
+    res.send("Sorry. You need to be logged in to edit this cafe.");
+  }
+});
 
 // UPDATE Route - saves the updated info about one cafe into the DB
 router.put("/cafes/:id", function (req, res) {

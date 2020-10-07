@@ -54,6 +54,7 @@ router.post("/cafes/:id/comments", isLoggedIn, function (req, res) {
           cafe.comments.push(comment);
           cafe.save();
           res.redirect(`/cafes/${cafe._id}`);
+          console.log("New Comment: ", comment);
         }
       });
     }
