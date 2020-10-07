@@ -1,5 +1,10 @@
 const express = require('express');
 const router = express.Router(); // change all app.-something-  to  router.-something-
+const passport = require('passport');
+
+// add in the correct models...
+const Cafe = require('../models/cafe');
+const User = require('../models/user');
 
 // AUTHENTICATION Routes (nested...)
 // =======================================================================

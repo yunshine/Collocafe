@@ -57,8 +57,8 @@ app.use(function (req, res, next) {
 //  ***** USE THE ROUTES *****
 // =======================================================================
 
-app.use(cafesRoutes);
-app.use(commentsRoutes);
+app.use(cafeRoutes);
+app.use(commentRoutes);
 app.use(indexRoutes);
 // =======================================================================
 
