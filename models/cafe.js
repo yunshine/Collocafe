@@ -12,7 +12,14 @@ const cafeSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Comment", // refers to the model that we're referring to...
     }
-  ]
+  ],
+  author: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // refers to the model we're referring to...
+    },
+    username: String,
+  },
 });
 
 // Creates the model from the schema that we've designated

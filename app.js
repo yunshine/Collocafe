@@ -33,7 +33,7 @@ app.use(methodOverride('_method'));
 app.use(expressSanitizer());
 // app.set('view engine', 'ejs');
 
-// PASSPORT CONFIGURATIONS =================+++++=======================
+// PASSPORT CONFIGURATIONS =============================================
 // set up express session...
 app.use(require('express-session')({
   secret: 'Rusty is the cutest dog!',

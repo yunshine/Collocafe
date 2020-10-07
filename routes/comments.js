@@ -44,7 +44,6 @@ router.post("/cafes/:id/comments", isLoggedIn, function (req, res) {
           username: req.user.username,
         },
       };
-
       Comment.create(newComment, function (err, comment) {
         if (err) {
           console.log(err);

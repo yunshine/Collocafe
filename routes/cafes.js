@@ -23,16 +23,23 @@ router.get('/cafes', function (req, res) {
 // });
 
 // NEW Route - goes to new cafe form
-router.get("/cafes/new", function (req, res) {
+router.get("/cafes/new", isLoggedIn, function (req, res) {
   res.render("cafes/new.ejs");
 });
 
 // CREATE Route - makes and saves a new cafe to the DB
-router.post("/cafes", function (req, res) {
+router.post("/cafes", isLoggedIn, function (req, res) {
   // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
-  var newCafe = { name: name, area: area };
+  var newCafe = {
+    name: name,
+    area: area,
+    author: {
+      id: req.user.i_id,
+      username: req.user.username,
+    }
+  };
   // req.body.cafe.body = req.sanitize(req.body.cafe.body);
   // *** Makes and saves a new cafe to the Cafe DB ***
   Cafe.create(newCafe, function (err, cafe) {
@@ -106,5 +113,15 @@ router.delete("/cafes/:id", function (req, res) {
   })
   //redirect somewhere
 });
+
+// Lots of actions and routes need to check if a user is looged in or not. So, use middleware (like this below...) & use it wherever needed (ie. creating comments)...
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    // If the user is logged in, then go whatever's next...
+    return next();
+  }
+  // If the user is not logged in, then go to login form...
+  res.redirect('/login');
+}
 
 module.exports = router;
