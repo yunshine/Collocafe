@@ -36,7 +36,7 @@ router.post("/cafes", isLoggedIn, function (req, res) {
     name: name,
     area: area,
     author: {
-      id: req.user.i_id,
+      id: req.user._id,
       username: req.user.username,
     }
   };
@@ -69,9 +69,22 @@ router.get("/cafes/:id", function (req, res) {
       res.render("cafes/show.ejs", { cafe: foundCafe });
     }
   });
-})
+});
 
 // EDIT Route - goes to edit cafe form
+// Q: first, before editing, is the user logged in? Use middleware...
+// router.get("/cafes/:id/edit", checkCafeOwnership, function (req, res) {
+//   // *** Finds a cafe in the DB by its id & passes that cafe to the edit page***
+//   Cafe.findById(req.params.id, function (err, foundCafe) {
+//     if (err) {
+//       console.log(err);
+//       // res.redirect("/cafes");
+//     } else {
+//       res.render('cafes/edit.ejs', { cafe: foundCafe });
+//     }
+//   });
+// });
+
 router.get("/cafes/:id/edit", function (req, res) {
   // Q: first, before editing, is the user logged in?
   if (req.isAuthenticated()) {
@@ -81,21 +94,27 @@ router.get("/cafes/:id/edit", function (req, res) {
         console.log(error);
         res.redirect("/cafes");
       } else {
-        // Q: if logged in, did the current user author the cafe?
+        // Q: second, if logged in, did the current user author the cafe?
         // if (foundCafe.author.id === req.params.id) => doesn't work because req.params.id is an object, not a string... so we need...
-        if (foundCafe.author.id.equals(re.params.id)) {
-          res.render('cafes/edit.ejs', { cafe: foundCafe });
-        } else {
-          res.send("Sorry. You don't have permission to edit this cafe.");
-        }
+        console.log("req.user._id: ", req.user._id);
+        console.log("foundCafe: ", foundCafe);
+        console.log(foundCafe.author.id || "foundCafe.author.id not found");
+        // console.log(foundCafe.author.equals(req.user._id));
+        res.render('cafes/edit.ejs', { cafe: foundCafe });
+        // if (foundCafe.author.username.equals(req.user._id)) {
+        // } else {
+        //   res.send("Sorry. You don't have permission to do that.");
+        // }
       }
     });
   } else {
-    res.send("Sorry. You need to be logged in to edit this cafe.");
+    res.send("Sorry. You need to be logged in to do that.");
   }
 });
 
+
 // UPDATE Route - saves the updated info about one cafe into the DB
+// Q: first, before editing, is the user logged in? Use middleware...
 router.put("/cafes/:id", function (req, res) {
   // *** gets SANITIZED data from edit cafe form and updates the Cafe DB ***
   let name = req.sanitize(req.body.name);
@@ -112,6 +131,7 @@ router.put("/cafes/:id", function (req, res) {
 });
 
 // DELETE Route
+// Q: first, before editing, is the user logged in? Use middleware...
 router.delete("/cafes/:id", function (req, res) {
   //destroy blog
   Cafe.findByIdAndRemove(req.params.id, function (err) {
@@ -134,5 +154,29 @@ function isLoggedIn(req, res, next) {
   // If the user is not logged in, then go to login form...
   res.redirect('/login');
 }
+
+// more middleware...
+// function checkCafeOwnership(req, res, next) {
+//   // Q: first, before editing, is the user logged in?
+//   if (req.isAuthenticated()) {
+//     // *** Finds a cafe in the DB by its id & passes that cafe to the edit page***
+//     Cafe.findById(req.params.id, function (err, foundCafe) {
+//       if (err) {
+//         console.log(err);
+//         res.send("Sorry. Error.");
+//       } else {
+//         // Q: if logged in, did the current user author the cafe?
+//         // if (foundCafe.author.id === req.params.id) => doesn't work because req.params.id is an object, not a string... so we need...
+//         if (foundCafe.author.id.equals(req.user._id)) {
+//           next();
+//         } else {
+//           res.send("Sorry. You do not have permission to do that.");
+//         }
+//       }
+//     });
+//   } else {
+//     res.send("Sorry. You need to be logged in to do that.");
+//   }
+// }
 
 module.exports = router;

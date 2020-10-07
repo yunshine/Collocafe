@@ -38,7 +38,7 @@ app.use(expressSanitizer());
 app.use(require('express-session')({
   secret: 'Rusty is the cutest dog!',
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());

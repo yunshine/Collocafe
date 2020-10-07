@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var Cafe = require("./models/cafe");
 var Comment = require("./models/comment");
+var User = require("./models/user");
 
 var data = [
   {
@@ -27,6 +28,9 @@ var data = [
 
 function seedDB() {
   //Removes/Deletes all cafes
+  Comment.deleteMany({}, function (err) { });
+  User.deleteMany({}, function (err) { });
+
   Cafe.deleteMany({}, function (err) {
     // if (err) {
     //   console.log(err);
