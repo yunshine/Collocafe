@@ -65,7 +65,9 @@ router.post("/cafes/:id/comments", isLoggedIn, function (req, res) {
 });
 
 // EDIT Comment Route - nested route that shows the comment edit form
-router.get("/cafes/:id/comments/:comment_id/edit", function (req, res) {
+router.get("/cafes/:id/comments/:comment_id/edit", checkCommentOwnership, function (req, res) {
+  // Q: first, before editing, is the user logged in? Use middleware, then...
+  // *** ...find the nested comment  in the DB by its id & pass that comment to the edit page***
   Comment.findById(req.params.comment_id, function (err, foundComment) {
     if (err) {
       console.log(err);
@@ -77,7 +79,7 @@ router.get("/cafes/:id/comments/:comment_id/edit", function (req, res) {
 });
 
 // UPDATE Comment Route - nested route that saves the updated info about one comment into the DB
-router.put("/cafes/:id/comments/:comment_id/", function (req, res) {
+router.put("/cafes/:id/comments/:comment_id/", checkCommentOwnership, function (req, res) {
   // build the updatedComment...
   // let text = req.body.text;
   let newComment = { text: req.body.text };
@@ -93,9 +95,9 @@ router.put("/cafes/:id/comments/:comment_id/", function (req, res) {
   });
 });
 
-// DELETE Route
+// DELETE Comment Route
 // Q: first, before editing, is the user logged in? Use middleware...
-router.delete("/cafes/:id/comments/:comment_id", function (req, res) {
+router.delete("/cafes/:id/comments/:comment_id", checkCommentOwnership, function (req, res) {
   //destroy blog
   Comment.findByIdAndRemove(req.params.comment_id, function (err) {
     if (err) {
@@ -116,6 +118,30 @@ function isLoggedIn(req, res, next) {
   }
   // If the user is not logged in, then go to login form...
   res.redirect('/login');
+}
+
+// more middleware...
+function checkCommentOwnership(req, res, next) {
+  // Q: first, before editing, is the user logged in?
+  if (req.isAuthenticated()) {
+    // *** Finds a comment in the DB by its id & passes that comment to the edit page***
+    Comment.findById(req.params.comment_id, function (err, foundComment) {
+      if (err) {
+        console.log(err);
+        res.send("Sorry. Error. Unable to find that comment.");
+      } else {
+        // Q: if logged in, did the current user author the comment?
+        // if (foundComment.author.id === req.params.id) => doesn't work because req.params.id is an object, not a string... so we need...
+        if (foundComment.author.id.equals(req.user._id)) {
+          next();
+        } else {
+          res.send("Sorry. You do not have permission to do that.");
+        }
+      }
+    });
+  } else {
+    res.redirect('/login');
+  }
 }
 
 module.exports = router;
