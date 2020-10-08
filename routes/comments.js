@@ -61,6 +61,12 @@ router.post("/cafes/:id/comments", isLoggedIn, function (req, res) {
   });
 });
 
+// Edit Comment Route - nested route that shows the comment edit form
+router.get("/cafes/:id/comments/:comment_id/edit", function (req, res) {
+  res.send("comment edit form...");
+  // res.render('comments/edit.ejs', { cafe: foundCafe });
+});
+
 // Lots of actions and routes need to check if a user is looged in or not. So, use middleware (like this below...) & use it wherever needed (ie. creating comments)...
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {

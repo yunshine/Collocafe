@@ -1,0 +1,15 @@
+<%- include("../partials/header") %>
+
+<!-- *** This is the same form as the new view, but the values have been replaced using the data that has ben passed about one comment*** -->
+
+<!-- The method on an edit is POST, not PUT because we need to work around the fact that HTML does not support PUT by adding ?_method=PUT... -->
+
+<form method='POST' action='/cafes/:id/comments/<%= comment._id %>?_method=PUT'>
+  <input type="text" name='name' value="<%= cafe.name %>">
+  <input type="text" name='area' value="<%= cafe.area %>">
+  <button>submit</button>
+</form>
+<br>
+<a href="/cafes"><button>See All Cafes</button></a>
+
+<%- include("../partials/footer") %>
