@@ -8,8 +8,7 @@
 </h2>
 <h4>Cafe Created By: <strong><%= cafe.author.username %></strong></h4>
 <br>
-<a href='/cafes/<%= cafe._id %>/edit'><button>Edit Information</button></a>
-<br>
+
 
 <% cafe.comments.forEach(comment => { %>
 <p><strong><%= comment.author.username %></strong></p>
@@ -19,13 +18,20 @@
 <br>
 <a href='/cafes/<%= cafe._id %>/comments/new'><button>Leave a Comment</button></a>
 
-
-
+<!-- hide or show edit/delete buttons if user is this cafe's author... -->
+<!-- currentUser comes from app.js; everything, like the header, has access to it... -->
+<% if (currentUser && cafe.author.id.equals(currentUser._id)) {
+  %>
+<br>
+<a href='/cafes/<%= cafe._id %>/edit'><button>Edit Information</button></a>
+<br>
 <!-- A form is needed for the DESTROY route... -->
 <!-- The method on a delete is POST, not DELETE because we need to work around the fact that HTML does not support DELETE by adding ?_method=DELTE... -->
 <form method='POST' action='/cafes/<%= cafe._id %>?_method=DELETE'>
   <button>Delete This Cafe</button>
 </form>
+<% } %>
+
 <br>
 <a href="/cafes"><button>See All Cafes</button></a>
 
