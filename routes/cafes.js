@@ -4,6 +4,9 @@ const router = express.Router(); // change all app.-something-  to  router.-some
 // add in the correct models...
 const Cafe = require('../models/cafe');
 
+// add in the middlewareObj...
+const middleware = require('../middleware/index.js');
+
 // CAFES Routes
 // =======================================================================
 // INDEX Route
@@ -24,12 +27,12 @@ router.get('/cafes', function (req, res) {
 // });
 
 // NEW Route - goes to new cafe form
-router.get("/cafes/new", isLoggedIn, function (req, res) {
+router.get("/cafes/new", middleware.isLoggedIn, function (req, res) {
   res.render("cafes/new.ejs");
 });
 
 // CREATE Route - makes and saves a new cafe to the DB
-router.post("/cafes", isLoggedIn, function (req, res) {
+router.post("/cafes", middleware.isLoggedIn, function (req, res) {
   // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
@@ -100,7 +103,7 @@ router.get("/cafes/:id", function (req, res) {
 // });
 
 // EDIT Route - goes to edit cafe form
-router.get("/cafes/:id/edit", checkCafeOwnership, function (req, res) {
+router.get("/cafes/:id/edit", middleware.checkCafeOwnership, function (req, res) {
   // Q: first, before editing, is the user logged in? Use middleware, then...
   // *** ...find a cafe in the DB by its id & pass that cafe to the edit page***
   Cafe.findById(req.params.id, function (err, foundCafe) {
@@ -116,7 +119,7 @@ router.get("/cafes/:id/edit", checkCafeOwnership, function (req, res) {
 
 // UPDATE Route - saves the updated info about one cafe into the DB
 // Q: first, before editing, is the user logged in? Use middleware...
-router.put("/cafes/:id", checkCafeOwnership, function (req, res) {
+router.put("/cafes/:id", middleware.checkCafeOwnership, function (req, res) {
   // *** gets SANITIZED data from edit cafe form and updates the Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
@@ -135,7 +138,7 @@ router.put("/cafes/:id", checkCafeOwnership, function (req, res) {
 
 // DELETE Route
 // Q: first, before editing, is the user logged in? Use middleware...
-router.delete("/cafes/:id", checkCafeOwnership, function (req, res) {
+router.delete("/cafes/:id", middleware.checkCafeOwnership, function (req, res) {
   //destroy blog
   Cafe.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
@@ -148,38 +151,38 @@ router.delete("/cafes/:id", checkCafeOwnership, function (req, res) {
   //redirect somewhere
 });
 
-// Lots of actions and routes need to check if a user is looged in or not. So, use middleware (like this below...) & use it wherever needed (ie. creating comments)...
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    // If the user is logged in, then go whatever's next...
-    return next();
-  }
-  // If the user is not logged in, then go to login form...
-  res.redirect('/login');
-}
+// // Lots of actions and routes need to check if a user is looged in or not. So, use middleware (like this below...) & use it wherever needed (ie. creating comments)...
+// function isLoggedIn(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     // If the user is logged in, then go whatever's next...
+//     return next();
+//   }
+//   // If the user is not logged in, then go to login form...
+//   res.redirect('/login');
+// }
 
-// more middleware...
-function checkCafeOwnership(req, res, next) {
-  // Q: first, before editing, is the user logged in?
-  if (req.isAuthenticated()) {
-    // *** Finds a cafe in the DB by its id & passes that cafe to the edit page***
-    Cafe.findById(req.params.id, function (err, foundCafe) {
-      if (err) {
-        console.log(err);
-        res.send("Sorry. Error. Unable to find that cafe.");
-      } else {
-        // Q: if logged in, did the current user author the cafe?
-        // if (foundCafe.author.id === req.params.id) => doesn't work because req.params.id is an object, not a string... so we need...
-        if (foundCafe.author.id.equals(req.user._id)) {
-          next();
-        } else {
-          res.send("Sorry. You do not have permission to do that.");
-        }
-      }
-    });
-  } else {
-    res.redirect('/login');
-  }
-}
+// // more middleware...
+// function checkCafeOwnership(req, res, next) {
+//   // Q: first, before editing, is the user logged in?
+//   if (req.isAuthenticated()) {
+//     // *** Finds a cafe in the DB by its id & passes that cafe to the edit page***
+//     Cafe.findById(req.params.id, function (err, foundCafe) {
+//       if (err) {
+//         console.log(err);
+//         res.send("Sorry. Error. Unable to find that cafe.");
+//       } else {
+//         // Q: if logged in, did the current user author the cafe?
+//         // if (foundCafe.author.id === req.params.id) => doesn't work because req.params.id is an object, not a string... so we need...
+//         if (foundCafe.author.id.equals(req.user._id)) {
+//           next();
+//         } else {
+//           res.send("Sorry. You do not have permission to do that.");
+//         }
+//       }
+//     });
+//   } else {
+//     res.redirect('/login');
+//   }
+// }
 
 module.exports = router;
