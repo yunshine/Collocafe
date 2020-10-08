@@ -112,7 +112,7 @@ router.get("/cafes/:id/edit", checkCafeOwnership, function (req, res) {
 
 // UPDATE Route - saves the updated info about one cafe into the DB
 // Q: first, before editing, is the user logged in? Use middleware...
-router.put("/cafes/:id", function (req, res) {
+router.put("/cafes/:id", checkCafeOwnership, function (req, res) {
   // *** gets SANITIZED data from edit cafe form and updates the Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
@@ -129,7 +129,7 @@ router.put("/cafes/:id", function (req, res) {
 
 // DELETE Route
 // Q: first, before editing, is the user logged in? Use middleware...
-router.delete("/cafes/:id", function (req, res) {
+router.delete("/cafes/:id", checkCafeOwnership, function (req, res) {
   //destroy blog
   Cafe.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
@@ -172,7 +172,7 @@ function checkCafeOwnership(req, res, next) {
       }
     });
   } else {
-    res.send("Sorry. You need to be logged in to do that.");
+    res.redirect('/login');
   }
 }
 
