@@ -13,10 +13,15 @@
 <% cafe.comments.forEach(comment => { %>
 <p><strong><%= comment.author.username %></strong></p>
 <p><%= comment.text %></p>
+<!-- hide or show edit/delete buttons if user is this cafe's author... -->
+<!-- currentUser comes from app.js; everything, like the header, has access to it... -->
+<% if (currentUser && comment.author.id.equals(currentUser._id)) {
+  %>
 <a href='/cafes/<%= cafe._id %>/comments/<%= comment._id %>/edit'><button>Edit This Comment</button></a>
 <form method='POST' action='/cafes/<%= cafe._id %>/comments/<%= comment._id %>?_method=DELETE'>
   <button>Delete This Comment</button>
 </form>
+<% }%>
 <% }); %>
 
 <br>
