@@ -64,7 +64,7 @@ router.post("/cafes/:id/comments", isLoggedIn, function (req, res) {
   });
 });
 
-// Edit Comment Route - nested route that shows the comment edit form
+// EDIT Comment Route - nested route that shows the comment edit form
 router.get("/cafes/:id/comments/:comment_id/edit", function (req, res) {
   Comment.findById(req.params.comment_id, function (err, foundComment) {
     if (err) {
@@ -72,6 +72,23 @@ router.get("/cafes/:id/comments/:comment_id/edit", function (req, res) {
       res.send("Sorry. That comment could not be found");
     } else {
       res.render('comments/edit.ejs', { cafe_id: req.params.id, comment: foundComment });
+    }
+  });
+});
+
+// UPDATE Comment Route - nested route that saves the updated info about one comment into the DB
+router.put("/cafes/:id/comments/:comment_id/", function (req, res) {
+  // build the updatedComment...
+  // let text = req.body.text;
+  let newComment = { text: req.body.text };
+  // the logic to update the info...
+  Comment.findByIdAndUpdate(req.params.comment_id, newComment, function (err, updatedComment) {
+    if (err) {
+      console.log(err);
+      res.send("Sorry. This comment was not updated.");
+    } else {
+      console.log(updatedComment);
+      res.redirect(`/cafes/${req.params.id}`);
     }
   });
 });

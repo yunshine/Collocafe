@@ -99,6 +99,7 @@ router.get("/cafes/:id", function (req, res) {
 //   }
 // });
 
+// EDIT Route - goes to edit cafe form
 router.get("/cafes/:id/edit", checkCafeOwnership, function (req, res) {
   // Q: first, before editing, is the user logged in? Use middleware, then...
   // *** ...find a cafe in the DB by its id & pass that cafe to the edit page***
@@ -120,6 +121,8 @@ router.put("/cafes/:id", checkCafeOwnership, function (req, res) {
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
   let newCafe = { name: name, area: area }
+
+  // the logic to update the info...
   Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {
     if (err) {
       console.log(error);
