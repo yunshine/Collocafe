@@ -93,6 +93,21 @@ router.put("/cafes/:id/comments/:comment_id/", function (req, res) {
   });
 });
 
+// DELETE Route
+// Q: first, before editing, is the user logged in? Use middleware...
+router.delete("/cafes/:id/comments/:comment_id", function (req, res) {
+  //destroy blog
+  Comment.findByIdAndRemove(req.params.comment_id, function (err) {
+    if (err) {
+      console.log(error);
+      res.send("Sorry. This comment was not deleted.");
+    } else {
+      res.redirect(`/cafes/${req.params.id}`);
+    }
+  })
+  //redirect somewhere
+});
+
 // Lots of actions and routes need to check if a user is looged in or not. So, use middleware (like this below...) & use it wherever needed (ie. creating comments)...
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
