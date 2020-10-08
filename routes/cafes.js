@@ -12,6 +12,7 @@ router.get('/cafes', function (req, res) {
   Cafe.find(function (err, allCafes) {
     if (err) {
       console.log(err);
+      res.send("Sorry. That cafe could not be found.");
     } else {
       // the req.user below is needed to check if the user is logged in or not...
       res.render('cafes/index.ejs', { cafes: allCafes });
@@ -44,7 +45,8 @@ router.post("/cafes", isLoggedIn, function (req, res) {
   // *** Makes and saves a new cafe to the Cafe DB ***
   Cafe.create(newCafe, function (err, cafe) {
     if (err) {
-      console.log(error);
+      console.log(err);
+      res.send("Sorry. That cafecould not be created.");
       // or...   res.render("new.ejs");
     } else {
       console.log("New Cafe: ", cafe);
@@ -64,6 +66,7 @@ router.get("/cafes/:id", function (req, res) {
   Cafe.findById(req.params.id).populate("comments").exec(function (err, foundCafe) {
     if (err) {
       console.log(err);
+      res.send("Sorry. That cafe could not be found.");
     } else {
       // renders the show page view with the one cafe from the DB
       res.render("cafes/show.ejs", { cafe: foundCafe });

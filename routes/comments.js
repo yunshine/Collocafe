@@ -15,6 +15,7 @@ router.get("/cafes/:id/comments/new", isLoggedIn, function (req, res) {
   Cafe.findById(req.params.id, function (err, cafe) {
     if (err) {
       console.log(err);
+      res.send("Sorry. That cafe could not be found");
     } else {
       // passes the cafe found above & passes it to new comment form to associate comments to a cafe
       res.render("comments/new.ejs", { cafe: cafe });
@@ -29,6 +30,7 @@ router.post("/cafes/:id/comments", isLoggedIn, function (req, res) {
   Cafe.findById(req.params.id, function (err, cafe) {
     if (err) {
       console.log(err);
+      res.send("Sorry. That cafe could not be found");
     } else {
       // *** gets SANITIZED data from nested new comment form & adds to DB ***
       // the information passed from the nested new comment form...
@@ -47,6 +49,7 @@ router.post("/cafes/:id/comments", isLoggedIn, function (req, res) {
       Comment.create(newComment, function (err, comment) {
         if (err) {
           console.log(err);
+          res.send("Sorry. That comment could not be created.");
         } else {
           // saves the comment
           comment.save();
@@ -63,8 +66,14 @@ router.post("/cafes/:id/comments", isLoggedIn, function (req, res) {
 
 // Edit Comment Route - nested route that shows the comment edit form
 router.get("/cafes/:id/comments/:comment_id/edit", function (req, res) {
-  res.send("comment edit form...");
-  // res.render('comments/edit.ejs', { cafe: foundCafe });
+  Comment.findById(req.params.comment_id, function (err, foundComment) {
+    if (err) {
+      console.log(err);
+      res.send("Sorry. That comment could not be found");
+    } else {
+      res.render('comments/edit.ejs', { cafe_id: req.params.id, comment: foundComment });
+    }
+  });
 });
 
 // Lots of actions and routes need to check if a user is looged in or not. So, use middleware (like this below...) & use it wherever needed (ie. creating comments)...
