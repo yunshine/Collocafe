@@ -50,7 +50,7 @@ router.post('/register', function (req, res) {
 // LOGIN Route 1 - shows the login form...
 router.get('/login', function (req, res) {
   // handle incoming flash-connect messages in the render...
-  res.render('login.ejs', {message: "Error You Messed It Up!!!"});
+  res.render('login.ejs');
 });
 
 // LOGIN Route 2 - handles login logic...
@@ -71,6 +71,8 @@ router.post('/login', passport.authenticate('local',
 router.get('/logout', function (req, res) {
   // again, this below is from passport local mongoose package...
   req.logout();
+  // from flash-connect...
+  req.flash('error', "You have been logged out.");
   res.redirect('/cafes');
 });
 // =======================================================================

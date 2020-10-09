@@ -51,6 +51,8 @@ passport.deserializeUser(User.deserializeUser());
 // passes currentUser to EVERY route, which we need for our navbar links
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
+  // flash-connect will now be available on every page...
+  res.locals.message = req.flash("error");
   next();
 });
 // =======================================================================
