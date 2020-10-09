@@ -49,7 +49,8 @@ router.post('/register', function (req, res) {
 
 // LOGIN Route 1 - shows the login form...
 router.get('/login', function (req, res) {
-  res.render('login.ejs');
+  // handle incoming flash-connect messages in the render...
+  res.render('login.ejs', {message: "Error You Messed It Up!!!"});
 });
 
 // LOGIN Route 2 - handles login logic...

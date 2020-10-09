@@ -10,7 +10,8 @@ middlewareObj.isLoggedIn = function (req, res, next) {
     // If the user is logged in, then go whatever's next...
     return next();
   }
-  // If the user is not logged in, then go to login form...
+  // If the user is not logged in, show a flash message and go to login form...
+  req.flash('error', "Please login first.");
   res.redirect('/login');
 }
 
