@@ -21,7 +21,9 @@ const indexRoutes = require('./routes/index');
 // Seed the database...
 // seedDB();
 
-mongoose.connect('mongodb://localhost:27017/collocafe', {
+// where the database lives... on my computer or in a cloud...
+// mongoose.connect('mongodb://localhost:27017/collocafe', {
+mongoose.connect('mongodb+srv://yunshine:ilJC8239@cluster0.c4sfn.mongodb.net/collocafe?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
