@@ -11,7 +11,7 @@ middlewareObj.isLoggedIn = function (req, res, next) {
     return next();
   }
   // If the user is not logged in, show a flash message, handle it in the route render, then send the user to login form...
-  req.flash('error', "Please login first.");
+  req.flash('error', "You must be logged in to do that.");
   res.redirect('/login');
 }
 
@@ -22,18 +22,21 @@ middlewareObj.checkCafeOwnership = function (req, res, next) {
     Cafe.findById(req.params.id, function (err, foundCafe) {
       if (err) {
         console.log(err);
-        res.send("Sorry. Error. Unable to find that cafe.");
+        req.flash('error', "That cafe could not be found.");
+        res.redirect(`/cafes/${req.params.id}`);
       } else {
         // Q: if logged in, did the current user author the cafe?
         // if (foundCafe.author.id === req.params.id) => doesn't work because req.params.id is an object, not a string... so we need...
         if (foundCafe.author.id.equals(req.user._id)) {
           next();
         } else {
-          res.send("Sorry. You do not have permission to do that.");
+          req.flash('error', "You do not have permission to do that.");
+          res.redirect(`/cafes/${req.params.id}`);
         }
       }
     });
   } else {
+    req.flash('error', "You must be logged in to do that.");
     res.redirect('/login');
   }
 }
@@ -45,18 +48,21 @@ middlewareObj.checkCommentOwnership = function (req, res, next) {
     Comment.findById(req.params.comment_id, function (err, foundComment) {
       if (err) {
         console.log(err);
-        res.send("Sorry. Error. Unable to find that comment.");
+        req.flash('error', "That comment could not be found.");
+        res.redirect(`/cafes/${req.params.id}`);
       } else {
         // Q: if logged in, did the current user author the comment?
         // if (foundComment.author.id === req.params.id) => doesn't work because req.params.id is an object, not a string... so we need...
         if (foundComment.author.id.equals(req.user._id)) {
           next();
         } else {
-          res.send("Sorry. You do not have permission to do that.");
+          req.flash('error', "You do not have permission to do that.");
+          res.redirect(`/cafes/${req.params.id}`);
         }
       }
     });
   } else {
+    req.flash('error', "You must be logged in to do that.");
     res.redirect('/login');
   }
 }

@@ -15,7 +15,8 @@ router.get('/cafes', function (req, res) {
   Cafe.find(function (err, allCafes) {
     if (err) {
       console.log(err);
-      res.send("Sorry. That cafe could not be found.");
+      req.flash('error', "Cafes could not be found...");
+      res.redirect("/cafes");
     } else {
       // the req.user below is needed to check if the user is logged in or not...
       res.render('cafes/index.ejs', { cafes: allCafes });
@@ -49,10 +50,12 @@ router.post("/cafes", middleware.isLoggedIn, function (req, res) {
   Cafe.create(newCafe, function (err, cafe) {
     if (err) {
       console.log(err);
-      res.send("Sorry. That cafecould not be created.");
+      req.flash('error', "There was an error, and that cafe could not be created...");
+      res.redirect("/cafes");
       // or...   res.render("new.ejs");
     } else {
       console.log("New Cafe: ", cafe);
+      req.flash('success', "Your cafe has been added.");
       res.redirect("/cafes");
     }
   });
@@ -69,7 +72,8 @@ router.get("/cafes/:id", function (req, res) {
   Cafe.findById(req.params.id).populate("comments").exec(function (err, foundCafe) {
     if (err) {
       console.log(err);
-      res.send("Sorry. That cafe could not be found.");
+      req.flash('error', "There was an error, and that cafe could not be found...");
+      res.redirect("/cafes");
     } else {
       // renders the show page view with the one cafe from the DB
       res.render("cafes/show.ejs", { cafe: foundCafe });
@@ -109,7 +113,8 @@ router.get("/cafes/:id/edit", middleware.checkCafeOwnership, function (req, res)
   Cafe.findById(req.params.id, function (err, foundCafe) {
     if (err) {
       console.log(error);
-      res.send("Sorry. Error. Unable to find that cafe.");
+      req.flash('error', "There was an error, and that cafe could not be found...");
+      res.redirect("/cafes");
     } else {
       // middleware has already checked if the user is the cafe's author...
       res.render('cafes/edit.ejs', { cafe: foundCafe });
@@ -129,8 +134,10 @@ router.put("/cafes/:id", middleware.checkCafeOwnership, function (req, res) {
   Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {
     if (err) {
       console.log(error);
-      res.redirect("/cafes");
+      req.flash('error', "That cafe could not be found.");
+      res.redirect(`/cafes/${req.params.id}`);
     } else {
+      req.flash('success', "This cafe has been updated.");
       res.redirect(`/cafes/${req.params.id}`);
     }
   });
@@ -143,8 +150,10 @@ router.delete("/cafes/:id", middleware.checkCafeOwnership, function (req, res) {
   Cafe.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
       console.log(error);
-      res.redirect("/cafes");
+      req.flash('error', "That cafe could not be found.");
+      res.redirect(`/cafes/${req.params.id}`);
     } else {
+      req.flash('success', "Your cafe has been deleted.");
       res.redirect("/cafes");
     }
   })

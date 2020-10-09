@@ -52,7 +52,8 @@ passport.deserializeUser(User.deserializeUser());
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   // flash-connect will now be available on every page...
-  res.locals.message = req.flash("error");
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
   next();
 });
 // =======================================================================

@@ -18,7 +18,8 @@ router.get("/cafes/:id/comments/new", middleware.isLoggedIn, function (req, res)
   Cafe.findById(req.params.id, function (err, cafe) {
     if (err) {
       console.log(err);
-      res.send("Sorry. That cafe could not be found");
+      req.flash('error', "There was an error, and that cafe could not be found...");
+      res.redirect(`/cafes/${req.params.id}`);
     } else {
       // passes the cafe found above & passes it to new comment form to associate comments to a cafe
       res.render("comments/new.ejs", { cafe: cafe });
@@ -33,7 +34,8 @@ router.post("/cafes/:id/comments", middleware.isLoggedIn, function (req, res) {
   Cafe.findById(req.params.id, function (err, cafe) {
     if (err) {
       console.log(err);
-      res.send("Sorry. That cafe could not be found");
+      req.flash('error', "There was an error, and that cafe could not be found...");
+      res.redirect(`/cafes/${req.params.id}`);
     } else {
       // *** gets SANITIZED data from nested new comment form & adds to DB ***
       // the information passed from the nested new comment form...
@@ -52,15 +54,17 @@ router.post("/cafes/:id/comments", middleware.isLoggedIn, function (req, res) {
       Comment.create(newComment, function (err, comment) {
         if (err) {
           console.log(err);
-          res.send("Sorry. That comment could not be created.");
+          req.flash('error', "There was an error, and that comment could not be saved...");
+          res.redirect(`/cafes/${req.params.id}`);
         } else {
           // saves the comment
+          console.log("New Comment: ", comment);
           comment.save();
           // associates the nested new comment with the cafe and redirects
           cafe.comments.push(comment);
           cafe.save();
+          req.flash('success', "Your comment has been added.");
           res.redirect(`/cafes/${cafe._id}`);
-          console.log("New Comment: ", comment);
         }
       });
     }
@@ -74,7 +78,8 @@ router.get("/cafes/:id/comments/:comment_id/edit", middleware.checkCommentOwners
   Comment.findById(req.params.comment_id, function (err, foundComment) {
     if (err) {
       console.log(err);
-      res.send("Sorry. That comment could not be found");
+      req.flash('error', "There was an error, and that comment could not be found...");
+      res.redirect(`/cafes/${req.params.id}`);
     } else {
       res.render('comments/edit.ejs', { cafe_id: req.params.id, comment: foundComment });
     }
@@ -90,9 +95,11 @@ router.put("/cafes/:id/comments/:comment_id/", middleware.checkCommentOwnership,
   Comment.findByIdAndUpdate(req.params.comment_id, newComment, function (err, updatedComment) {
     if (err) {
       console.log(err);
-      res.send("Sorry. This comment was not updated.");
+      req.flash('error', "There was an error, and that comment could not be found...");
+      res.redirect(`/cafes/${req.params.id}`);
     } else {
       console.log(updatedComment);
+      req.flash('success', "Your comment has been updated.");
       res.redirect(`/cafes/${req.params.id}`);
     }
   });
@@ -105,8 +112,10 @@ router.delete("/cafes/:id/comments/:comment_id", middleware.checkCommentOwnershi
   Comment.findByIdAndRemove(req.params.comment_id, function (err) {
     if (err) {
       console.log(error);
-      res.send("Sorry. This comment was not deleted.");
+      req.flash('error', "There was an error, and that comment could not be deleted...");
+      res.redirect(`/cafes/${req.params.id}`);
     } else {
+      req.flash('success', "Your comment has been deleted.");
       res.redirect(`/cafes/${req.params.id}`);
     }
   })

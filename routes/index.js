@@ -42,6 +42,7 @@ router.post('/register', function (req, res) {
     // again, this below is from passport local mongoose package...
     passport.authenticate('local')(req, res, function () {
       console.log("New User: ", user);
+      req.flash('success', "Welcome! Your account has been created.");
       res.redirect('/cafes');
     });
   });
@@ -72,7 +73,7 @@ router.get('/logout', function (req, res) {
   // again, this below is from passport local mongoose package...
   req.logout();
   // from flash-connect...
-  req.flash('error', "You have been logged out.");
+  req.flash('success', "You have been logged out.");
   res.redirect('/cafes');
 });
 // =======================================================================
@@ -90,7 +91,8 @@ function isLoggedIn(req, res, next) {
 
 // Default Route
 router.get('*', function (req, res) {
-  res.send('Are you lost?');
+  req.flash('error', "Are you lost?");
+  res.redirect('/cafes');
 });
 
 module.exports = router;

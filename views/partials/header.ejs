@@ -63,6 +63,11 @@
   </div>
 
   <!-- flash-connect... -->
-  <div class='aler alert-danger' role='alert'><%= message %></div>
+  <% if(error && error.length > 0) { %>
+  <div class='aler alert-danger' role='alert'><%= error %></div>
+  <% } %>
+  <% if(success && success.length > 0) { %>
+  <div class='aler alert-success' role='alert'><%= success %></div>
+  <% } %>
   <p>this is the header partial with a flash-connect message...</p>
   <!-- *** Be sure to turn off Prettier so that the html and body tags do not close in this header partial... *** -->
