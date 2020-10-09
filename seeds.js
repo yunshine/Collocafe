@@ -30,7 +30,6 @@ function seedDB() {
   //Removes/Deletes all cafes
   Comment.deleteMany({}, function (err) { });
   User.deleteMany({}, function (err) { });
-
   Cafe.deleteMany({}, function (err) {
     // if (err) {
     //   console.log(err);
