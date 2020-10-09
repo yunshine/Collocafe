@@ -37,8 +37,9 @@ router.post('/register', function (req, res) {
   User.register(newUser, req.body.password, function (err, user) {
     if (err) {
       console.log(err);
-      req.flash('error', err);
-      return res.render('register.ejs');
+      req.flash('error', err.message);
+      // return res.render('register.ejs');
+      return res.redirect("/register");
     }
     // again, this below is from passport local mongoose package...
     passport.authenticate('local')(req, res, function () {
