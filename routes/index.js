@@ -37,12 +37,14 @@ router.post('/register', function (req, res) {
   User.register(newUser, req.body.password, function (err, user) {
     if (err) {
       console.log(err);
+      req.flash('error', err);
       return res.render('register.ejs');
     }
     // again, this below is from passport local mongoose package...
     passport.authenticate('local')(req, res, function () {
       console.log("New User: ", user);
-      req.flash('success', "Welcome! Your account has been created.");
+      // req.flash('success', `Welcome, ${req.body.username}!`); or...
+      req.flash('success', `Welcome to Collocafe, ${user.username}!`);
       res.redirect('/cafes');
     });
   });
@@ -79,14 +81,14 @@ router.get('/logout', function (req, res) {
 // =======================================================================
 
 // Lots of actions and routes need to check if a user is looged in or not. So, use middleware (like this below...) & use it wherever needed (ie. creating comments)...
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    // If the user is logged in, then go whatever's next...
-    return next();
-  }
-  // If the user is not logged in, then go to login form...
-  res.redirect('/login');
-}
+// function isLoggedIn(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     // If the user is logged in, then go whatever's next...
+//     return next();
+//   }
+//   // If the user is not logged in, then go to login form...
+//   res.redirect('/login');
+// }
 
 
 // Default Route
