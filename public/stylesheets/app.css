@@ -20,8 +20,27 @@ body {
 /* ====================================================================== */
 
 
+/* Footer Styles - 
+====================================================================== */
+.footer-div {
+ border: 5px solid red;
+ width: 100vw;
+ height: 48px;
+ position: absolute;
+ bottom: 0;
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
 
-/* Avatar Styles - Needed for Navbar
+.footer-div h6 {
+  margin: 0;
+}
+
+/* ======================================================================  */
+
+
+/* Avatar Styles - Le Wagon Component - Needed for Navbar
 ====================================================================== */
 .avatar {
   width: 40px;
