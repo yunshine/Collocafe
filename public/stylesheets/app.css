@@ -2,6 +2,37 @@ body {
   background-color: rgba(95, 127, 156, 0.5);
 }
 
+/* Footer Styles - 
+====================================================================== */
+.footer-div {
+  border: 5px solid red;
+  width: 100vw;
+  height: 48px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer-div h6 {
+  margin: 0;
+}
+/* ======================================================================  */
+
+/* Login Form Styles - 
+====================================================================== */
+.login-form {
+  width: 240px;
+  margin: 0 auto;
+}
+
+.login-form label, input{
+  display: block;
+}
+
+/* ======================================================================  */
+
 
 /* Navbar Styles 
 ====================================================================== */
@@ -20,24 +51,6 @@ body {
 /* ====================================================================== */
 
 
-/* Footer Styles - 
-====================================================================== */
-.footer-div {
- border: 5px solid red;
- width: 100vw;
- height: 48px;
- position: absolute;
- bottom: 0;
- display: flex;
- justify-content: space-around;
- align-items: center;
-}
-
-.footer-div h6 {
-  margin: 0;
-}
-
-/* ======================================================================  */
 
 
 /* Avatar Styles - Le Wagon Component - Needed for Navbar
