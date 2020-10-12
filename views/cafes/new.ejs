@@ -1,11 +1,19 @@
 <%- include("../partials/header") %>
+<form method='POST' action='/cafes' class="app-form">
+  <h3>Add A New Cafe</h3>
+  <div class="form-group">
 
-<form method='POST' action='/cafes'>
-  <input type="text" name='name' placeholder="cafe name" required>
-  <input type="text" name='area' placeholder="area, neighborhood, or nearest station">
-  <button>submit</button>
+    <label>
+      Cafe Name
+      <input type="text" name='name' placeholder="cafe name" class="form-control" required>
+    </label>
+    <label>
+      Cafe Location
+      <input type="text" name='area' placeholder="area, neighborhood, or nearest station" class="form-control">
+    </label>
+    <button type="submit" class="btn btn-success form-control">Add This Cafe</button>
+  </div>
+  <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a>
 </form>
-<br>
-<a href="/cafes"><button>See All Cafes</button></a>
 
 <%- include("../partials/footer") %>

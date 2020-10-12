@@ -2,6 +2,9 @@ body {
   background-color: rgba(95, 127, 156, 0.5);
   font-family: Arial, Helvetica, sans-serif;
 }
+.btn {
+  transition: all 0.1s;
+}
 
 /* Footer Styles - 
 ====================================================================== */
@@ -21,19 +24,34 @@ body {
 }
 /* ======================================================================  */
 
-/* Login Form Styles - 
+/* Form Styles - 
 ====================================================================== */
 .app-form {
   /* border: 1px solid black; */
   padding-top: 32px;
   width: 400px;
   margin: 0 auto;
+
 }
 
-.app-form label, input{
+.app-form h3 {
+  font-weight: 300;
+  color: rgba(24, 24, 24, 0.85);
+}
+
+/* .app-form h3 {
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85);
+} */
+
+.app-form label, input {
   display: block;
+  color: rgba(24, 24, 24, 0.85);
 }
 
+.button-all-cafes {
+  margin: 16px auto 0 auto;
+}
 /* ======================================================================  */
 
 
