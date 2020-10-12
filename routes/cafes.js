@@ -37,9 +37,11 @@ router.post("/cafes", middleware.isLoggedIn, function (req, res) {
   // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
+  let url = req.sanitize(req.body.url);
   var newCafe = {
     name: name,
     area: area,
+    url: url,
     author: {
       id: req.user._id,
       username: req.user.username,
