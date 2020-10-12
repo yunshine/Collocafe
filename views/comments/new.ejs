@@ -1,14 +1,17 @@
 <%- include("../partials/header") %>
 
-<h3>this is the new comment form</h3>
-<h3>Add a comment for <%= cafe.name %></h3>
-
-<form method='POST' action='/cafes/<%= cafe._id %>/comments'>
-  <!-- <input type="text" name='author' placeholder="your name" required> -->
-  <input type="text" name='text' placeholder="your comment" required>
-  <button>submit</button>
+<form method='POST' action='/cafes/<%= cafe._id %>/comments' class='app-form'>
+  <h3>Comment</h3>
+  <div class="form-group">
+    <label for="commentText">
+      Leave a Comment about <%= cafe.name %>
+    </label>
+    <!-- <input type="text" name='author' placeholder="your name" required> -->
+    <textarea id="commentText" type="text" rows=5" name='text' placeholder="your comment" class='form-control'
+      required></textarea>
+    <button type="submit" class="btn btn-success form-control mt-2">Comment</button>
+  </div>
+  <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a>
 </form>
-<br>
-<a href="/cafes"><button>See All Cafes</button></a>
 
 <%- include("../partials/footer") %>
