@@ -12,7 +12,7 @@ body {
 /* Show Page Styles */
 /* ====================================================================== */
 .show-main-div {
-  width: 80vw;
+  width: 40vw;
   margin: 32px auto 0 auto;
   border: 1px solid black;
 }
@@ -38,6 +38,8 @@ color: rgba(16, 16, 16, 0.95)
 .show-cafe-area {
   margin-top: 0px;
   padding-top: 0px;
+  padding-bottom: 0;
+  margin-bottom: 0;
   font-size: 20px;
   font-weight: 100;
   color: rgba(20, 20, 20, 0.85)
@@ -51,9 +53,82 @@ color: rgba(16, 16, 16, 0.95)
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 16px;
 }
 .buttons-row button {
-  margin: 0 16px 0 16px;
+  margin: 0 8px 0 8px;
+}
+
+.show-comments-div {
+  border: 1px solid grey;
+  margin-top: 0px;
+}
+
+.comments-header {
+  width: 100%;
+  text-align: center;
+  padding: 16px 0px;
+}
+
+.show-individual-comment-div {
+  border: 1px solid slategrey;
+  padding: 16px;
+}
+
+.comment-text-area {
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.leave-comment-h3 {
+  font-size: 24px;
+  font-weight: 500;
+  color: rgba(20, 20, 20, 0.85)
+}
+
+.leave-comment-button {
+margin: 0 auto;
+}
+
+.comment-text-area i {
+  color: purple;
+  transition: all 0.2s;
+  font-size: 18px;
+}
+
+.comment-text-area i:hover {
+  color: yellow;
+}
+
+.comment-if-author-buttons-row {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0 4px 0 0;
+  margin: 0;
+}
+
+.comment-if-author-buttons-row h4 {
+  paddding: 0;
+  margin 0;
+}
+
+.comment-if-author-buttons-row i {
+  margin: 0 4px 0 0;
+}
+
+.trash-button {
+  background: none;
+  padding: 0px;
+  border: none;
+}
+
+.comment-author-name {
+
 }
 /* ====================================================================== */
 

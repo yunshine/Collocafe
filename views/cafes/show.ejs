@@ -16,37 +16,49 @@
   <% if (currentUser && cafe.author.id.equals(currentUser._id)) {
     %>
   <div class="buttons-row">
-    <a href='/cafes/<%= cafe._id %>/edit'><button class='btn btn-warning'>Edit Information</button></a>
+    <a href='/cafes/<%= cafe._id %>/edit'><button class='btn btn-warning btn-sm'>Edit Information</button></a>
     <!-- A form is needed for the DESTROY route... -->
     <!-- The method on a delete is POST, not DELETE because we need to work around the fact that HTML does not support DELETE by adding ?_method=DELTE... -->
     <form method='POST' action='/cafes/<%= cafe._id %>?_method=DELETE'>
-      <button class='btn btn-danger'>Delete This Cafe</button>
+      <button class='btn btn-danger btn-sm'>Delete This Cafe</button>
     </form>
   </div>
   <% } %>
 
+  <div class="show-comments-div">
+    <div class="comments-header">
+      <h3 class='leave-comment-h3'>Comments</h3>
+      <a href='/cafes/<%= cafe._id %>/comments/new'><button class="btn btn-success btn-sm leave-comment-button">Leave a
+          Comment</button></a>
+    </div>
+    <% cafe.comments.forEach(comment => { %>
+    <div class="show-individual-comment-div">
+      <div class='comment-text-area'>
+        <% if (currentUser && comment.author.id.equals(currentUser._id)) {
+        %>
+        <div class="comment-if-author-buttons-row">
+          <a href='/cafes/<%= cafe._id %>/comments/<%= comment._id %>/edit'>
+            <!-- <button class='btn btn-warning btn-sm'>Edit This Comment</button> -->
+            <i class="far fa-edit" data-toggle="tooltip" data-html="true" data-placement="top"
+              title="EDIT THIS COMMENT"></i>
+          </a>
+          <form method='POST' action='/cafes/<%= cafe._id %>/comments/<%= comment._id %>?_method=DELETE'>
+            <!-- <button class='btn btn-danger btn-sm'>Delete This Comment</button> -->
+            <button class='trash-button'><i class="far fa-trash-alt" data-toggle="tooltip" data-html="true"
+                data-placement="top" title="DELETE THIS COMMENT"></i>
+            </button>
+          </form>
+        </div>
+        <% }%>
+        <h4><%= comment.text %></h4>
+      </div>
+      <h5 class='comment-author-name'>- <%= comment.author.username %></h5>
+      <!-- hide or show edit/delete buttons if user is this cafe' s author... -->
+      <!-- currentUser comes from app.js; everything, like the header, has access to it... -->
+    </div>
+    <% }); %>
 
-
-  <% cafe.comments.forEach(comment => { %>
-  <p><strong><%= comment.author.username %></strong></p>
-  <p><%= comment.text %></p>
-  <!-- hide or show edit/delete buttons if user is this cafe' s author... -->
-  <!-- currentUser comes from app.js; everything, like the header, has access to it... -->
-  <% if (currentUser && comment.author.id.equals(currentUser._id)) {
-  %>
-  <a href='/cafes/<%= cafe._id %>/comments/<%= comment._id %>/edit'><button>Edit This Comment</button></a>
-  <form method='POST' action='/cafes/<%= cafe._id %>/comments/<%= comment._id %>?_method=DELETE'>
-    <button>Delete This Comment</button>
-  </form>
-  <% }%>
-  <% }); %>
-
-  <br>
-  <a href='/cafes/<%= cafe._id %>/comments/new'><button>Leave a Comment</button></a>
-
-
-  <br>
-  <a href="/cafes"><button>See All Cafes</button></a>
+  </div>
 </div>
 
 <%- include("../partials/footer") %>
