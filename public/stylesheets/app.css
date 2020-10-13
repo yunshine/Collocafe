@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(95, 127, 156, 0.5);
+  background-color: rgba(233, 233, 233, 0.5);
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
   min-height: 100vh;
@@ -14,11 +14,21 @@ body {
 .show-main-div {
   width: 40vw;
   margin: 32px auto 0 auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+}
+
+.show-card {
+  box-shadow: 0 0 12px rgba(0,0,0,0.16);
 }
 
 .show-image {
   width: 100%;
+}
+
+.cafe-text {
+  /* border: 1px solid grey;
+  border-top: none; */
+  padding: 16px;
 }
 
 .cafe-text-row-1 {
@@ -29,11 +39,11 @@ body {
 }
 
 .show-cafe-name {
-margin-bottom: 0px;
-padding-bottom: 0px;
-font-weight: 600;
-color: rgba(16, 16, 16, 0.95)
-
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-weight: 600;
+  color: rgba(16, 16, 16, 0.95)
+  
 }
 .show-cafe-area {
   margin-top: 0px;
@@ -44,6 +54,7 @@ color: rgba(16, 16, 16, 0.95)
   font-weight: 100;
   color: rgba(20, 20, 20, 0.85)
 }
+
 .show-cafe-author {
   font-size: 14px;
   color: rgba(40, 40, 40, 0.85)
@@ -55,14 +66,13 @@ color: rgba(16, 16, 16, 0.95)
   align-items: center;
   padding: 0;
   margin: 0;
-  margin-bottom: 16px;
 }
 .buttons-row button {
   margin: 0 8px 0 8px;
 }
 
 .show-comments-div {
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   margin-top: 0px;
 }
 
@@ -73,8 +83,14 @@ color: rgba(16, 16, 16, 0.95)
 }
 
 .show-individual-comment-div {
-  border: 1px solid slategrey;
+  /* border: 1px solid slategrey; */
   padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 0 8px rgba(0,0,0,0.16);
+  transition: all 0.1s ease-in-out;
+}
+.show-individual-comment-div:hover {
+  box-shadow: 0 0 12px rgba(0,0,0,0.24);
 }
 
 .comment-text-area {
@@ -97,7 +113,7 @@ margin: 0 auto;
 .comment-text-area i {
   color: purple;
   transition: all 0.2s;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .comment-text-area i:hover {
@@ -127,8 +143,16 @@ margin: 0 auto;
   border: none;
 }
 
-.comment-author-name {
+.comment-text {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(16, 16, 16, 0.95);
+}
 
+.comment-author-name {
+  color: rgba(20, 20, 20, 0.85);
+  font-size: 14px;
+  font-weight: 300;
 }
 /* ====================================================================== */
 
@@ -142,7 +166,7 @@ margin: 0 auto;
 /* Footer Styles 
 ====================================================================== */
 .footer-div {
-  border: 5px solid red;
+  /* border: 5px solid red; */
   width: 100vw;
   height: 48px;
   display: flex;
@@ -151,6 +175,7 @@ margin: 0 auto;
   margin-top: 32px;
   position: absolute;
   bottom: 0;
+  background-color: rgb(189, 189, 189);
 }
 
 .footer-div h6 {
