@@ -130,7 +130,8 @@ router.put("/cafes/:id", middleware.checkCafeOwnership, function (req, res) {
   // *** gets SANITIZED data from edit cafe form and updates the Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
-  let newCafe = { name: name, area: area }
+  let url = req.sanitize(req.body.url);
+  let newCafe = { name: name, area: area, url: url }
 
   // the logic to update the info...
   Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {

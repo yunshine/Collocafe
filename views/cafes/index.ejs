@@ -6,7 +6,7 @@
 
 <ul>
   <% cafes.forEach(cafe => { %>
-  <img src="<%= cafe.url %>" alt="">
+  <img src="<%= cafe.url %>" alt="" class="index-image">
   <br>
   <li><strong><%= cafe.name %></strong> - <%= cafe.area %>
     <a href="/cafes/<%= cafe._id %>"><button>See More</button></a></li>
