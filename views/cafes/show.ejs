@@ -16,11 +16,11 @@
   <% if (currentUser && cafe.author.id.equals(currentUser._id)) {
     %>
   <div class="buttons-row">
-    <a href='/cafes/<%= cafe._id %>/edit'><button>Edit Information</button></a>
+    <a href='/cafes/<%= cafe._id %>/edit'><button class='btn btn-warning'>Edit Information</button></a>
     <!-- A form is needed for the DESTROY route... -->
     <!-- The method on a delete is POST, not DELETE because we need to work around the fact that HTML does not support DELETE by adding ?_method=DELTE... -->
     <form method='POST' action='/cafes/<%= cafe._id %>?_method=DELETE'>
-      <button>Delete This Cafe</button>
+      <button class='btn btn-danger'>Delete This Cafe</button>
     </form>
   </div>
   <% } %>

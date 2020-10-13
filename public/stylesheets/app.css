@@ -48,7 +48,12 @@ color: rgba(16, 16, 16, 0.95)
 }
 
 .buttons-row {
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttons-row button {
+  margin: 0 16px 0 16px;
 }
 /* ====================================================================== */
 
