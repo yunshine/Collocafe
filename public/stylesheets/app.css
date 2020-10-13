@@ -9,36 +9,46 @@ body {
   transition: all 0.1s;
 }
 
-/* Show PageStyles */
-/* ====================================================================== */
-.show-main-div {
-  width: 80vw;
-  margin: 32px auto 0 auto;
-  border: 1px solid blue;
-
-}
-/* ====================================================================== */
-
 /* Show Page Styles */
 /* ====================================================================== */
 .show-main-div {
   width: 80vw;
   margin: 32px auto 0 auto;
-  border: 1px solid blue;
+  border: 1px solid black;
 }
 
-.show-index {
+.show-image {
   width: 100%;
 }
 
+.cafe-text-row-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px;
+}
+
 .show-cafe-name {
+margin-bottom: 0px;
+padding-bottom: 0px;
+font-weight: 600;
+color: rgba(16, 16, 16, 0.95)
 
 }
 .show-cafe-area {
-
+  margin-top: 0px;
+  padding-top: 0px;
+  font-size: 20px;
+  font-weight: 100;
+  color: rgba(20, 20, 20, 0.85)
 }
 .show-cafe-author {
+  font-size: 14px;
+  color: rgba(40, 40, 40, 0.85)
+}
 
+.buttons-row {
+  
 }
 /* ====================================================================== */
 
