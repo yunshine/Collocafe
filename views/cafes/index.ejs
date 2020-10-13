@@ -1,8 +1,26 @@
 <%- include("../partials/header") %>
 
-<h3>this is the index page...</h3>
+<!-- <div class="index-banner"> -->
+<!-- <div class="index-banner-content"> -->
+<!-- <img src="/images/sofa-background.jpeg" alt="" class="index-banner-photo"> -->
+<!-- <h1>Collocafe</h1> -->
+<!-- <p>some stuff about this page...</p> -->
+<!-- <a href="/cafes/new" class=""><button class="btn btn-success index-banner-button">Add a New Cafe</button></a> -->
+<!-- </div> -->
+<!-- </div> -->
 
-<br>
+
+
+<div class="banner"
+  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/images/dark-background.jpeg);">
+  <div class="container">
+    <h1>Collocafe</h1>
+    <p>something about coffee and cafes...</p>
+    <a href="/cafes/new" class=""><button class="btn btn-success index-banner-button">Add a New Cafe</button></a>
+  </div>
+</div>
+
+
 
 <ul>
   <% cafes.forEach(cafe => { %>
@@ -13,6 +31,5 @@
   <% }); %>
 </ul>
 
-<a href="/cafes/new"><button>Add a New Cafe</button></a>
 
 <%- include("../partials/footer") %>
