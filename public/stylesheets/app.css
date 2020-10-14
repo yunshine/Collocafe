@@ -197,8 +197,15 @@ color: rgba(16, 16, 16, 0.95)
   box-shadow: 0 0 8px rgba(0,0,0,0.16);
   transition: all 0.1s ease-in-out;
 }
+
 .show-individual-comment-div:hover {
   box-shadow: 0 0 12px rgba(0,0,0,0.24);
+}
+
+.show-individual-comment-div strong {
+  font-weight: 800;
+  font-size: 16px;
+  color: rgba(0,0,0,1);
 }
 
 .comment-text-area {
@@ -265,10 +272,10 @@ margin: 0 auto;
 }
 
 .comment-author-name {
-  color: rgba(20, 20, 20, 0.85);
+  color: rgba(20, 20, 20, 0.75);
   font-size: 14px;
-  font-weight: 300;
-  margin-top: 4px;
+  font-weight: 200;
+  margin-top: 6px;
 }
 /* ====================================================================== */
 

@@ -38,7 +38,7 @@
     <div class="show-individual-comment-div">
       <div class='comment-text-area'>
         <% if (currentUser && comment.author.id.equals(currentUser._id)) {
-        %>
+            %>
         <div class="comment-if-author-buttons-row">
           <a href='/cafes/<%= cafe._id %>/comments/<%= comment._id %>/edit'>
             <!-- <button class='btn btn-warning btn-sm'>Edit This Comment</button> -->
@@ -55,7 +55,9 @@
         <% }%>
         <h4 class='comment-text'><%= comment.text %></h4>
       </div>
-      <h5 class='comment-author-name'>- <%= comment.author.username %></h5>
+      <h5 class='comment-author-name'><strong><%= comment.author.username %></strong> on
+        <%= comment.created.getFullYear() %> <%= ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+        "November", "December"][comment.created.getMonth()] %> <%= comment.created.getDate() %></h5>
       <!-- hide or show edit/delete buttons if user is this cafe' s author... -->
       <!-- currentUser comes from app.js; everything, like the header, has access to it... -->
     </div>
