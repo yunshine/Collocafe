@@ -312,6 +312,40 @@ margin: 0 auto;
 }
 /* ====================================================================== */
 
+/* Button Styles
+/* ====================================================================== */
+.btn-success-yun-med {
+  background-color:   rgb(50, 193, 233); 
+  color: white;
+  border-radius: .2em;
+  border: none;
+  transition: all 0.1s ease-in-out;
+  /* padding: 12px 64px; */
+}
+
+.btn-success-yun-med:hover {
+  background-color:   rgb(46, 178, 214); 
+  color: white;
+  box-shadow: 0 0 4px rgba(0,0,0,0.16);
+}
+
+.btn-success-yun-small {
+  background-color:   rgb(50, 193, 233); 
+  color: white;
+  border-radius: .2em;
+  border: none;
+  transition: all 0.1s ease-in-out;
+  padding: 4px 6px;
+}
+
+.btn-success-yun-small:hover {
+  background-color:   rgb(46, 178, 214); 
+  color: white;
+  box-shadow: 0 0 4px rgba(0,0,0,0.16);
+}
+/* ====================================================================== */
+
+
 /* Flash Alert Styles
 /* ====================================================================== */
 .aler {
