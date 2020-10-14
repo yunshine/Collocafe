@@ -284,9 +284,9 @@ margin: 0 auto;
 ====================================================================== */
 .navbar-lewagon {
   justify-content: space-between;
-  background-color:   rgba(50, 193, 233, 1); 
+  background-color:   rgba(50, 193, 233, 1) !important; 
   /* background-color:   rgba(8, 8, 8, 1);  */
-  box-shadow: 0 0 12px rgba(0,0,0,0.16);
+  box-shadow: 0 0 12px rgba(0,0,0,0.16) !important;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -404,6 +404,12 @@ a.nav-link:hover {
 .avatar {
   width: 40px;
   border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+.avatar:hover {
+  scale: 1.1;
+  cursor: pointer;
 }
 
 .avatar-large {
