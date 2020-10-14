@@ -1,16 +1,5 @@
 <%- include("../partials/header") %>
 
-<!-- <div class="index-banner"> -->
-<!-- <div class="index-banner-content"> -->
-<!-- <img src="/images/sofa-background.jpeg" alt="" class="index-banner-photo"> -->
-<!-- <h1>Collocafe</h1> -->
-<!-- <p>some stuff about this page...</p> -->
-<!-- <a href="/cafes/new" class=""><button class="btn btn-success index-banner-button">Add a New Cafe</button></a> -->
-<!-- </div> -->
-<!-- </div> -->
-
-
-
 <div class="banner"
   style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/images/dark-background.jpeg);">
   <div class="container">
@@ -20,16 +9,22 @@
   </div>
 </div>
 
-
-
-<ul>
-  <% cafes.forEach(cafe => { %>
-  <img src="<%= cafe.url %>" alt="" class="index-image">
-  <br>
-  <li><strong><%= cafe.name %></strong> - <%= cafe.area %>
-    <a href="/cafes/<%= cafe._id %>"><button>See More</button></a></li>
-  <% }); %>
-</ul>
-
+<div class="container cafe-cards-div">
+  <div class="row">
+    <% cafes.forEach(cafe => { %>
+    <div class="col-md-11 col-lg-5 cafe-card">
+      <img src="<%= cafe.url %>" alt="" class="index-image">
+      <div class="card-text-div">
+        <h2><%= cafe.name %></h2>
+        <h4><%= cafe.area %></h4>
+        <h5><%= cafe.comments.length %> <%= cafe.comments.length === 1 ? 'Comment' : 'Comments' %></h5>
+      </div>
+      <div style='text-align: center;'>
+        <a href="/cafes/<%= cafe._id %>"><button>See More</button></a>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>
 
 <%- include("../partials/footer") %>
