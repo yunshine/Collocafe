@@ -45,7 +45,7 @@ router.post("/cafes/:id/comments", middleware.isLoggedIn, function (req, res) {
       // build the newComment...
       let newComment = {
         text: text,
-        created: Date.now,
+        created: Date.now(),
         // adds a username & id to the comment
         author: {
           id: req.user._id,

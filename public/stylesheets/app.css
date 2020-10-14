@@ -123,6 +123,8 @@ color: rgba(16, 16, 16, 0.95)
 /* ====================================================================== */
 .show-main-div {
   width: 40vw;
+  min-width: 440px;
+  max-width: 480px;
   margin: 32px auto 0 auto;
   /* border: 1px solid black; */
 }
