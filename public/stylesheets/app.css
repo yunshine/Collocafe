@@ -299,14 +299,21 @@ margin: 0 auto;
 
 a.nav-link {
   transition: all 0.1s ease-in-out !important;
+  color: white !important;
 }
 
 a.nav-link:hover {
-  color:   rgba(50, 193, 233, 1)  !important; 
+  color: rgba(255,255,255, 0.6) !important; 
 }
 
-a.navbar-brand {
-  transition: all 0.1s ease-in-out !important;
+.nav-bar-logo {
+  transition: all 0.3s !important;
+}
+
+.nav-bar-logo:hover {
+  transition: all 0.1s ease-in-out  !important;
+  color:   rgba(50, 193, 233, 1)  !important; 
+  scale: 1.2 !important;
 }
 
 .fas {
@@ -323,12 +330,6 @@ a.navbar-brand {
   border: 1px solid rgba(46, 178, 214, 1) !important;
   scale: 1.1;
 }
-
-
-a.navbar-brand:hover {
-  transition: all 0.1s ease-in-out  !important;
-  color:   rgba(50, 193, 233, 1)  !important; 
-}
 /* ====================================================================== */
 
 
@@ -344,24 +345,24 @@ a.navbar-brand:hover {
   margin-top: 48px;
   position: absolute;
   bottom: 0;
-  /* background-color: rgb(189, 189, 189); */
   padding: 0 40px;
-  background-color:   rgba(50, 193, 233, 0.25); 
-  box-shadow: 0 0 12px rgba(0,0,0,0.16);
+  background-color: rgba(40, 40, 40, .1);
+  /* box-shadow: 0 0 8px rgba(0,0,0,0.16); */
 }
 
 .footer-right a {
-  color: black; 
+  color: rgba(50, 193, 233, 1);
   margin: 0 16px;
   transition: all 0.1s ease-in-out;
 }
 
 .footer-right a:hover {
-  color:   rgba(50, 193, 233, 1); 
+  color: rgba(46, 178, 214, 1);
   scale: 1.2;
 }
 
 .footer-div h6 {
+  color: rgba(50, 193, 233, 1);
   margin: 0;
 }
 /* ======================================================================  */
