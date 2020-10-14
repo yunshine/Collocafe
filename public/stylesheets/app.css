@@ -92,9 +92,9 @@ color: rgba(16, 16, 16, 0.95)
 }
 
 .cafe-card h5 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 200;
-  margin: 2px 0;
+  margin: 4px 0;
   padding: 0;
   color: rgba(20, 20, 20, 0.75)
 }
@@ -280,6 +280,58 @@ margin: 0 auto;
 /* ====================================================================== */
 
 
+/* Navbar Styles 
+====================================================================== */
+.navbar-lewagon {
+  justify-content: space-between;
+  background-color:   rgba(50, 193, 233, 1); 
+  /* background-color:   rgba(8, 8, 8, 1);  */
+  box-shadow: 0 0 12px rgba(0,0,0,0.16);
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+a.nav-link {
+  transition: all 0.1s ease-in-out !important;
+}
+
+a.nav-link:hover {
+  color:   rgba(50, 193, 233, 1)  !important; 
+}
+
+a.navbar-brand {
+  transition: all 0.1s ease-in-out !important;
+}
+
+.fas {
+  padding: 4px 12px;
+  font-size: 32px;
+  color:   rgba(50, 193, 233, 1)  !important; 
+  border: 1px solid rgba(50, 193, 233, 1);
+  border-radius: .2rem;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.fas:hover {
+  color: rgba(46, 178, 214, 1) !important; 
+  border: 1px solid rgba(46, 178, 214, 1) !important;
+  scale: 1.1;
+}
+
+
+a.navbar-brand:hover {
+  transition: all 0.1s ease-in-out  !important;
+  color:   rgba(50, 193, 233, 1)  !important; 
+}
+/* ====================================================================== */
+
+
 /* Footer Styles 
 ====================================================================== */
 .footer-div {
@@ -292,19 +344,21 @@ margin: 0 auto;
   margin-top: 48px;
   position: absolute;
   bottom: 0;
-  background-color: rgb(189, 189, 189);
+  /* background-color: rgb(189, 189, 189); */
   padding: 0 40px;
+  background-color:   rgba(50, 193, 233, 0.25); 
+  box-shadow: 0 0 12px rgba(0,0,0,0.16);
 }
 
 .footer-right a {
-  color: yellow;
+  color: black; 
   margin: 0 16px;
-  transition: all 0.1s;
+  transition: all 0.1s ease-in-out;
 }
 
 .footer-right a:hover {
-  color: green;
-  margin: 0 16px;
+  color:   rgba(50, 193, 233, 1); 
+  scale: 1.2;
 }
 
 .footer-div h6 {
@@ -342,23 +396,6 @@ margin: 0 auto;
   margin: 16px auto 0 auto;
 }
 /* ======================================================================  */
-
-
-/* Navbar Styles 
-====================================================================== */
-.navbar-lewagon {
-  justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
-/* ====================================================================== */
 
 
 /* Avatar Styles - Le Wagon Component - Needed for Navbar
