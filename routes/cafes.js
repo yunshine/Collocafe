@@ -7,6 +7,10 @@ const Cafe = require('../models/cafe');
 // add in the middlewareObj...
 const middleware = require('../middleware/index.js');
 
+// cloudinary stuff...
+const { storage } = require('../cloudinary/index.js');
+const upload = multer({ storage });
+
 // CAFES Routes
 // =======================================================================
 // INDEX Route
@@ -64,6 +68,9 @@ router.post("/cafes", middleware.isLoggedIn, function (req, res) {
   // cafes.push(newCafe);
   // res.redirect("/cafes");
 });
+
+// CREATE Route using CLOUDINARY...
+// ?????
 
 // SHOW Route - shows one cafe
 router.get("/cafes/:id", function (req, res) {
