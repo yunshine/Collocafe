@@ -9,7 +9,7 @@ const middleware = require('../middleware/index.js');
 
 // cloudinary stuff...
 const { storage } = require('../cloudinary/index.js');
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
 // CAFES Routes
 // =======================================================================

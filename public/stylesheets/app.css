@@ -370,6 +370,20 @@ a.nav-link:hover {
   color: rgba(50, 193, 233, 1);
   margin: 0;
 }
+
+@media only screen and (max-width: 576px) {
+    .footer-div {
+      padding: 0 16px;
+    }
+
+      .footer-right  a{
+      margin: 0 4px;
+    }
+
+    .footer-div h6, .footer-div i {
+      font-size: 14px;  
+    }
+}
 /* ======================================================================  */
 
 
