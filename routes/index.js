@@ -9,7 +9,7 @@ const User = require('../models/user');
 // AUTHENTICATION Routes (nested...)
 // =======================================================================
 // Root Route
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
   // res.render('landing.ejs');
   // });
   // *** Get all cafes from DB ***
@@ -24,17 +24,17 @@ router.get('/', function (req, res) {
 });
 
 // NEW User Route - goes to new user registration form (AKA register...)
-router.get('/register', function (req, res) {
+router.get('/register', (req, res) => {
   res.render('register.ejs');
 });
 
 // CREATE User Route - creates/registers a new user AND handles  sign-up logic...
-router.post('/register', function (req, res) {
+router.post('/register', (req, res) => {
   // from passport local mongoose package...
   const newUser = new User({ username: req.body.username });
   // the password as the second parameter, will be scrambled in the DB...
   // also, Passport does things ike checks to see if the usename is already taken
-  User.register(newUser, req.body.password, function (err, user) {
+  User.register(newUser, req.body.password, (err, user) => {
     if (err) {
       console.log(err);
       req.flash('error', err.message);
@@ -52,7 +52,7 @@ router.post('/register', function (req, res) {
 });
 
 // LOGIN Route 1 - shows the login form...
-router.get('/login', function (req, res) {
+router.get('/login', (req, res) => {
   // handle incoming flash-connect messages in the render...
   res.render('login.ejs');
 });
@@ -72,7 +72,7 @@ router.post('/login', passport.authenticate('local',
 
 // LOG OUT Route and Logic
 // // =======================================================================
-router.get('/logout', function (req, res) {
+router.get('/logout', (req, res) => {
   // again, this below is from passport local mongoose package...
   req.logout();
   // from flash-connect...
@@ -93,7 +93,7 @@ router.get('/logout', function (req, res) {
 
 
 // Default Route
-router.get('*', function (req, res) {
+router.get('*', (req, res) => {
   req.flash('error', "Are you lost?");
   res.redirect('/cafes');
 });
