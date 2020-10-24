@@ -14,7 +14,7 @@ const { storage } = require('../cloudinary/index.js');
 // CAFES Routes
 // =======================================================================
 // INDEX Route
-router.get('/cafes', function (req, res) {
+router.get('/cafes', (req, res) => {
   // *** Get all cafes from DB ***
   Cafe.find(function (err, allCafes) {
     if (err) {
@@ -32,12 +32,12 @@ router.get('/cafes', function (req, res) {
 // });
 
 // NEW Route - goes to new cafe form
-router.get("/cafes/new", middleware.isLoggedIn, function (req, res) {
+router.get("/cafes/new", middleware.isLoggedIn, (req, res) => {
   res.render("cafes/new.ejs");
 });
 
 // CREATE Route - makes and saves a new cafe to the DB
-router.post("/cafes", middleware.isLoggedIn, function (req, res) {
+router.post("/cafes", middleware.isLoggedIn, (req, res) => {
   // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
@@ -53,7 +53,7 @@ router.post("/cafes", middleware.isLoggedIn, function (req, res) {
   };
   // req.body.cafe.body = req.sanitize(req.body.cafe.body);
   // *** Makes and saves a new cafe to the Cafe DB ***
-  Cafe.create(newCafe, function (err, cafe) {
+  Cafe.create(newCafe, (err, cafe) => {
     if (err) {
       console.log(err);
       req.flash('error', "There was an error, and that cafe could not be created...");
@@ -73,7 +73,7 @@ router.post("/cafes", middleware.isLoggedIn, function (req, res) {
 // ?????
 
 // SHOW Route - shows one cafe
-router.get("/cafes/:id", function (req, res) {
+router.get("/cafes/:id", (req, res) => {
   // *** Finds a cafe in the DB by its id & passes that cafe to the show page***
   // Cafe.findById(req.params.id, function (err, foundCafe) {
 
@@ -116,7 +116,7 @@ router.get("/cafes/:id", function (req, res) {
 // });
 
 // EDIT Route - goes to edit cafe form
-router.get("/cafes/:id/edit", middleware.checkCafeOwnership, function (req, res) {
+router.get("/cafes/:id/edit", middleware.checkCafeOwnership, (req, res) => {
   // Q: first, before editing, is the user logged in? Use middleware, then...
   // *** ...find a cafe in the DB by its id & pass that cafe to the edit page***
   Cafe.findById(req.params.id, function (err, foundCafe) {
@@ -133,7 +133,7 @@ router.get("/cafes/:id/edit", middleware.checkCafeOwnership, function (req, res)
 
 // UPDATE Route - saves the updated info about one cafe into the DB
 // Q: first, before editing, is the user logged in? Use middleware...
-router.put("/cafes/:id", middleware.checkCafeOwnership, function (req, res) {
+router.put("/cafes/:id", middleware.checkCafeOwnership, (req, res) => {
   // *** gets SANITIZED data from edit cafe form and updates the Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
@@ -155,7 +155,7 @@ router.put("/cafes/:id", middleware.checkCafeOwnership, function (req, res) {
 
 // DELETE Route
 // Q: first, before editing, is the user logged in? Use middleware...
-router.delete("/cafes/:id", middleware.checkCafeOwnership, function (req, res) {
+router.delete("/cafes/:id", middleware.checkCafeOwnership, (req, res) => {
   //destroy blog
   Cafe.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
