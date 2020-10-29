@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const path = require('path');
 const LocalStrategy = require('passport-local');
 const methodOverride = require('method-override');
 const expressSanitizer = require('express-sanitizer');
@@ -39,11 +40,12 @@ mongoose.connect(url, {
   .catch(error => console.log(error.message));
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true })); // for data in url payloads, no JSON...
 app.use(methodOverride('_method'));
 app.use(expressSanitizer());
 app.use(flash());
 // app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
 
 // PASSPORT CONFIGURATIONS =============================================
 // set up express session...

@@ -14,10 +14,11 @@ const { storage } = require('../cloudinary/index.js');
 // CAFES Routes
 // =======================================================================
 // INDEX Route
-router.get('/cafes', (req, res) => {
+router.get('/cafes', async (req, res) => {
   // *** Get all cafes from DB ***
-  Cafe.find(function (err, allCafes) {
-    if (err) {
+  const cafes = await Cafe.find({
+    // Cafe.find(function (err, allCafes) {
+    if(err) {
       console.log(err);
       req.flash('error', "Cafes could not be found...");
       res.redirect("/cafes");
