@@ -4,7 +4,7 @@
 
 <!-- The method on an edit is POST, not PUT because we need to work around the fact that HTML does not support PUT by adding ?_method=PUT... -->
 
-<form method='POST' action='/cafes/<%= cafe._id %>?_method=PUT' class='app-form'>
+<form method='POST' action='/cafes/<%= cafe._id %>?_method=PUT' class='app-form' enctype="multipart/form-data">
   <h3>Edit <%= cafe.name %>'s Information</h3>
   <div class="form-group">
     <label>
@@ -15,10 +15,11 @@
       Cafe Location
       <input type="text" name='area' value="<%= cafe.area %>" class='form-control' required>
     </label>
-    <label>
+    <!-- <label>
       Cafe Photo URL
       <input type="text" name='image' value="<%= cafe.image %>" class='form-control' required>
-    </label>
+    </label> -->
+    <input type="file" name="image" id="" class="my-3" required multiple>
     <button type="submit" class="btn-success-yun-med form-control">Save Changes to <%= cafe.name %></button> </div>
   <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a>
 </form>

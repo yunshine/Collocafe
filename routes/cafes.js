@@ -47,7 +47,7 @@ router.post("/cafes", middleware.isLoggedIn, upload.array('image'), (req, res) =
   var newCafe = {
     name: name,
     area: area,
-    image: image,
+    images: req.files.map(f => ({ url: f.path, filename: f.filename })),
     author: {
       id: req.user._id,
       username: req.user.username,
@@ -64,7 +64,7 @@ router.post("/cafes", middleware.isLoggedIn, upload.array('image'), (req, res) =
     } else {
       console.log("New Cafe: ", cafe);
       req.flash('success', "Your cafe has been added.");
-      console.log(req.body.image, req.file)
+      console.log(newCafe)
       res.redirect("/cafes");
     }
   });

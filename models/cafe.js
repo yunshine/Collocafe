@@ -4,7 +4,12 @@ const mongoose = require('mongoose');
 const cafeSchema = new mongoose.Schema({
   name: String,
   area: String,
-  image: String,
+  images: [
+    {
+      url: String,
+      filename: String
+    }
+  ],
   // how to set a default value in the schema...
   // created:  {type: Date, default: Date.now},
   // One to Many database association (this is an example of object reference association vs. embedded data association) with comments...
