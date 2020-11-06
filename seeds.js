@@ -6,23 +6,63 @@ var User = require("./models/user");
 var data = [
   {
     name: "Cafe Kitsune",
-    area: "Aoyama"
+    area: "Aoyama",
+    images: [
+      {
+        url: 'https://res.cloudinary.com/deyqjsowe/image/upload/v1604643015/Collocafe/otrrvzwf6i6v6oq3u0k3.jpg',
+        filename: 'Collocafe/otrrvzwf6i6v6oq3u0k3'
+      }
+    ],
+    author: { username: 'Yun' },
+    comments: [],
   },
   {
     name: "Trichromatic Coffee",
-    area: "Nakano-Shimbashi Station"
+    area: "Nakano-Shimbashi Station",
+    images: [
+      {
+        url: 'https://res.cloudinary.com/deyqjsowe/image/upload/v1604643015/Collocafe/otrrvzwf6i6v6oq3u0k3.jpg',
+        filename: 'Collocafe/otrrvzwf6i6v6oq3u0k3'
+      }
+    ],
+    author: { username: 'Yun' },
+    comments: [],
   },
   {
     name: "Cloud's Rest",
-    area: "Lorem ipsum "
+    area: "Lorem ipsum",
+    images: [
+      {
+        url: 'https://res.cloudinary.com/deyqjsowe/image/upload/v1604643015/Collocafe/otrrvzwf6i6v6oq3u0k3.jpg',
+        filename: 'Collocafe/otrrvzwf6i6v6oq3u0k3'
+      }
+    ],
+    author: { username: 'Yun' },
+    comments: [],
   },
   {
     name: "Desert Mesa",
-    area: "L ipsum dolor sit "
+    area: "L ipsum dolor sit",
+    images: [
+      {
+        url: 'https://res.cloudinary.com/deyqjsowe/image/upload/v1604643015/Collocafe/otrrvzwf6i6v6oq3u0k3.jpg',
+        filename: 'Collocafe/otrrvzwf6i6v6oq3u0k3'
+      }
+    ],
+    author: { username: 'Yun' },
+    comments: [],
   },
   {
     name: "Canyon Floor",
-    area: "Lo ipsum dolor sit amet"
+    area: "Lo ipsum dolor sit amet",
+    images: [
+      {
+        url: 'https://res.cloudinary.com/deyqjsowe/image/upload/v1604643015/Collocafe/otrrvzwf6i6v6oq3u0k3.jpg',
+        filename: 'Collocafe/otrrvzwf6i6v6oq3u0k3'
+      }
+    ],
+    author: { username: 'Yun' },
+    comments: [],
   }
 ]
 

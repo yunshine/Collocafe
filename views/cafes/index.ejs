@@ -14,9 +14,7 @@
   <div class="row">
     <% cafes.forEach(cafe => { %>
     <div class="col-md-11 col-lg-5 cafe-card">
-      <% cafe.images.forEach((image, i) => {%>
-      <img src="<%= image.url %>" alt="" class="index-image">
-      <% }) %>
+      <img src="<%= cafe.images[0].url %>" alt="" class="index-image">
       <div class="card-text-div">
         <h2><%= cafe.name %></h2>
         <h4><%= cafe.area %></h4>
