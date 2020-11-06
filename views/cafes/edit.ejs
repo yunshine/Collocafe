@@ -5,7 +5,7 @@
 <!-- The method on an edit is POST, not PUT because we need to work around the fact that HTML does not support PUT by adding ?_method=PUT... -->
 
 <form method='POST' action='/cafes/<%= cafe._id %>?_method=PUT' class='app-form' enctype="multipart/form-data">
-  <h3>Edit <%= cafe.name %>'s Information</h3>
+  <h3 class="text-center">Edit <%= cafe.name %>'s Information</h3>
   <div class="form-group">
     <label>
       Cafe Name
@@ -19,8 +19,21 @@
       Cafe Photo URL
       <input type="text" name='image' value="<%= cafe.image %>" class='form-control' required>
     </label> -->
-    <input type="file" name="image" id="" class="my-3" required multiple>
-    <button type="submit" class="btn-success-yun-med form-control">Save Changes to <%= cafe.name %></button> </div>
-  <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a>
+
+    <!-- <input type="file" name="image" id="" class="my-3" required multiple> -->
+    <label class="m-0">Upload Images</label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Upload</span>
+      </div>
+      <div class="custom-file">
+        <input type="file" name="image" class="custom-file-input" id="image" required multiple>
+        <label class="custom-file-label" for="image">choose image(s)</label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-success-yun-med form-control">Save Changes to <%= cafe.name %></button>
+  </div>
+  <!-- <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a> -->
 </form>
 <%- include("../partials/footer") %>
