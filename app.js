@@ -35,6 +35,7 @@ const url = process.env.DATABASEURL || 'mongodb://localhost:27017/collocafe';
 mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true
 })
   .then(() => console.log('Connected to database!'))
   .catch(error => console.log(error.message));
@@ -47,7 +48,7 @@ app.use(flash());
 // app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
-// PASSPORT CONFIGURATIONS =============================================
+// PASSPORT CONFIGURATIONS for authentication ================================
 // set up express session...
 app.use(require('express-session')({
   secret: 'Rusty is the cutest dog!',
@@ -69,7 +70,6 @@ app.use(function (req, res, next) {
   next();
 });
 // =======================================================================
-
 
 //  ***** USE THE ROUTES *****
 // =======================================================================

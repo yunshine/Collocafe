@@ -109,7 +109,8 @@ router.put("/cafes/:id/comments/:comment_id/", middleware.checkCommentOwnership,
 // DELETE Comment Route
 // Q: first, before editing, is the user logged in? Use middleware...
 router.delete("/cafes/:id/comments/:comment_id", middleware.checkCommentOwnership, (req, res) => {
-  //destroy blog
+  // destroy comment
+  // do I have to update the cafe in any way???
   Comment.findByIdAndRemove(req.params.comment_id, function (err) {
     if (err) {
       console.log(error);

@@ -9,15 +9,15 @@
   <div class="form-group">
     <label>
       Cafe Name
-      <input type="text" name='name' value="<%= cafe.name %>" class='form-control'>
+      <input type="text" name='name' value="<%= cafe.name %>" class='form-control' required>
     </label>
     <label>
       Cafe Location
-      <input type="text" name='area' value="<%= cafe.area %>" class='form-control'>
+      <input type="text" name='area' value="<%= cafe.area %>" class='form-control' required>
     </label>
     <label>
       Cafe Photo URL
-      <input type="text" name='url' value="<%= cafe.url %>" class='form-control'>
+      <input type="text" name='image' value="<%= cafe.image %>" class='form-control' required>
     </label>
     <button type="submit" class="btn-success-yun-med form-control">Save Changes to <%= cafe.name %></button> </div>
   <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a>

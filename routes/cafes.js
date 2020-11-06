@@ -7,18 +7,19 @@ const Cafe = require('../models/cafe');
 // add in the middlewareObj...
 const middleware = require('../middleware/index.js');
 
-// cloudinary stuff...
-const { storage } = require('../cloudinary/index.js');
-// const upload = multer({ storage });
+// Cloudinary stuff...
+const multer = require('multer');
+const upload = multer({ dest: '/uploads' });
+// const { storage } = require('../cloudinary/index.js');
 
 // CAFES Routes
 // =======================================================================
 // INDEX Route
 router.get('/cafes', async (req, res) => {
   // *** Get all cafes from DB ***
-  const cafes = await Cafe.find({
-    // Cafe.find(function (err, allCafes) {
-    if(err) {
+  Cafe.find(function (err, allCafes) {
+    // const allCafes = await Cafe.find({});
+    if (err) {
       console.log(err);
       req.flash('error', "Cafes could not be found...");
       res.redirect("/cafes");
@@ -38,15 +39,15 @@ router.get("/cafes/new", middleware.isLoggedIn, (req, res) => {
 });
 
 // CREATE Route - makes and saves a new cafe to the DB
-router.post("/cafes", middleware.isLoggedIn, (req, res) => {
+router.post("/cafes", middleware.isLoggedIn, upload.array('image'), (req, res) => {
   // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
-  let url = req.sanitize(req.body.url);
+  let image = req.sanitize(req.body.image);
   var newCafe = {
     name: name,
     area: area,
-    url: url,
+    image: image,
     author: {
       id: req.user._id,
       username: req.user.username,
@@ -138,8 +139,8 @@ router.put("/cafes/:id", middleware.checkCafeOwnership, (req, res) => {
   // *** gets SANITIZED data from edit cafe form and updates the Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
-  let url = req.sanitize(req.body.url);
-  let newCafe = { name: name, area: area, url: url }
+  let image = req.sanitize(req.body.image);
+  let newCafe = { name: name, area: area, image: image }
 
   // the logic to update the info...
   Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {

@@ -1,5 +1,5 @@
 <%- include("../partials/header") %>
-<form method='POST' action='/cafes' class="app-form">
+<form method='POST' action='/cafes' class="app-form" enctype="multipart/form-data">
   <h3>Add A New Cafe</h3>
   <div class="form-group">
     <label>
@@ -8,12 +8,14 @@
     </label>
     <label>
       Cafe Location
-      <input type="text" name='area' placeholder="area, neighborhood, or nearest station" class="form-control">
+      <input type="text" name='area' placeholder="area, neighborhood, or nearest station" class="form-control" required>
     </label>
-    <label>
+    <!-- <label>
       Cafe Photo URL
-      <input type="text" name='url' placeholder="photo url" class="form-control">
-    </label>
+      <input type="text" name='url' placeholder="photo url" class="form-control" required>
+    </label> -->
+    <input type="file" name="image" id="" class="my-3" required multiple>
+
     <button type="submit" class="btn-success-yun-med form-control">Add This Cafe</button>
   </div>
   <!-- <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a> -->
