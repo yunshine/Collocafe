@@ -10,8 +10,10 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
   cloudinary,
-  folder: "Collocafe",
-  allowedFormats: ['png', 'jpeg', 'jpg']
+  params: {
+    folder: 'Collocafe',
+    allowedFormats: ['png', 'jpeg', 'jpg']
+  }
 });
 
 module.exports = {

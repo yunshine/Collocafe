@@ -9,8 +9,8 @@ const middleware = require('../middleware/index.js');
 
 // Cloudinary stuff...
 const multer = require('multer');
-const upload = multer({ dest: '/uploads' });
-// const { storage } = require('../cloudinary/index.js');
+const { storage } = require('../cloudinary/index.js');
+const upload = multer({ storage });
 
 // CAFES Routes
 // =======================================================================
@@ -64,6 +64,7 @@ router.post("/cafes", middleware.isLoggedIn, upload.array('image'), (req, res) =
     } else {
       console.log("New Cafe: ", cafe);
       req.flash('success', "Your cafe has been added.");
+      console.log(req.body.image, req.file)
       res.redirect("/cafes");
     }
   });
