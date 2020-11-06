@@ -43,8 +43,8 @@ router.post("/cafes", middleware.isLoggedIn, upload.array('image'), (req, res) =
   // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
-  let image = req.sanitize(req.body.image);
-  var newCafe = {
+  // let image = req.sanitize(req.body.image);
+  let newCafe = {
     name: name,
     area: area,
     images: req.files.map(f => ({ url: f.path, filename: f.filename })),
@@ -136,12 +136,13 @@ router.get("/cafes/:id/edit", middleware.checkCafeOwnership, (req, res) => {
 
 // UPDATE Route - saves the updated info about one cafe into the DB
 // Q: first, before editing, is the user logged in? Use middleware...
-router.put("/cafes/:id", middleware.checkCafeOwnership, (req, res) => {
+router.put("/cafes/:id", middleware.checkCafeOwnership, upload.array('image'), (req, res) => {
   // *** gets SANITIZED data from edit cafe form and updates the Cafe DB ***
   let name = req.sanitize(req.body.name);
   let area = req.sanitize(req.body.area);
-  let image = req.sanitize(req.body.image);
-  let newCafe = { name: name, area: area, image: image }
+  // let image = req.sanitize(req.body.image);
+  let images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+  let newCafe = { name: name, area: area, images: images }
 
   // the logic to update the info...
   Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {
