@@ -2,77 +2,79 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/app.css" />
-  <script src="https://kit.fontawesome.com/b622451a1f.js" crossorigin="anonymous"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
-  <link rel="icon" type="image/png" href="/images/CollocafeLogo.png" />
-  <title>Collocafe</title>
-  <meta name="Collocafe" content="A collection of the best cafe's in Tokyo and what people say about them." />
-  <meta property="og:title" content="Collocafe" />
-  <meta property="og:image" content="/images/CollocafeLogo.png" />
-  <meta property="og:description" content="A collection of the best cafe's in Tokyo and what people say about them." />
-  <meta property="og:site_name" content="Collocafe" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css" />
+    <script src="https://kit.fontawesome.com/b622451a1f.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
+    <link rel="icon" type="image/png" href="/images/CollocafeLogo.png" />
+    <title>Collocafe</title>
+    <meta name="Collocafe" content="A collection of the best cafe's in Tokyo and what people say about them." />
+    <meta property="og:title" content="Collocafe" />
+    <meta property="og:image" content="/images/CollocafeLogo.png" />
+    <meta property="og:description"
+        content="A collection of the best cafe's in Tokyo and what people say about them." />
+    <meta property="og:site_name" content="Collocafe" />
 </head>
 
 <body>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <a class="navbar-brand" href="/cafes">
-      <!-- <i class="fas fa-coffee"></i> -->
-      <img class="nav-bar-logo" src="/images/CollocafeLogo.png" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+        <a class="navbar-brand" href="/cafes">
+            <!-- <i class="fas fa-coffee"></i> -->
+            <img class="nav-bar-logo" src="/images/CollocafeLogo.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
 
-        <!-- if/else statement to determine which links show up on the navbar... -->
-        <!-- ================================================================= -->
-        <% if(!currentUser) { %>
-        <li class="nav-item active">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/register">Sign Up</a>
-        </li>
-        <% } else { %>
-        <li class="nav-item active">
-          <a class="nav-link" href='#'>Hi, <%= currentUser.username%>!</a>
-        </li>
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="/logout">Log Out</a>
-        </li> -->
-        <% } %>
-        <!-- ================================================================= -->
+                <!-- if/else statement to determine which links show up on the navbar... -->
+                <!-- ================================================================= -->
+                <% if(!currentUser) { %>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/register">Sign Up</a>
+                </li>
+                <% } else { %>
+                <li class="nav-item active">
+                    <a class="nav-link" href='#'>Hi, <%= currentUser.username%>!</a>
+                </li>
+                <!-- <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Log Out</a>
+                </li> -->
+                <% } %>
+                <!-- ================================================================= -->
 
-        <li class="nav-item dropdown">
-          <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" src="https://pbs.twimg.com/profile_images/723442085387366400/2_yS_HQA_400x400.jpg" />
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <% if(currentUser) { %>
-            <a class="dropdown-item" href="/logout">Log Out</a>
-            <a class="dropdown-item" href="#">profile page coming soon...</a>
-            <% } %>
-            <a class="dropdown-item" href="#">search coming soon...</a>
-            <a class="dropdown-item" href="#">map coming soon...</a>
-          </div>
-        </li>
-      </ul>
+                <li class="nav-item dropdown">
+                    <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"
+                        src="https://pbs.twimg.com/profile_images/723442085387366400/2_yS_HQA_400x400.jpg" />
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <% if(currentUser) { %>
+                        <a class="dropdown-item" href="/logout">Log Out</a>
+                        <a class="dropdown-item" href="#">profile page coming soon...</a>
+                        <% } %>
+                        <a class="dropdown-item" href="#">search coming soon...</a>
+                        <a class="dropdown-item" href="#">map coming soon...</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <!-- flash-connect... -->
-  <% if(error && error.length > 0) { %>
-  <div class='aler alert-danger' role='alert'><%= error %></div>
-  <% } %>
-  <% if(success && success.length > 0) { %>
-  <div class='aler alert-success' role='alert'><%= success %></div>
-  <% } %>
-  <!-- *** Be sure to turn off Prettier so that the html and body tags do not close in this header partial... *** -->
+    <!-- flash-connect... -->
+    <% if(error && error.length > 0) { %>
+    <div class='aler alert-danger' role='alert'><%= error %></div>
+    <% } %>
+    <% if(success && success.length > 0) { %>
+    <div class='aler alert-success' role='alert'><%= success %></div>
+    <% } %>
+    <!-- *** Be sure to turn off Prettier so that the html and body tags do not close in this header partial... *** -->

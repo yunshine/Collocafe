@@ -135,6 +135,8 @@ color: rgba(16, 16, 16, 0.95)
 
 .show-image {
   width: 100%;
+  height: 320px;
+  object-fit: cover;
 }
 
 .cafe-text {

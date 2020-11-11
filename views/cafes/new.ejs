@@ -1,36 +1,37 @@
 <%- include("../partials/header") %>
 <form method='POST' action='/cafes' class="app-form" enctype="multipart/form-data">
-  <h3 class="text-center">Add A New Cafe</h3>
-  <div class="form-group">
-    <label>
-      Cafe Name
-      <input type="text" name='name' placeholder="cafe name" class="form-control" required>
-    </label>
-    <label>
-      Cafe Location
-      <input type="text" name='area' placeholder="area, neighborhood, or nearest station" class="form-control" required>
-    </label>
-    <!-- <label>
-      Cafe Photo URL
-      <input type="text" name='url' placeholder="photo url" class="form-control" required>
-    </label> -->
+    <h3 class="text-center">Add A New Cafe</h3>
+    <div class="form-group">
+        <label>
+            Cafe Name
+            <input type="text" name='name' placeholder="cafe name" class="form-control" required>
+        </label>
+        <label>
+            Cafe Location
+            <input type="text" name='area' placeholder="area, neighborhood, or nearest station" class="form-control"
+                required>
+        </label>
+        <!-- <label>
+            Cafe Photo URL
+            <input type="text" name='url' placeholder="photo url" class="form-control" required>
+        </label> -->
 
-    <!-- <input type="file" name="image" id="" class="my-3" required multiple> -->
+        <!-- <input type="file" name="image" id="" class="my-3" required multiple> -->
 
-    <label class="m-0">Upload Images</label>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Upload</span>
-      </div>
-      <div class="custom-file">
-        <input type="file" name="image" class="custom-file-input" id="image" required multiple>
-        <label class="custom-file-label" for="image">choose image(s)</label>
-      </div>
+        <label class="m-0">Upload Images</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Upload</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" name="image" class="custom-file-input" id="image" required multiple>
+                <label class="custom-file-label" for="image">choose image(s)</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-success-yun-med form-control">Add This Cafe</button>
     </div>
-
-    <button type="submit" class="btn-success-yun-med form-control">Add This Cafe</button>
-  </div>
-  <!-- <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a> -->
+    <!-- <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a> -->
 </form>
 
 <%- include("../partials/footer") %>
