@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV !== "production") {
-  require('dotenv').config();
+    require('dotenv').config();
 }
 // console.log(process.env.KEY);
 
@@ -33,12 +33,12 @@ const indexRoutes = require('./routes/index');
 // this will select the database url based on the environment that runs it...
 const url = process.env.DATABASEURL || 'mongodb://localhost:27017/collocafe';
 mongoose.connect(url, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
 })
-  .then(() => console.log('Connected to database!'))
-  .catch(error => console.log(error.message));
+    .then(() => console.log('Connected to database!'))
+    .catch(error => console.log(error.message));
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true })); // for data in url payloads, no JSON...
@@ -51,9 +51,9 @@ app.set('views', path.join(__dirname, '/views'));
 // PASSPORT CONFIGURATIONS for authentication ================================
 // set up express session...
 app.use(require('express-session')({
-  secret: 'Rusty is the cutest dog!',
-  resave: false,
-  saveUninitialized: false
+    secret: 'Rusty is the cutest dog!',
+    resave: false,
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -63,11 +63,11 @@ passport.deserializeUser(User.deserializeUser());
 
 // passes currentUser to EVERY route, which we need for our navbar links
 app.use(function (req, res, next) {
-  res.locals.currentUser = req.user;
-  // flash-connect will now be available on every page...
-  res.locals.error = req.flash("error");
-  res.locals.success = req.flash("success");
-  next();
+    res.locals.currentUser = req.user;
+    // flash-connect will now be available on every page...
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    next();
 });
 // =======================================================================
 
@@ -80,5 +80,5 @@ app.use(indexRoutes);
 // =======================================================================
 
 app.listen(process.env.PORT || 3000, process.env.IP, () => {
-  console.log("Welcome! You've created a server using Express. The server has started and is now listening on port 3000...");
+    console.log("Welcome! You've created a server using Express. The server has started and is now listening on port 3000...");
 });
