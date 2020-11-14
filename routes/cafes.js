@@ -141,11 +141,12 @@ router.put("/cafes/:id", middleware.checkCafeOwnership, upload.array('image'), (
     let name = req.sanitize(req.body.name);
     let area = req.sanitize(req.body.area);
     // let image = req.sanitize(req.body.image);
-    let images = req.files.map(f => ({ url: f.path, filename: f.filename }));
-    let newCafe = { name: name, area: area, images: images }
+    // let images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+    let newCafe = { name: name, area: area }
 
     // the logic to update the info...
     Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {
+        newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
         if (err) {
             console.log(error);
             req.flash('error', "That cafe could not be found.");
