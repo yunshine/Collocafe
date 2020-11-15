@@ -16,7 +16,7 @@ const expressSanitizer = require('express-sanitizer');
 const Cafe = require('./models/cafe');
 const Comment = require('./models/comment');
 const User = require('./models/user');
-const seedDB = require('./seeds');
+// const seedDB = require('./seeds');
 
 // require all routes...
 const cafeRoutes = require('./routes/cafes');
