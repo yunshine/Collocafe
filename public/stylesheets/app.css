@@ -290,52 +290,56 @@ color: rgba(16, 16, 16, 0.95)
 /* Navbar Styles 
 ====================================================================== */
 .navbar-lewagon {
-  justify-content: space-between;
-  background-color:   rgba(50, 193, 233, 1) !important; 
-  /* background-color:   rgba(8, 8, 8, 1);  */
-  box-shadow: 0 0 12px rgba(0,0,0,0.16) !important;
+    justify-content: space-between;
+    background-color:   rgba(50, 193, 233, 1) !important; 
+    /* background-color:   rgba(8, 8, 8, 1);  */
+    box-shadow: 0 0 12px rgba(0,0,0,0.16) !important;
 }
 
 .navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+    flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+    width: 40px;
 }
 
 a.nav-link {
-  transition: all 0.1s ease-in-out !important;
-  color: white !important;
+    transition: all 0.1s ease-in-out !important;
+    color: white !important;
 }
 
 a.nav-link:hover {
-  color: rgba(255,255,255, 0.6) !important; 
+    color: rgba(255,255,255, 0.6) !important; 
 }
 
 .nav-bar-logo {
-  transition: all 0.3s !important;
+    transition: all 0.3s !important;
 }
 
 .nav-bar-logo:hover {
-  transition: all 0.1s ease-in-out  !important;
-  color:   rgba(50, 193, 233, 1)  !important; 
-  scale: 1.2 !important;
+    transition: all 0.1s ease-in-out  !important;
+    color:   rgba(50, 193, 233, 1)  !important; 
+    scale: 1.2 !important;
 }
 
 .fas {
-  padding: 4px 12px;
-  font-size: 32px;
-  color:   rgba(50, 193, 233, 1)  !important; 
-  border: 1px solid rgba(50, 193, 233, 1);
-  border-radius: .2rem;
-  transition: all 0.15s ease-in-out !important;
+    padding: 4px 12px;
+    font-size: 32px;
+    color:   rgba(50, 193, 233, 1)  !important; 
+    border: 1px solid rgba(50, 193, 233, 1);
+    border-radius: .2rem;
+    transition: all 0.15s ease-in-out !important;
 }
 
 .fas:hover {
-  color: rgba(46, 178, 214, 1) !important; 
-  border: 1px solid rgba(46, 178, 214, 1) !important;
-  scale: 1.1;
+    color: rgba(46, 178, 214, 1) !important; 
+    border: 1px solid rgba(46, 178, 214, 1) !important;
+    scale: 1.1;
+}
+
+.welcome-text {
+    font-size: 18px;
 }
 /* ====================================================================== */
 

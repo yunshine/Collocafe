@@ -45,7 +45,7 @@
                 </li>
                 <% } else { %>
                 <li class="nav-item active">
-                    <a class="nav-link" href='#'>Hi, <%= currentUser.username%>!</a>
+                    <a class="nav-link welcome-text" href='#'>Hi, <%= currentUser.username%>!</a>
                 </li>
                 <!-- <li class="nav-item active">
                     <a class="nav-link" href="/logout">Log Out</a>
@@ -56,8 +56,9 @@
                 <li class="nav-item dropdown">
                     <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"
-                        src="https://pbs.twimg.com/profile_images/723442085387366400/2_yS_HQA_400x400.jpg" />
+                        src="https://res.cloudinary.com/deyqjsowe/image/upload/v1605422615/profile_vm9yoj.png" />
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
                         <% if(currentUser) { %>
                         <a class="dropdown-item" href="/logout">Log Out</a>
                         <a class="dropdown-item" href="#">profile page coming soon...</a>
