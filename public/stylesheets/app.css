@@ -1,53 +1,53 @@
 body {
-  background-color: rgba(248, 248, 248, 1);
-  font-family: Arial, Helvetica, sans-serif;
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 80px;
+    background-color: rgba(248, 248, 248, 1);
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px;
 }
 .btn {
-  transition: all 0.1s;
+    transition: all 0.1s;
 }
 
 /* Index Page Styles */
 /* ====================================================================== */
 .btn-success-yun {
-  background-color:   rgb(50, 193, 233); 
-  color: white;
-  border-radius: .2em;
-  border: none;
-  transition: all 0.1s ease-in-out;
-  padding: 12px 64px;
-  margin-top: 8px;
+    background-color:   rgb(50, 193, 233); 
+    color: white;
+    border-radius: .2em;
+    border: none;
+    transition: all 0.1s ease-in-out;
+    padding: 12px 64px;
+    margin-top: 8px;
 }
 
 .btn-success-yun:hover {
-  background-color:   rgb(46, 178, 214); 
-  color: white;
-  box-shadow: 0 0 4px rgba(0,0,0,0.16);
+    background-color:   rgb(46, 178, 214); 
+    color: white;
+    box-shadow: 0 0 4px rgba(0,0,0,0.16);
 }
 
 .banner {
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
+    background-size: cover;
+    background-position: center;
+    padding: 150px 0;
 }
 
 .banner h1 {
-  margin: 0;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 64px;
-  font-weight: bold;
+    margin: 0;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-size: 64px;
+    font-weight: bold;
 }
 
 .banner p {
-  font-size: 20px;
-  color: white;
-  opacity: .85;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  margin: 0;
-  padding: 0;
+    font-size: 20px;
+    color: white;
+    opacity: .85;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    margin: 0;
+    padding: 0;
 }
 /* ====================================================================== */
 
@@ -59,12 +59,12 @@ body {
 
 .cafe-card {
   /* border: 1px solid black; */
-  padding: 0px;
-  padding-bottom: 16px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.16);
-  margin: 0 auto;
-  margin-top: 24px;
-  margin-top: 32px;
+    padding: 0px;
+    padding-bottom: 16px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.16);
+    margin: 0 auto;
+    margin-top: 24px;
+    margin-top: 32px;
 }
 
 .index-image {
@@ -103,18 +103,18 @@ color: rgba(16, 16, 16, 0.95)
 }
 
 .cafe-card button {
-  background-color:   rgb(50, 193, 233); 
-  color: white;
-  border-radius: .2em;
-  border: none;
-  transition: all 0.1s ease-in-out;
-  padding: 4px 6px;
+    background-color:   rgb(50, 193, 233); 
+    color: white;
+    border-radius: .2em;
+    border: none;
+    transition: all 0.1s ease-in-out;
+    padding: 4px 6px;
 }
 
 .cafe-card button:hover {
-  background-color:   rgb(46, 178, 214); 
-  color: white;
-  box-shadow: 0 0 4px rgba(0,0,0,0.16);
+    background-color:   rgb(46, 178, 214); 
+    color: white;
+    box-shadow: 0 0 4px rgba(0,0,0,0.16);
 }
 /* ====================================================================== */
 
@@ -122,167 +122,167 @@ color: rgba(16, 16, 16, 0.95)
 /* Show Page Styles */
 /* ====================================================================== */
 .show-main-div {
-  width: 40vw;
-  min-width: 440px;
-  max-width: 480px;
-  margin: 32px auto 0 auto;
+    width: 40vw;
+    min-width: 440px;
+    max-width: 480px;
+    margin: 32px auto 0 auto;
   /* border: 1px solid black; */
 }
 
 .show-card {
-  box-shadow: 0 0 12px rgba(0,0,0,0.16);
+    box-shadow: 0 0 12px rgba(0,0,0,0.16);
 }
 
 .show-image {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
 }
 
 .cafe-text {
-  /* border: 1px solid grey;
-  border-top: none; */
-  padding: 16px;
+    /* border: 1px solid grey;
+    border-top: none; */
+    padding: 16px;
 }
 
 .cafe-text-row-1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px;
 }
 
 .show-cafe-name {
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-  font-weight: 600;
-  color: rgba(16, 16, 16, 0.95)
-  margin-block-start: 0;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-weight: 600;
+    color: rgba(16, 16, 16, 0.95)
+    margin-block-start: 0;
 }
 .show-cafe-area {
-  margin-top: 0px;
-  padding-top: 0px;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  font-size: 20px;
-  font-weight: 100;
-  color: rgba(20, 20, 20, 0.85)
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 100;
+    color: rgba(20, 20, 20, 0.85)
 }
 
 .show-cafe-author{
-  font-size: 14px;
-  color: rgba(40, 40, 40, 0.85);
-  margin-top: 6px;
+    font-size: 14px;
+    color: rgba(40, 40, 40, 0.85);
+    margin-top: 6px;
 }
 
 .buttons-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 .buttons-row button {
-  margin: 0 8px 0 8px;
+    margin: 0 8px 0 8px;
 }
 
 .show-comments-div {
-  /* border: 1px solid grey; */
-  margin-top: 0px;
+    /* border: 1px solid grey; */
+    margin-top: 0px;
 }
 
 .comments-header {
-  width: 100%;
-  text-align: center;
-  padding: 16px 0px;
+    width: 100%;
+    text-align: center;
+    padding: 16px 0px;
 }
 
 .show-individual-comment-div {
-  /* border: 1px solid slategrey; */
-  padding: 16px;
-  margin: 16px 0;
-  box-shadow: 0 0 8px rgba(0,0,0,0.16);
-  transition: all 0.1s ease-in-out;
+    /* border: 1px solid slategrey; */
+    padding: 16px;
+    margin: 16px 0;
+    box-shadow: 0 0 8px rgba(0,0,0,0.16);
+    transition: all 0.1s ease-in-out;
 }
 
 .show-individual-comment-div:hover {
-  box-shadow: 0 0 12px rgba(0,0,0,0.24);
+    box-shadow: 0 0 12px rgba(0,0,0,0.24);
 }
 
 .show-individual-comment-div strong {
-  font-weight: 800;
-  font-size: 16px;
-  color: rgba(0,0,0,1);
+    font-weight: 800;
+    font-size: 16px;
+    color: rgba(0,0,0,1);
 }
 
 .comment-text-area {
-  /* border: 1px solid green; */
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .comment-text-area h4 {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .leave-comment-h3 {
-  font-size: 24px;
-  font-weight: 500;
-  color: rgba(20, 20, 20, 0.85);
-  margin-bottom: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(20, 20, 20, 0.85);
+    margin-bottom: 2px;
 }
 
 .leave-comment-button {
-margin: 0 auto;
+    margin: 0 auto;
 }
 
 .comment-text-area i {
-  color: rgb(50, 193, 233);
-  transition: all 0.1s;
-  font-size: 16px;
+      color: rgb(50, 193, 233);
+      transition: all 0.1s;
+      font-size: 16px;
 }
 
 .comment-text-area i:hover {
-  color: rgb(46, 178, 214);
-  scale: 1.2;
-  /* box-shadow: 0 0 4px rgba(0,0,0,0.16); */
+      color: rgb(46, 178, 214);
+      scale: 1.2;
+      /* box-shadow: 0 0 4px rgba(0,0,0,0.16); */
 }
 
 .comment-if-author-buttons-row {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding: 0 4px 0 0;
-  margin: 0;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 4px 0 0;
+    margin: 0;
 }
 
 .comment-if-author-buttons-row h4 {
-  paddding: 0;
-  margin 0;
+    paddding: 0;
+    margin 0;
 }
 
 .comment-if-author-buttons-row i {
-  margin: 0 4px 0 0;
+    margin: 0 4px 0 0;
 }
 
 .trash-button {
-  background: none;
-  padding: 0px;
-  border: none;
+    background: none;
+    padding: 0px;
+    border: none;
 }
 
 .comment-text {
-  font-size: 18px;
-  font-weight: 400;
-  color: rgba(16, 16, 16, 0.95);
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(16, 16, 16, 0.95);
 }
 
 .comment-author-name {
-  color: rgba(20, 20, 20, 0.75);
-  font-size: 14px;
-  font-weight: 200;
-  margin-top: 6px;
+    color: rgba(20, 20, 20, 0.75);
+    font-size: 14px;
+    font-weight: 200;
+    margin-top: 6px;
 }
 /* ====================================================================== */
 

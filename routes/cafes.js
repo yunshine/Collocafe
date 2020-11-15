@@ -129,6 +129,8 @@ router.get("/cafes/:id/edit", middleware.checkCafeOwnership, (req, res) => {
             res.redirect("/cafes");
         } else {
             // middleware has already checked if the user is the cafe's author...
+            console.log("Found Cafe: ", foundCafe);
+            console.log("req.body: ", req.body);
             res.render('cafes/edit.ejs', { cafe: foundCafe });
         }
     });
@@ -137,26 +139,80 @@ router.get("/cafes/:id/edit", middleware.checkCafeOwnership, (req, res) => {
 // UPDATE Route - saves the updated info about one cafe into the DB
 // Q: first, before editing, is the user logged in? Use middleware...
 router.put("/cafes/:id", middleware.checkCafeOwnership, upload.array('image'), (req, res) => {
-    // *** gets SANITIZED data from edit cafe form and updates the Cafe DB ***
+
     let name = req.sanitize(req.body.name);
     let area = req.sanitize(req.body.area);
-    // let image = req.sanitize(req.body.image);
-    // let images = req.files.map(f => ({ url: f.path, filename: f.filename }));
-    let newCafe = { name: name, area: area }
-
-    // the logic to update the info...
+    let newCafe = {
+        name: name,
+        area: area,
+        // images: [...req.files.map(f => ({ url: f.path, filename: f.filename }))],
+    };
     Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {
-        newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
+        let imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
+        updatedCafe.images.push(...imgs);
+        updatedCafe.save();
         if (err) {
             console.log(error);
             req.flash('error', "That cafe could not be found.");
             res.redirect(`/cafes/${req.params.id}`);
         } else {
+            // newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
             req.flash('success', "This cafe has been updated.");
             res.redirect(`/cafes/${req.params.id}`);
         }
     });
 });
+
+
+//     Cafe.findById(req.params.id, function (err, foundCafe) {
+//         if (err) {
+//             console.log(error);
+//             req.flash('error', "There was an error, and that cafe could not be found...");
+//             res.redirect("/cafes");
+//         } else {
+//             // middleware has already checked if the user is the cafe's author...
+//             let name = req.sanitize(req.body.name);
+//             let area = req.sanitize(req.body.area);
+//             let foundCafe = { name: name, area: area }
+//             let imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
+//             foundCafe.images.push(...imgs);
+//             // the logic to update the info...
+//             Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, newCafe) {
+//                 if (err) {
+//                     console.log(error);
+//                     req.flash('error', "That cafe could not be found.");
+//                     res.redirect(`/cafes/${req.params.id}`);
+//                 } else {
+//                     // newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
+//                     req.flash('success', "This cafe has been updated.");
+//                     res.redirect(`/cafes/${req.params.id}`);
+//                 }
+//             });
+//         }
+//     });
+// });
+
+
+// // *** gets SANITIZED data from edit cafe form and updates the Cafe DB ***
+// let name = req.sanitize(req.body.name);
+// let area = req.sanitize(req.body.area);
+// // let image = req.sanitize(req.body.image);
+// // let images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+// let newCafe = { name: name, area: area }
+
+// // the logic to update the info...
+// Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {
+//     if (err) {
+//         console.log(error);
+//         req.flash('error', "That cafe could not be found.");
+//         res.redirect(`/cafes/${req.params.id}`);
+//     } else {
+//         // newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
+//         req.flash('success', "This cafe has been updated.");
+//         res.redirect(`/cafes/${req.params.id}`);
+//     }
+// });
+
 
 // DELETE Route
 // Q: first, before editing, is the user logged in? Use middleware...

@@ -35,7 +35,8 @@ const url = process.env.DATABASEURL || 'mongodb://localhost:27017/collocafe';
 mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
 })
     .then(() => console.log('Connected to database!'))
     .catch(error => console.log(error.message));
