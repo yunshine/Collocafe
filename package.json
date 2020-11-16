@@ -18,6 +18,7 @@
     },
     "homepage": "https://github.com/yunshine/Collocafe#readme",
     "dependencies": {
+        "@mapbox/mapbox-sdk": "^0.11.0",
         "body-parser": "^1.19.0",
         "bson": "^4.1.0",
         "cloudinary": "^1.23.0",
