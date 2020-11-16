@@ -4,6 +4,17 @@ const mongoose = require('mongoose');
 const cafeSchema = new mongoose.Schema({
     name: String,
     area: String,
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    },
     images: [
         {
             url: String,

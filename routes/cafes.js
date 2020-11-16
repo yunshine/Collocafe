@@ -46,7 +46,10 @@ router.get("/cafes/new", middleware.isLoggedIn, (req, res) => {
 // CREATE Route - makes and saves a new cafe to the DB
 router.post("/cafes", middleware.isLoggedIn, upload.array('image'), async (req, res) => {
 
+    // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
     let name = req.sanitize(req.body.name);
+    let area = req.sanitize(req.body.area);
+    // let image = req.sanitize(req.body.image);
 
     const geoData = await geocoder.forwardGeocode({
         query: name,
@@ -54,43 +57,37 @@ router.post("/cafes", middleware.isLoggedIn, upload.array('image'), async (req, 
         limit: 1,
     }).send();
 
-    console.log("Mapbox Data: ", geoData.body.features[0].geometry.coordinates);
-    // res.send(geoData);
-    res.send(geoData.body.features[0].geometry.coordinates);
-
-    // *** gets SANITIZED data from new cafe form and adds to Cafe DB ***
-    // let name = req.sanitize(req.body.name);
-    // let area = req.sanitize(req.body.area);
-    // // let image = req.sanitize(req.body.image);
-    // let newCafe = {
-    //     name: name,
-    //     area: area,
-    //     images: req.files.map(f => ({ url: f.path, filename: f.filename })),
-    //     author: {
-    //         id: req.user._id,
-    //         username: req.user.username,
-    //     }
-    // };
+    let newCafe = {
+        name: name,
+        area: area,
+        geometry: geoData.body.features[0].geometry,
+        images: req.files.map(f => ({ url: f.path, filename: f.filename })),
+        author: {
+            id: req.user._id,
+            username: req.user.username,
+        }
+    };
+    console.log("New Mapbox Data: ", geoData.body.features[0].geometry.coordinates);
 
     // req.body.cafe.body = req.sanitize(req.body.cafe.body);
     // *** Makes and saves a new cafe to the Cafe DB ***
 
-    // Cafe.create(newCafe, (err, cafe) => {
-    //     if (err) {
-    //         console.log(err);
-    //         req.flash('error', "There was an error, and that cafe could not be created...");
-    //         res.redirect("/cafes");
-    //         // or...   res.render("new.ejs");
-    //     } else {
-    //         console.log("New Cafe: ", cafe);
-    //         req.flash('success', "Your cafe has been added.");
-    //         console.log(newCafe)
-    //         res.redirect("/cafes");
-    //     }
-    // });
+    Cafe.create(newCafe, (err, cafe) => {
+        if (err) {
+            console.log(err);
+            req.flash('error', "There was an error, and that cafe could not be created...");
+            res.redirect("/cafes");
+            // or...   res.render("new.ejs");
+        } else {
+            console.log("New Cafe: ", cafe);
+            req.flash('success', "Your cafe has been added.");
+            console.log(newCafe)
+            res.redirect("/cafes");
+        }
+    });
 
-    // cafes.push(newCafe);
-    // res.redirect("/cafes");
+    cafes.push(newCafe);
+    res.redirect("/cafes");
 });
 
 // CREATE Route using CLOUDINARY...
