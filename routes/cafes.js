@@ -48,6 +48,7 @@ router.post("/cafes", middleware.isLoggedIn, upload.array('image'), async (req, 
 
     const geoData = await geocoder.forwardGeocode({
         query: 'Shinjuku',
+        countries: ['jp'],
         limit: 1,
     }).send();
 
