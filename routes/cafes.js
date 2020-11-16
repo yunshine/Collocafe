@@ -46,8 +46,10 @@ router.get("/cafes/new", middleware.isLoggedIn, (req, res) => {
 // CREATE Route - makes and saves a new cafe to the DB
 router.post("/cafes", middleware.isLoggedIn, upload.array('image'), async (req, res) => {
 
+    let name = req.sanitize(req.body.name);
+
     const geoData = await geocoder.forwardGeocode({
-        query: 'Shinjuku',
+        query: name,
         countries: ['jp'],
         limit: 1,
     }).send();
