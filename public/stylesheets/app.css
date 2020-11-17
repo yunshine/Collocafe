@@ -122,14 +122,26 @@ color: rgba(16, 16, 16, 0.95)
 /* Show Page Styles */
 /* ====================================================================== */
 .show-main-div {
-    width: 40vw;
-    min-width: 440px;
-    max-width: 480px;
+    width: 60vw;
     margin: 32px auto 0 auto;
-  /* border: 1px solid black; */
+    /* border: 1px solid black; */
+}
+
+.show-main-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mapbox-show {
+    /* min-width: 440px;
+    max-width: 480px; */
+    box-shadow: 0 0 12px rgba(0,0,0,0.16);
 }
 
 .show-card {
+    min-width: 440px;
+    max-width: 480px;
     box-shadow: 0 0 12px rgba(0,0,0,0.16);
 }
 
