@@ -238,14 +238,14 @@ color: rgba(16, 16, 16, 0.95)
 }
 
 .comment-text-area i {
-      color: rgb(50, 193, 233);
-      transition: all 0.1s;
-      font-size: 16px;
+    color: rgb(50, 193, 233);
+    transition: all 0.1s;
+    font-size: 16px;
 }
 
 .comment-text-area i:hover {
-      color: rgb(46, 178, 214);
-      scale: 1.2;
+    color: rgb(46, 178, 214);
+    scale: 1.2;
       /* box-shadow: 0 0 4px rgba(0,0,0,0.16); */
 }
 
@@ -283,6 +283,11 @@ color: rgba(16, 16, 16, 0.95)
     font-size: 14px;
     font-weight: 200;
     margin-top: 6px;
+}
+
+.mapbox-popup {
+    font-size: 18px;
+    font-weight: 400;
 }
 /* ====================================================================== */
 
