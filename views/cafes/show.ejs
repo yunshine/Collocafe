@@ -1,5 +1,8 @@
 <%- include("../partials/header") %>
 <div class="show-main-div">
+
+    <div id='map' style='width: 400px; height: 300px;'></div>
+
     <div class='show-card'>
 
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -93,3 +96,13 @@
 </div>
 
 <%- include("../partials/footer") %>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoieXVuc2hpbmUiLCJhIjoiY2s5bnF1enNiMDU5ZTNvbnczM3k0aGIzaSJ9.KV8UR_F-hmPdVUBO-SWO9w';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+        center: [-74.5, 40], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
+</script>
