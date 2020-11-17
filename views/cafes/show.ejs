@@ -102,11 +102,12 @@
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-        center: [139.720698, 35.672685], // starting position [lng, lat]
-        zoom: 11// starting zoom
+        center: [<%= cafe.geometry.coordinates %>], // starting position [lng, lat]
+        zoom: 12// starting zoom
     });
 
     const marker = new mapboxgl.Marker({ color: "#32c1e9" })
-        .setLngLat([139.720698, 35.672685])
+        .setLngLat([<%= cafe.geometry.coordinates %>])
         .addTo(map);
+
 </script>
