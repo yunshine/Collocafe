@@ -109,8 +109,11 @@
     const marker = new mapboxgl.Marker({ color: "#32c1e9" })
         .setLngLat([<%= cafe.geometry.coordinates %>])
         .setPopup(
-            new mapboxgl.Popup({ offset: 24 })
-                .setHTML('<h5 class="mapbox-popup">testing...</h5>')
+            new mapboxgl.Popup({ offset: 24, closeButton: false, closeOnClick: true, maxWidth: '280px' })
+                .setHTML(`<div class="mapbox-popup">
+                    <h2 class="mapbox-popup-name"><%= cafe.name%></h2>
+                    <h3 class="mapbox-popup-two"><%= cafe.area %></h3>
+                    </div>`)
         )
         .addTo(map);
 </script>

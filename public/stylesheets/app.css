@@ -286,8 +286,18 @@ color: rgba(16, 16, 16, 0.95)
 }
 
 .mapbox-popup {
+    /* background-color: blue; */
+}
+
+.mapbox-popup-name {
     font-size: 18px;
     font-weight: 400;
+    margin: 0 0 2px 0 ;
+}
+
+.mapbox-popup-two {
+    font-size: 14px;
+    font-weight: 300;
 }
 /* ====================================================================== */
 
