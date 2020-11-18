@@ -201,7 +201,11 @@ color: rgba(16, 16, 16, 0.95)
 
 .show-comments-div {
     /* border: 1px solid grey; */
-    margin-top: 0px;
+    width: 60%;
+    margin: 40px auto 0px auto;
+    min-width: 440px;
+    max-width: 480px;
+    /* margin-top: 0px; */
 }
 
 .comments-header {
