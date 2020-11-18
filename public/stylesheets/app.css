@@ -68,38 +68,38 @@ body {
 }
 
 .index-image {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  padding: 0;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    padding: 0;
 }
 
 .card-text-div {
-  padding: 16px;
+    padding: 16px;
 }
 
 .cafe-card h2 {
-font-size: 28px;
-font-weight: 700;
-margin: 0;
-padding: 0;
-color: rgba(16, 16, 16, 0.95)
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    color: rgba(16, 16, 16, 0.95)
 }
 
 .cafe-card h4 {
-  font-size: 18px;
-  font-weight: 200;
-  margin: 2px 0;
-  padding: 0;
-  color: rgba(20, 20, 20, 0.85)
+    font-size: 18px;
+    font-weight: 200;
+    margin: 2px 0;
+    padding: 0;
+    color: rgba(20, 20, 20, 0.85)
 }
 
 .cafe-card h5 {
-  font-size: 14px;
-  font-weight: 200;
-  margin: 4px 0;
-  padding: 0;
-  color: rgba(20, 20, 20, 0.75)
+    font-size: 14px;
+    font-weight: 200;
+    margin: 4px 0;
+    padding: 0;
+    color: rgba(20, 20, 20, 0.75)
 }
 
 .cafe-card button {
@@ -122,15 +122,15 @@ color: rgba(16, 16, 16, 0.95)
 /* Show Page Styles */
 /* ====================================================================== */
 .show-main-div {
-    width: 60vw;
+    width: 80vw;
     margin: 32px auto 0 auto;
     /* border: 1px solid black; */
 }
 
 .show-main-flex {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
+    align-items: start;
 }
 
 .mapbox-show {
@@ -143,6 +143,7 @@ color: rgba(16, 16, 16, 0.95)
     min-width: 440px;
     max-width: 480px;
     box-shadow: 0 0 12px rgba(0,0,0,0.16);
+    margin-right: 16px;
 }
 
 .show-image {
@@ -300,6 +301,16 @@ color: rgba(16, 16, 16, 0.95)
     font-size: 14px;
     font-weight: 200;
     margin-top: 6px;
+}
+
+.mapbox-show {
+    width: 880px;
+    height: 480.5px;
+    min-width: 440px;
+    max-width: 480px;
+    margin-left: 16px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.16);
+
 }
 
 .mapbox-popup {
