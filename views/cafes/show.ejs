@@ -29,8 +29,9 @@
                     <div>
                         <h1 class="show-cafe-name"><%= cafe.name %></h1>
                         <h3 class="show-cafe-area"><%= cafe.area %></h3>
+                        <h5 class="show-cafe-author">Cafe Submitted By: <strong><%= cafe.author.username %></strong>
+                        </h5>
                     </div>
-                    <h5 class="show-cafe-author">Cafe Created By: <strong><%= cafe.author.username %></strong></h5>
                 </div>
 
                 <!-- hide or show edit/delete buttons if user is this cafe's author... -->
