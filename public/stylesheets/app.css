@@ -321,11 +321,27 @@ body {
     font-size: 18px;
     font-weight: 400;
     margin: 0 0 2px 0 ;
+    text-align: center;
 }
 
-.mapbox-popup-two {
+.mapbox-popup-area {
     font-size: 14px;
     font-weight: 300;
+    text-align: center;
+}
+
+@media only screen and (max-width: 576px) {
+    /* .footer-div {
+      padding: 0 16px;
+    }
+
+      .footer-right  a{
+      margin: 0 4px;
+    }
+
+    .footer-div h6, .footer-div i {
+      font-size: 14px;  
+    } */
 }
 /* ====================================================================== */
 
@@ -391,46 +407,46 @@ a.nav-link:hover {
 ====================================================================== */
 .footer-div {
   /* border: 5px solid red; */
-  width: 100vw;
-  height: 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 48px;
-  position: absolute;
-  bottom: 0;
-  padding: 0 40px;
-  background-color: rgba(40, 40, 40, .1);
+    width: 100vw;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+    position: absolute;
+    bottom: 0;
+    padding: 0 40px;
+    background-color: rgba(40, 40, 40, .1);
   /* box-shadow: 0 0 8px rgba(0,0,0,0.16); */
 }
 
 .footer-right a {
-  color: rgba(50, 193, 233, 1);
-  margin: 0 16px;
-  transition: all 0.1s ease-in-out;
+    color: rgba(50, 193, 233, 1);
+    margin: 0 16px;
+    transition: all 0.1s ease-in-out;
 }
 
 .footer-right a:hover {
-  color: rgba(46, 178, 214, 1);
-  scale: 1.2;
+    color: rgba(46, 178, 214, 1);
+    scale: 1.2;
 }
 
 .footer-div h6 {
-  color: rgba(50, 193, 233, 1);
-  margin: 0;
+    color: rgba(50, 193, 233, 1);
+    margin: 0;
 }
 
 @media only screen and (max-width: 576px) {
     .footer-div {
-      padding: 0 16px;
+        padding: 0 16px;
     }
 
-      .footer-right  a{
-      margin: 0 4px;
+    .footer-right  a {
+        margin: 0 4px;
     }
 
     .footer-div h6, .footer-div i {
-      font-size: 14px;  
+        font-size: 14px;  
     }
 }
 /* ======================================================================  */
