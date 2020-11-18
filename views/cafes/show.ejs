@@ -67,7 +67,7 @@
                     class="btn-success-yun-small leave-comment-button">Leave a
                     Comment</button></a>
         </div>
-        <% cafe.comments.forEach(comment => { %>
+        <% cafe.comments.reverse().forEach(comment => { %>
         <div class="show-individual-comment-div">
             <div class='comment-text-area'>
                 <% if (currentUser && comment.author.id.equals(currentUser._id)) {
