@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div id='map' class="m-3" style='width: 100%; height: 500px'></div>
+<div id='map' class="" style='width: 70%; height: 500px; margin: 16px auto'></div>
 
 <div class="container cafe-cards-div">
     <div class="row">
@@ -31,8 +31,9 @@
     </div>
 </div>
 
+
 <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoieXVuc2hpbmUiLCJhIjoiY2s5bnF1enNiMDU5ZTNvbnczM3k0aGIzaSJ9.KV8UR_F-hmPdVUBO-SWO9w';
+    mapboxgl.accessToken = '<%- process.env.MAPBOX_TOKEN %>';
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/dark-v10',
