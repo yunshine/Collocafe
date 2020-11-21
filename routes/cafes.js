@@ -14,6 +14,7 @@ const upload = multer({ storage });
 
 //  Mapbox stuff...
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const { json } = require('body-parser');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
@@ -30,7 +31,9 @@ router.get('/cafes', async (req, res) => {
             res.redirect("/cafes");
         } else {
             // the req.user below is needed to check if the user is logged in or not...
-            res.render('cafes/index.ejs', { cafes: allCafes });
+
+            console.log('Cafes From Index Route: ', allCafes[0]);
+            res.render('cafes/index.ejs', { cafes: allCafes, stringCafes: JSON.stringify(allCafes) });
         }
     });
 });
