@@ -3,20 +3,20 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 // associates this cloudinary instance with our account (thru the variables we created in .env...)
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET,
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET,
 });
 
 const storage = new CloudinaryStorage({
-  cloudinary,
-  params: {
-    folder: 'Collocafe',
-    allowedFormats: ['png', 'jpeg', 'jpg']
-  }
+    cloudinary,
+    params: {
+        folder: 'Collocafe',
+        allowedFormats: ['png', 'jpeg', 'jpg']
+    }
 });
 
 module.exports = {
-  cloudinary,
-  storage,
+    cloudinary,
+    storage,
 };

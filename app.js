@@ -28,8 +28,8 @@ const indexRoutes = require('./routes/index');
 // seedDB();
 
 // where the database lives... on my computer or in a cloud...
-// mongoose.connect('mongodb://localhost:27017/collocafe', {
-// mongoose.connect('mongodb+srv://yunshine:ilJC8239@cluster0.c4sfn.mongodb.net/collocafe?retryWrites=true&w=majority', {
+// lines 7 & 8 of .env...
+
 // this will select the database url based on the environment that runs it...
 const url = process.env.DATABASEURL || 'mongodb://localhost:27017/collocafe';
 mongoose.connect(url, {
