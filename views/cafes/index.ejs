@@ -37,7 +37,7 @@
 
     const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v10',
+        style: 'mapbox://styles/mapbox/light-v10',
         // style: 'mapbox://styles/mapbox/streets-v11',
         center: [139.71527, 35.67852],
         zoom: 11
@@ -72,7 +72,7 @@
             // 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
 
             cluster: true,
-            clusterMaxZoom: 14, // Max zoom to cluster points on
+            clusterMaxZoom: 14, // Max zoom to cluster points on - default is 14
             clusterRadius: 50 // Radius of each cluster when clustering points - default is 50
         });
 
@@ -177,7 +177,8 @@
             new mapboxgl.Popup()
                 .setLngLat(coordinates)
                 .setHTML(
-                    'magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami
+                    // 'magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami
+                    '<h5>cafe</h5>'
                 )
                 .addTo(map);
         });
