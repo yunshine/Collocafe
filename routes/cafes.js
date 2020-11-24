@@ -25,6 +25,7 @@ router.get('/cafes', async (req, res) => {
     // *** Get all cafes from DB ***
     await Cafe.find(function (err, allCafes) {
         // const allCafes = await Cafe.find({});
+
         if (err) {
             console.log(err);
             req.flash('error', "Cafes could not be found...");
@@ -32,8 +33,14 @@ router.get('/cafes', async (req, res) => {
         } else {
             // the req.user below is needed to check if the user is logged in or not...
 
-            console.log('Cafes From Index Route: ', { features: JSON.stringify(allCafes) });
-            res.render('cafes/index.ejs', { cafes: allCafes, stringCafes: JSON.stringify(allCafes) });
+            const clusterMapCoords = [
+                { 'geometry': { 'type': 'Point', 'coordinates': [139.715317, 35.66476] } },
+                { 'geometry': { 'type': 'Point', 'coordinates': [139.715417, 35.66576] } },
+            ]
+
+            console.log('Cafes From Index Route: ', clusterMapCoords);
+
+            res.render('cafes/index.ejs', { cafes: allCafes, mapCoords: clusterMapCoords });
         }
     });
 });
