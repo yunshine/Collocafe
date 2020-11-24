@@ -40,7 +40,7 @@
         style: 'mapbox://styles/mapbox/dark-v10',
         // style: 'mapbox://styles/mapbox/streets-v11',
         center: [139.749504, 35.609936],
-        zoom: 11
+        zoom: 10
     });
 
     map.on('load', function () {
@@ -56,29 +56,19 @@
             data:
             {
                 'features': [
-                    { 'geometry': { 'type': 'Point', 'coordinates': [139.715317, 35.66476] } },
-                    { 'geometry': { 'type': 'Point', 'coordinates': [139.715417, 35.66576] } },
-
                     <% cafes.forEach(cafe => { %>
-                        { 'geometry': { 'type': 'Point', 'coordinates': [139.715417, 35.66576] } },
-                    <% }) %>
-
+                {
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [
+                                <%= cafe.geometry.coordinates[0] %>, 
+                                <%= cafe.geometry.coordinates[1] %>
+                            ]
+                    }
+                },
+                        <% }) %>
                 ]
             },
-
-            //     {
-            //         'features': < %= mapCoords %>
-            // },
-
-            // '{ features: < %- JSON.stringify(cafes) %> }',
-            // { features: < % - cafes %> },
-            // { features: < %= cafes %> },
-            // '{ features: cafes }',
-            // { features: cafes },
-            // '< %= cafes %>',
-            // '< %- cafes %>',
-            // 'cafes',
-            // cafes,
             // 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
 
             cluster: true,
