@@ -23,7 +23,7 @@ const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 // INDEX Route
 router.get('/cafes', async (req, res) => {
     // *** Get all cafes from DB ***
-    Cafe.find(function (err, allCafes) {
+    await Cafe.find(function (err, allCafes) {
         // const allCafes = await Cafe.find({});
         if (err) {
             console.log(err);
@@ -32,7 +32,7 @@ router.get('/cafes', async (req, res) => {
         } else {
             // the req.user below is needed to check if the user is logged in or not...
 
-            console.log('Cafes From Index Route: ', allCafes[0]);
+            console.log('Cafes From Index Route: ', { features: JSON.stringify(allCafes) });
             res.render('cafes/index.ejs', { cafes: allCafes, stringCafes: JSON.stringify(allCafes) });
         }
     });

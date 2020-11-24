@@ -52,7 +52,16 @@
             // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
             // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
 
-            data: { features: cafes },
+            data:
+                { features: [{ "geometry": { "type": "Point", "coordinates": [139.715317, 35.66476] } }] },
+            // '{ features: < %- JSON.stringify(cafes) %> }',
+            // { features: < % - cafes %> },
+            // { features: < %= cafes %> },
+            // '{ features: cafes }',
+            // { features: cafes },
+            // '< %= cafes %>',
+            // '< %- cafes %>',
+            // 'cafes',
             // cafes,
             // 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
 
