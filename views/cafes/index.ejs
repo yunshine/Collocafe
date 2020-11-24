@@ -39,15 +39,15 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/dark-v10',
         // style: 'mapbox://styles/mapbox/streets-v11',
-        center: [139.749504, 35.609936],
-        zoom: 10
+        center: [139.71527, 35.67852],
+        zoom: 11
     });
 
     map.on('load', function () {
         // Add a new source from our GeoJSON data and
         // set the 'cluster' option to true. GL-JS will
         // add the point_count property to your source data.
-        map.addSource('earthquakes', {
+        map.addSource('cafes', {
 
             type: 'geojson',
             // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
@@ -79,7 +79,7 @@
         map.addLayer({
             id: 'clusters',
             type: 'circle',
-            source: 'earthquakes',
+            source: 'cafes',
             filter: ['has', 'point_count'],
             paint: {
                 // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
@@ -90,11 +90,11 @@
                 'circle-color': [
                     'step',
                     ['get', 'point_count'],
-                    '#51bbd6',
+                    '#32c1e9',
                     100,
-                    '#f1f075',
+                    'yellow',
                     750,
-                    '#f28cb1'
+                    'red'
                 ],
                 'circle-radius': [
                     'step',
@@ -111,7 +111,7 @@
         map.addLayer({
             id: 'cluster-count',
             type: 'symbol',
-            source: 'earthquakes',
+            source: 'cafes',
             filter: ['has', 'point_count'],
             layout: {
                 'text-field': '{point_count_abbreviated}',
@@ -123,11 +123,11 @@
         map.addLayer({
             id: 'unclustered-point',
             type: 'circle',
-            source: 'earthquakes',
+            source: 'cafes',
             filter: ['!', ['has', 'point_count']],
             paint: {
-                'circle-color': '#11b4da',
-                'circle-radius': 4,
+                'circle-color': '#32c1e9',
+                'circle-radius': 8,
                 'circle-stroke-width': 1,
                 'circle-stroke-color': '#fff'
             }
@@ -139,7 +139,7 @@
                 layers: ['clusters']
             });
             var clusterId = features[0].properties.cluster_id;
-            map.getSource('earthquakes').getClusterExpansionZoom(
+            map.getSource('cafes').getClusterExpansionZoom(
                 clusterId,
                 function (err, zoom) {
                     if (err) return;
