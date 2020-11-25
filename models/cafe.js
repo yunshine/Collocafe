@@ -39,11 +39,13 @@ const cafeSchema = new mongoose.Schema({
             ref: "Comment", // refers to the model that we're referring to...
         }
     ],
-
 });
-
 // Creates the model from the schema that we've designated
 // const Cafe = mongoose.model('Cafe', cafeSchema);
+
+cafeSchema.virtual('properties.popupMarkup').get(function () {
+    return 'I am coming from the cafe model!';
+});
 
 
 // Creates and exports the model from the schema that we've designated
