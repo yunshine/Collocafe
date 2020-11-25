@@ -1,6 +1,8 @@
 // Mongoose/SCHEMA SETUP
 const mongoose = require('mongoose');
 
+const options = { toJSON: { virtuals: true } };
+
 const cafeSchema = new mongoose.Schema({
     name: String,
     area: String,
@@ -44,8 +46,8 @@ const cafeSchema = new mongoose.Schema({
 // const Cafe = mongoose.model('Cafe', cafeSchema);
 
 cafeSchema.virtual('properties.popupMarkup').get(function () {
-    return 'I am coming from the cafe model!';
-});
+    return `${this.name}`;
+}, options);
 
 
 // Creates and exports the model from the schema that we've designated

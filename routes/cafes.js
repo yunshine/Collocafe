@@ -32,7 +32,7 @@ router.get('/cafes', async (req, res) => {
             res.redirect("/cafes");
         } else {
             // the req.user below is needed to check if the user is logged in or not...
-
+            console.log("Cafes From Index Route: ", allCafes)
             res.render('cafes/index.ejs', { cafes: allCafes });
         }
     });
