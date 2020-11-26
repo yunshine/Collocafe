@@ -64,9 +64,12 @@
                                 <%= cafe.geometry.coordinates[0] %>, 
                                 <%= cafe.geometry.coordinates[1] %>
                             ]
+                    },
+                    'properties': {
+                        'popupMarkup': '<%= cafe.name %>'
                     }
                 },
-                        <% }) %>
+                    <% }) %>
                 ]
             },
             // 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
@@ -156,42 +159,41 @@
         // the unclustered-point layer, open a popup at
         // the location of the feature, with
         // description HTML from its properties.
-        <% cafes.forEach(cafe => {%>
+        map.on('click', 'unclustered-point', function (e) {
+            // console.log("FROM map.on function: ", e.features[0].properties.popupMarkup);
+            // console.log("Event from map.on function: e.features", e.features[0]);
 
-            map.on('click', 'unclustered-point', function (e) {
-                // console.log("FROM map.on function: ", e.features[0].properties.popupMarkup);
-                console.log("Event from map.on function: ", e);
-                var coordinates = e.features[0].geometry.coordinates.slice();
+            var coordinates = e.features[0].geometry.coordinates.slice();
+            var popupMarkup = e.features[0].properties.popupMarkup
 
-                // var mag = e.features[0].properties.mag;
-                // var tsunami;
+            // var mag = e.features[0].properties.mag;
+            // var tsunami;
 
-                // if (e.features[0].properties.tsunami === 1) {
-                //     tsunami = 'yes';
-                // } else {
-                //     tsunami = 'no';
-                // }
+            // if (e.features[0].properties.tsunami === 1) {
+            //     tsunami = 'yes';
+            // } else {
+            //     tsunami = 'no';
+            // }
 
-                // Ensure that if the map is zoomed out such that
-                // multiple copies of the feature are visible, the
-                // popup appears over the copy being pointed to.
-                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                }
+            // Ensure that if the map is zoomed out such that
+            // multiple copies of the feature are visible, the
+            // popup appears over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
 
-                new mapboxgl.Popup()
-                    .setLngLat(coordinates)
-                    .setHTML(
-                        // 'magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami
-                        '<h5><%= cafe.properties.popupMarkup %></h5>'
-                    )
-                    .addTo(map);
-            });
-                <% }); %>
+            new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(
+                    // 'magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami
+                    `<h4>${popupMarkup}</h4>`
+                )
+                .addTo(map);
+        });
 
-            map.on('mouseenter', 'clusters', function () {
-                map.getCanvas().style.cursor = 'pointer';
-            });
+        map.on('mouseenter', 'clusters', function () {
+            map.getCanvas().style.cursor = 'pointer';
+        });
         map.on('mouseleave', 'clusters', function () {
             map.getCanvas().style.cursor = '';
         });
