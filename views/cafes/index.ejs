@@ -67,7 +67,8 @@
                     },
                     'properties': {
                         'popupMarkup': '<%= cafe.name %>',
-                        'cafeId': '<%= cafe.id %>'
+                        'cafeId': '<%= cafe.id %>',
+                        'popupPhoto': '<%= cafe.images[0].url %>',
                     }
                 },
                     <% }) %>
@@ -167,6 +168,7 @@
             var coordinates = e.features[0].geometry.coordinates.slice();
             var popupMarkup = e.features[0].properties.popupMarkup
             var popupId = e.features[0].properties.cafeId;
+            var popupPhoto = e.features[0].properties.popupPhoto;
             console.log("CAFE ID: ", popupId)
 
             // var mag = e.features[0].properties.mag;
@@ -189,7 +191,8 @@
                 .setLngLat(coordinates)
                 .setHTML(
                     // 'magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami
-                    `<a href="/cafes/${popupId}">${popupMarkup}</a>`
+                    // `<a href="/cafes/${popupId}">${popupMarkup}</a>`
+                    `<img src="${popupPhoto}" alt="" class="">`
                 )
                 .addTo(map);
         });
