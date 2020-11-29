@@ -165,8 +165,8 @@
             // console.log("FROM map.on function: ", e.features[0].properties.popupMarkup);
             // console.log("Event from map.on function: e.features", e.features[0]);
 
-            var coordinates = e.features[0].geometry.coordinates.slice();
             var popupMarkup = e.features[0].properties.popupMarkup
+            var coordinates = e.features[0].geometry.coordinates.slice();
             var popupId = e.features[0].properties.cafeId;
             var popupPhoto = e.features[0].properties.popupPhoto;
             console.log("CAFE ID: ", popupId)
@@ -192,7 +192,11 @@
                 .setHTML(
                     // 'magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami
                     // `<a href="/cafes/${popupId}">${popupMarkup}</a>`
-                    `<img src="${popupPhoto}" alt="" class="">`
+                    `<a href= "/cafes/${popupId}">
+                    <img src="${popupPhoto}" alt="" class="cluster-map-popup-photo">
+                    <br>
+                    <h5 class="cluster-map-popup-cafeName">${popupMarkup}</h5>
+                    </a>`
                 )
                 .addTo(map);
         });

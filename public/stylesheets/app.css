@@ -49,6 +49,15 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.cluster-map-popup-photo {
+    width: 150px;
+}
+
+.cluster-map-popup-cafeName {
+    font-size: 18px;
+    text-align: center;
+}
 /* ====================================================================== */
 
 
