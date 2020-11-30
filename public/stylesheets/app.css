@@ -66,20 +66,38 @@ body {
 
 /* Index Page Styles */
 /* ====================================================================== */
+.index-add-cafe-button-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .btn-success-yun {
     background-color:   rgb(50, 193, 233); 
     color: white;
     border-radius: .2em;
     border: none;
     transition: all 0.1s ease-in-out;
-    padding: 12px 64px;
-    margin-top: 8px;
+    padding: 14px 80px;
+    margin-top: 16px;
 }
 
 .btn-success-yun:hover {
     background-color:   rgb(46, 178, 214); 
     color: white;
     box-shadow: 0 0 4px rgba(0,0,0,0.16);
+    text-decoration: none;
+}
+
+#map {
+    box-shadow: 0 0 12px rgba(0,0,0,0.16);
+}
+
+@media only screen and (max-width: 995px) {
+    #map {
+        /* border: red; */
+    }
 }
 
 .cluster-map-popup-photo {
@@ -96,6 +114,7 @@ body {
 /* Index Page Cafe Cards Styles */
 /* ====================================================================== */
 .cafe-cards-div {
+    /* width: 960px; */
 }
 
 .cafe-card {
