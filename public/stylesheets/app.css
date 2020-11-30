@@ -20,7 +20,7 @@ body {
 }
 
 .banner-div {
-    margin-top: 20vh;
+    margin-top: 14vh;
 }
 
 .banner h1 {
@@ -38,6 +38,28 @@ body {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     margin: 0;
     padding: 0;
+}
+
+.index-banner-button {
+    background-color:   rgb(50, 193, 233); 
+    color: white;
+    border-radius: .2em;
+    border: none;
+    transition: all 0.1s ease-in-out;
+    padding: 12px 64px;
+    margin-top: 8px;
+}
+
+.index-banner-button:hover {
+    background-color:   rgb(46, 178, 214); 
+    color: white;
+    box-shadow: 0 0 4px rgba(0,0,0,0.16);
+}
+
+@media only screen and (max-width: 995px) {
+    .index-banner-button {
+        padding: 12px 36px;
+    }
 }
 /* ====================================================================== */
 
