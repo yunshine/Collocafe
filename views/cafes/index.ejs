@@ -1,6 +1,6 @@
 <%- include("../partials/header") %>
 
-<div id='map' class=""></div>
+<div id='map' class="mapbox-index"></div>
 
 <div class="container cafe-cards-div">
     <div class='index-add-cafe-button-div'>
@@ -33,7 +33,7 @@
 
     const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/light-v10',
+        style: 'mapbox://styles/mapbox/light-v9',
         // style: 'mapbox://styles/mapbox/streets-v11',
         center: [139.71527, 35.67852],
         zoom: 11

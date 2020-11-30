@@ -105,7 +105,7 @@
     mapboxgl.accessToken = '<%- process.env.MAPBOX_TOKEN %>';
     const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+        style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
         center: [<%= cafe.geometry.coordinates %>], // starting position [lng, lat]
         zoom: 12// starting zoom
     });

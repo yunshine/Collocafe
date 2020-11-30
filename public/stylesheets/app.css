@@ -91,13 +91,13 @@ body {
     text-decoration: none;
 }
 
-#map {
+.mapbox-index {
     box-shadow: 0 0 12px rgba(0,0,0,0.16);
     width: 100%; height: 600px; margin: 0px auto 8px auto;
 }
 
 @media only screen and (max-width: 576px) {
-    #map {
+    .mapbox-index {
         width: 100%; height: 440px; margin: 0px auto 8px auto;
     }
     .btn-success-yun {
