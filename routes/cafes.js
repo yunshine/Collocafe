@@ -20,7 +20,22 @@ const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
 // CAFES Routes
 // =======================================================================
-// INDEX Route
+// Root Route
+router.get('/', async (req, res) => {
+    // *** Get all cafes from DB ***
+    await Cafe.find(function (err, allCafes) {
+        if (err) {
+            console.log(err);
+            req.flash('error', "Cafes could not be found...");
+            res.redirect("/cafes");
+        } else {
+            res.send('This is the root routes page');
+            // res.render('cafes/index.ejs', { cafes: allCafes });
+        }
+    });
+});
+
+// Index Route
 router.get('/cafes', async (req, res) => {
     // *** Get all cafes from DB ***
     await Cafe.find(function (err, allCafes) {
@@ -31,8 +46,7 @@ router.get('/cafes', async (req, res) => {
             req.flash('error', "Cafes could not be found...");
             res.redirect("/cafes");
         } else {
-            // the req.user below is needed to check if the user is logged in or not...
-            console.log("Cafes From Index Route: ", allCafes)
+            //   the req.user below is needed to check if the user is logged in or not...
             res.render('cafes/index.ejs', { cafes: allCafes });
         }
     });
