@@ -29,8 +29,8 @@ router.get('/', async (req, res) => {
             req.flash('error', "Cafes could not be found...");
             res.redirect("/cafes");
         } else {
-            res.send('This is the root routes page');
-            // res.render('cafes/index.ejs', { cafes: allCafes });
+            // res.send('This is the root routes page');
+            res.render('root.ejs');
         }
     });
 });
