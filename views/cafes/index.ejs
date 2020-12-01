@@ -64,6 +64,7 @@
                     'properties': {
                         'popupMarkup': '<%= cafe.name %>',
                         'cafeId': '<%= cafe.id %>',
+                        'cafeArea': '<%= cafe.area %>',
                         'popupPhoto': '<%= cafe.images[0].url %>',
                     }
                 },
@@ -164,6 +165,7 @@
             var popupMarkup = e.features[0].properties.popupMarkup
             var coordinates = e.features[0].geometry.coordinates.slice();
             var popupId = e.features[0].properties.cafeId;
+            var popupArea = e.features[0].properties.cafeArea;
             var popupPhoto = e.features[0].properties.popupPhoto;
             console.log("CAFE ID: ", popupId)
 
@@ -192,6 +194,7 @@
                     <img src="${popupPhoto}" alt="" class="cluster-map-popup-photo">
                     <br>
                     <h5 class="cluster-map-popup-cafeName">${popupMarkup}</h5>
+                    <h6 class="cluster-map-popup-cafeArea">${popupArea}</h6>
                     </a>`
                 )
                 .addTo(map);
