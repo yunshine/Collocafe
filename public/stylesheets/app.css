@@ -120,8 +120,9 @@ color: red;
 }
 
 .cluster-map-popup-photo {
-    width: 150px;
+    width: 220px;
     transition: all 0.1s ease-in-out;
+    margin: 0 auto;
 }
 
 .cluster-map-popup-photo:hover {
@@ -130,15 +131,24 @@ color: red;
 }
 
 .cluster-map-popup-cafeName {
-    font-size: 18px;
+    margin: 0;
+    margin-top: 4px;
     text-align: center;
+    color: rgba(0, 0, 0, 0.85);
+    transition: all 0.1s ease-in-out;
+    font-size: 18px;
+    font-weight: 600;
 }
 
-.cluster-map-popup-cafeName, .cluster-map-popup-cafeArea {
+.cluster-map-popup-cafeArea{
     margin: 0;
+    margin-top: 2px;
     text-align: center;
-    color: black;
+    color: rgba(0, 0, 0, 0.77);
     transition: all 0.1s ease-in-out;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
 }
 
 .cluster-map-popup-cafeName:hover {
