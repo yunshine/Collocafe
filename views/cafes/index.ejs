@@ -185,12 +185,12 @@
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
             }
 
-            new mapboxgl.Popup()
+            new mapboxgl.Popup({ closeButton: false, closeOnClick: true, })
                 .setLngLat(coordinates)
                 .setHTML(
                     // 'magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami
                     // `<a href="/cafes/${popupId}">${popupMarkup}</a>`
-                    `<a href= "/cafes/${popupId}">
+                    `<a href= "/cafes/${popupId}" class="cluster-map-popup">
                     <img src="${popupPhoto}" alt="" class="cluster-map-popup-photo">
                     <br>
                     <h5 class="cluster-map-popup-cafeName">${popupMarkup}</h5>
