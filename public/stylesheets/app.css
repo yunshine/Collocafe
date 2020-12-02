@@ -11,16 +11,27 @@ body {
 
 /* Root Page Styles */
 /* ====================================================================== */
-.banner {
+.root-page-body {
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/images/dark-background.jpeg);
     background-size: cover;
     background-position: center;
-    padding: 150px 0;
-    height: 100vh;
-    margin-bottom: -32px;
+    /* padding: 150px 0; */
+    /* position: absolute;
+    left: 0px;
+    top: 0px; */
+    z-index: -2;  
+}
+
+.banner {
+    /* background-size: cover;
+    background-position: center;
+    padding: 150px 0; */
+    /* height: 100vh; */
+    /* margin-bottom: -32px; */
 }
 
 .banner-div {
-    margin-top: 14vh;
+    margin-top: 20vh;
 }
 
 .banner h1 {
@@ -536,7 +547,7 @@ a.nav-link:hover {
 /* Footer Styles 
 ====================================================================== */
 .footer-div {
-  /* border: 5px solid red; */
+    /* border: 5px solid red; */
     width: 100vw;
     height: 48px;
     display: flex;
@@ -547,6 +558,23 @@ a.nav-link:hover {
     bottom: 0;
     padding: 0 40px;
     background-color: rgba(40, 40, 40, .1);
+    z-index: 2;
+    /* box-shadow: 0 0 8px rgba(0,0,0,0.16); */
+}
+
+.footer-div-root {
+  /* border: 5px solid red; */
+    width: 100vw;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+    position: absolute;
+    bottom: 0;
+    padding: 0 40px;
+    background-color: rgb(232, 232, 232);
+    z-index: 2;
   /* box-shadow: 0 0 8px rgba(0,0,0,0.16); */
 }
 
@@ -586,29 +614,29 @@ a.nav-link:hover {
 ====================================================================== */
 .app-form {
   /* border: 1px solid black; */
-  padding-top: 32px;
-  width: 400px;
-  margin: 0 auto;
+    padding-top: 32px;
+    width: 400px;
+    margin: 0 auto;
 
 }
 
 .app-form h3 {
-  font-weight: 300;
-  color: rgba(24, 24, 24, 0.85);
+    font-weight: 300;
+    color: rgba(24, 24, 24, 0.85);
 }
 
 /* .app-form h3 {
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
 } */
 
 .app-form label, input {
-  display: block;
-  color: rgba(24, 24, 24, 0.85);
+    display: block;
+    color: rgba(24, 24, 24, 0.85);
 }
 
 .button-all-cafes {
-  margin: 16px auto 0 auto;
+    margin: 16px auto 0 auto;
 }
 /* ======================================================================  */
 
