@@ -110,6 +110,8 @@
         zoom: 12// starting zoom
     });
 
+    map.addControl(new mapboxgl.NavigationControl());
+
     const marker = new mapboxgl.Marker({ color: "#32c1e9" })
         .setLngLat([<%= cafe.geometry.coordinates %>])
         .setPopup(
