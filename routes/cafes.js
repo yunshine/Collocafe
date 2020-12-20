@@ -55,6 +55,25 @@ router.get('/cafes', async (req, res) => {
 //   res.render('index.ejs', { cafes: cafes });
 // });
 
+// Search Results Route
+router.get('/cafes/search?:search', async (req, res) => {
+    // *** Get all cafes from DB ***
+    await Cafe.find(function (err, allCafes) {
+        // const allCafes = await Cafe.find({});
+
+        if (err) {
+            console.log(err);
+            req.flash('error', "Cafes could not be found...");
+            res.redirect("/cafes");
+        } else {
+            //   the req.user below is needed to check if the user is logged in or not...
+            // res.render('cafes/index.ejs', { cafes: allCafes });
+            res.send('this page shows the search results... ');
+        }
+    });
+});
+
+
 // NEW Route - goes to new cafe form
 router.get("/cafes/new", middleware.isLoggedIn, (req, res) => {
     res.render("cafes/new.ejs");
@@ -189,11 +208,11 @@ router.put("/cafes/:id", middleware.checkCafeOwnership, upload.array('image'), (
         if (err) {
             console.log(error);
             req.flash('error', "That cafe could not be found.");
-            res.redirect(`/cafes/${req.params.id}`);
+            res.redirect(`/ cafes / ${req.params.id}`);
         } else {
             // newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
             req.flash('success', "This cafe has been updated.");
-            res.redirect(`/cafes/${req.params.id}`);
+            res.redirect(`/ cafes / ${req.params.id}`);
         }
     });
 });
@@ -216,11 +235,11 @@ router.put("/cafes/:id", middleware.checkCafeOwnership, upload.array('image'), (
 //                 if (err) {
 //                     console.log(error);
 //                     req.flash('error', "That cafe could not be found.");
-//                     res.redirect(`/cafes/${req.params.id}`);
+//                     res.redirect(`/ cafes / ${ req.params.id }`);
 //                 } else {
 //                     // newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
 //                     req.flash('success', "This cafe has been updated.");
-//                     res.redirect(`/cafes/${req.params.id}`);
+//                     res.redirect(`/ cafes / ${ req.params.id }`);
 //                 }
 //             });
 //         }
@@ -240,11 +259,11 @@ router.put("/cafes/:id", middleware.checkCafeOwnership, upload.array('image'), (
 //     if (err) {
 //         console.log(error);
 //         req.flash('error', "That cafe could not be found.");
-//         res.redirect(`/cafes/${req.params.id}`);
+//         res.redirect(`/ cafes / ${ req.params.id }`);
 //     } else {
 //         // newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
 //         req.flash('success', "This cafe has been updated.");
-//         res.redirect(`/cafes/${req.params.id}`);
+//         res.redirect(`/ cafes / ${ req.params.id }`);
 //     }
 // });
 
@@ -257,7 +276,7 @@ router.delete("/cafes/:id", middleware.checkCafeOwnership, (req, res) => {
         if (err) {
             console.log(error);
             req.flash('error', "That cafe could not be found.");
-            res.redirect(`/cafes/${req.params.id}`);
+            res.redirect(`/ cafes / ${req.params.id}`);
         } else {
             req.flash('success', "Your cafe has been deleted.");
             res.redirect("/cafes");
