@@ -55,6 +55,26 @@ router.get('/cafes', async (req, res) => {
 //   res.render('index.ejs', { cafes: cafes });
 // });
 
+
+
+
+// Search Post Route
+router.post('/search', async (req, res) => {
+    // *** Get all cafes from DB ***
+    await Cafe.find(function (err, allCafes) {
+        // const allCafes = await Cafe.find({});
+        if (err) {
+            console.log(err);
+            req.flash('error', "Cafes could not be found...");
+            res.redirect("/cafes");
+        } else {
+            //   the req.user below is needed to check if the user is logged in or not...
+            // res.render('cafes/index.ejs', { cafes: allCafes });
+            res.send('this page shows the search results... ');
+        }
+    });
+});
+
 // Search Results Route
 router.get('/cafes/search?:search', async (req, res) => {
     // *** Get all cafes from DB ***
@@ -72,6 +92,8 @@ router.get('/cafes/search?:search', async (req, res) => {
         }
     });
 });
+
+
 
 
 // NEW Route - goes to new cafe form
