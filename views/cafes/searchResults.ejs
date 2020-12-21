@@ -18,7 +18,6 @@
                     <h2><%= cafe.name %></h2>
                     <h4><%= cafe.area %></h4>
                     <h5><%= cafe.comments.length %> <%= cafe.comments.length === 1 ? 'Comment' : 'Comments' %></h5>
-                    <% console.log(cafe.comments); %>
                 </div>
                 <div style='text-align: center;'>
                     <a href="/cafes/<%= cafe._id %>"><button>See More</button></a>
@@ -162,15 +161,11 @@
         // the location of the feature, with
         // description HTML from its properties.
         map.on('click', 'unclustered-point', function (e) {
-            // console.log("FROM map.on function: ", e.features[0].properties.popupMarkup);
-            // console.log("Event from map.on function: e.features", e.features[0]);
-
             var popupMarkup = e.features[0].properties.popupMarkup
             var coordinates = e.features[0].geometry.coordinates.slice();
             var popupId = e.features[0].properties.cafeId;
             var popupArea = e.features[0].properties.cafeArea;
             var popupPhoto = e.features[0].properties.popupPhoto;
-            console.log("CAFE ID: ", popupId)
 
             // var mag = e.features[0].properties.mag;
             // var tsunami;
