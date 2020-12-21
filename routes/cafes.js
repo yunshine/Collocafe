@@ -63,7 +63,9 @@ router.post('/search', async (req, res) => {
     // *** Look for cafes in DB ***
     // *** Use RegExp to globally look for case insensitive names ***
     let regExp = new RegExp(req.sanitize(req.body.Search), "gi");
-    await Cafe.find({ name: regExp }, function (err, allCafes) {
+    const foundCafes = [];
+
+    await Cafe.find({ name: regExp }, async function (err, allCafes) {
         if (err) {
             console.log("hi from error");
             console.log(err);
@@ -71,7 +73,21 @@ router.post('/search', async (req, res) => {
             res.redirect("/cafes");
         } else {
             console.log("hi from else...", allCafes);
-            res.render('cafes/searchResults.ejs', { testText: req.sanitize(req.body.Search), cafes: allCafes });
+            foundCafes.push(...allCafes);
+
+            await Cafe.find({ area: regExp }, function (err, allCafes) {
+                foundCafes.push(...allCafes);
+                if (err) {
+                    console.log("hi from error 2");
+                    console.log(err);
+                    req.flash('error', "Cafes could not be found...");
+                    res.redirect("/cafes");
+                } else {
+                    console.log("hi from else 2...", allCafes);
+                }
+            });
+
+            res.render('cafes/searchResults.ejs', { testText: req.sanitize(req.body.Search), cafes: foundCafes });
         }
     });
 });
