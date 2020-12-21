@@ -60,42 +60,22 @@ router.get('/cafes', async (req, res) => {
 
 // Search Post Route
 router.post('/search', async (req, res) => {
-    // *** Get all cafes from DB ***
-    await Cafe.find(function (err, allCafes) {
-        let name = req.sanitize(req.body.Search);
-        let area = req.sanitize(req.body.Search);
-        // const allCafes = await Cafe.find({});
+    // *** Look for cafes in DB ***
+    // *** Use RegExp to globally look for case insensitive names ***
+    let regExp = new RegExp(req.sanitize(req.body.Search), "gi");
+    await Cafe.find({ name: regExp }, function (err, allCafes) {
         if (err) {
+            console.log("hi from error");
             console.log(err);
             req.flash('error', "Cafes could not be found...");
             res.redirect("/cafes");
         } else {
-            //   the req.user below is needed to check if the user is logged in or not...
-            // res.render('cafes/index.ejs', { cafes: allCafes });
-            console.log(req.body.search);
-            // res.send('this page shows the search results... ');
-            res.render('cafes/searchResults.ejs', { testText: req.sanitize(req.body.Search) });
+            console.log("hi from else...", allCafes);
+            res.render('cafes/searchResults.ejs', { testText: req.sanitize(req.body.Search), cafes: allCafes });
         }
     });
 });
 
-// Search Results Route
-router.get('/cafes/search?:search', async (req, res) => {
-    // *** Get all cafes from DB ***
-    await Cafe.find(function (err, allCafes) {
-        // const allCafes = await Cafe.find({});
-
-        if (err) {
-            console.log(err);
-            req.flash('error', "Cafes could not be found...");
-            res.redirect("/cafes");
-        } else {
-            //   the req.user below is needed to check if the user is logged in or not...
-            // res.render('cafes/index.ejs', { cafes: allCafes });
-            res.send('this page shows the search results... ');
-        }
-    });
-});
 
 
 
