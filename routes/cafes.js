@@ -68,7 +68,6 @@ router.post('/search', async (req, res) => {
 
     await Cafe.find({ name: regExp }, async function (err, cafesByName) {
         if (err) {
-            console.log("hi from error");
             console.log(err);
             req.flash('error', "Cafes could not be found...");
             res.redirect("/cafes");
@@ -78,33 +77,24 @@ router.post('/search', async (req, res) => {
             if (cafesByName.length) {
                 uniqueIDS = foundCafes.map(obj => obj._id);
             }
-            console.log("foundCafes 1: ", foundCafes);
-            console.log("uniqueIDS 1: ", uniqueIDS);
 
             await Cafe.find({ area: regExp }, function (err, cafesByArea) {
                 cafesByArea.forEach(cafe => {
                     if (!uniqueIDS.includes(cafe._id)) {
                         foundCafes.push(cafe);
-                        console.log("pushing this cafe: ", cafe);
+                        console.log("by area: pushing this cafe: ", cafe);
                     } else {
-                        console.log("not pushing this cafe: ", cafe);
+                        console.log("by area: not pushing this cafe: ", cafe);
                     }
 
                 });
-
                 if (err) {
-                    console.log("hi from error 2");
                     console.log(err);
                     req.flash('error', "Cafes could not be found...");
                     res.redirect("/cafes");
                 } else {
-                    // console.log("cafesByArea", cafesByArea);
                 }
             });
-
-            console.log("foundCafes 2: ", foundCafes);
-            console.log("uniqueIDS at end: ", uniqueIDS);
-
             res.render('cafes/searchResults.ejs', { testText: req.sanitize(req.body.Search), cafes: foundCafes });
         }
     });
