@@ -62,8 +62,8 @@ router.get('/cafes', async (req, res) => {
 router.post('/search', async (req, res) => {
     // *** Get all cafes from DB ***
     await Cafe.find(function (err, allCafes) {
-        let name = req.sanitize(req.body.search);
-        let area = req.sanitize(req.body.search);
+        let name = req.sanitize(req.body.Search);
+        let area = req.sanitize(req.body.Search);
         // const allCafes = await Cafe.find({});
         if (err) {
             console.log(err);
@@ -74,7 +74,7 @@ router.post('/search', async (req, res) => {
             // res.render('cafes/index.ejs', { cafes: allCafes });
             console.log(req.body.search);
             // res.send('this page shows the search results... ');
-            res.render('cafes/searchResults.ejs', { testText: req.sanitize(req.body.search) });
+            res.render('cafes/searchResults.ejs', { testText: req.sanitize(req.body.Search) });
         }
     });
 });
