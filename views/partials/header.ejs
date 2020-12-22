@@ -29,9 +29,11 @@
         </a>
 
         <div class="nav-searchbar">
-            <input type="text" class="form-control nav-searchbar" placeholder="Recipient's username"
-                aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+            <form action='/search' method='POST' class="nav-searchbar">
+            <input type="text" name="Search" class="form-control nav-searchbar" placeholder="search by cafe name or area"
+                aria-label="search by cafe name or area" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+            </form>
         </div>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
