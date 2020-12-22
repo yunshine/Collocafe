@@ -541,6 +541,34 @@ a.nav-link:hover {
 .welcome-text {
     font-size: 18px;
 }
+
+.nav-searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64%;
+}
+
+@media only screen and (min-width: 576px) {
+    .navbar-toggler {
+        display: none;
+    }
+}
+
+    @media only screen and (max-width: 640px) {
+ 
+        .nav-searchbar {
+            width: 54%;
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+        .nav-searchbar {
+            width: 72%;
+        }
+    }
+
+
 /* ====================================================================== */
 
 
