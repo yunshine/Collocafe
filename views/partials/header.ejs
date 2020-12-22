@@ -30,9 +30,10 @@
 
         <div class="nav-searchbar">
             <form action='/search' method='POST' class="nav-searchbar">
-            <input type="text" name="Search" class="form-control nav-searchbar" placeholder="search by cafe name or area"
-                aria-label="search by cafe name or area" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+                <input type="text" name="Search" class="form-control nav-searchbar"
+                    placeholder="search by cafe name or area" aria-label="search by cafe name or area"
+                    aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary search-button" type="submit" id="button-addon2">Search</button>
             </form>
         </div>
 
@@ -47,46 +48,50 @@
                 <!-- if/else statement to determine which links show up on the navbar... -->
                 <!-- ================================================================= -->
                 <% if(!currentUser) { %>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/register">Sign Up</a>
-                </li>
-                <% } else { %>
-                <li class="nav-item active">
-                    <a class="nav-link welcome-text" href='#'>Hi, <%= currentUser.username%>!</a>
-                </li>
-                <!-- <li class="nav-item active">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/register">Sign Up</a>
+                    </li>
+                    <% } else { %>
+                        <li class="nav-item active">
+                            <a class="nav-link welcome-text" href='#'>Hi, <%= currentUser.username%>!</a>
+                        </li>
+                        <!-- <li class="nav-item active">
                     <a class="nav-link" href="/logout">Log Out</a>
                 </li> -->
-                <% } %>
-                <!-- ================================================================= -->
-
-                <li class="nav-item dropdown">
-                    <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"
-                        src="https://res.cloudinary.com/deyqjsowe/image/upload/v1605422615/profile_vm9yoj.png" />
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                        <% if(currentUser) { %>
-                        <a class="dropdown-item" href="/logout">Log Out</a>
-                        <hr class="m-0">
-                        <a class="dropdown-item" href="#">profile page coming soon...</a>
                         <% } %>
-                        <a class="dropdown-item" href="#">search coming soon...</a>
-                        <a class="dropdown-item" href="#">map coming soon...</a>
-                    </div>
-                </li>
+                            <!-- ================================================================= -->
+
+                            <li class="nav-item dropdown">
+                                <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"
+                                    src="https://res.cloudinary.com/deyqjsowe/image/upload/v1605422615/profile_vm9yoj.png" />
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    <% if(currentUser) { %>
+                                        <a class="dropdown-item" href="/logout">Log Out</a>
+                                        <hr class="m-0">
+                                        <a class="dropdown-item" href="#">profile page coming soon...</a>
+                                        <% } %>
+                                            <a class="dropdown-item" href="#">placeholder...</a>
+                                            <a class="dropdown-item" href="#">placeholder...</a>
+                                </div>
+                            </li>
             </ul>
         </div>
     </div>
 
     <!-- flash-connect... -->
-    <% if(error && error.length > 0) { %>
-    <div class='aler alert-danger' role='alert'><%= error %></div>
-    <% } %>
-    <% if(success && success.length > 0) { %>
-    <div class='aler alert-success' role='alert'><%= success %></div>
-    <% } %>
-    <!-- *** Be sure to turn off Prettier so that the html and body tags do not close in this header partial... *** -->
+    <% if(error && error.length> 0) { %>
+        <div class='aler alert-danger' role='alert'>
+            <%= error %>
+        </div>
+        <% } %>
+            <% if(success && success.length> 0) { %>
+                <div class='aler alert-success' role='alert'>
+                    <%= success %>
+                </div>
+                <% } %>
+                    <!-- *** Be sure to turn off Prettier so that the html and body tags do not close in this header partial... *** -->

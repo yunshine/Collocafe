@@ -549,6 +549,21 @@ a.nav-link:hover {
     width: 64%;
 }
 
+.search-button {
+    margin: 0;
+    border-radius: 3px;
+    border-color: white;
+    color: white;
+    font-weight: 500;
+    transition: .1s ease-in-out;
+}
+
+.search-button:hover {
+    background-color:   rgb(46, 178, 214); 
+    border-color: white;
+}
+
+
 @media only screen and (min-width: 576px) {
     .navbar-toggler {
         display: none;
@@ -566,7 +581,6 @@ a.nav-link:hover {
             width: 72%;
         }
     }
-
 
 /* ====================================================================== */
 
