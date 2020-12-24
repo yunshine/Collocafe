@@ -10,74 +10,74 @@ const User = require('../models/user');
 // =======================================================================
 // Root Route
 router.get('/', (req, res) => {
-  // res.render('landing.ejs');
-  // });
-  // *** Get all cafes from DB ***
-  Cafe.find(function (err, allCafes) {
-    if (err) {
-      console.log(err);
-    } else {
-      // the req.user below is needed to check if the user is logged in or not...
-      res.render('cafes/index.ejs', { cafes: allCafes });
-    }
-  });
+    // res.render('landing.ejs');
+    // });
+    // *** Get all cafes from DB ***
+    Cafe.find(function (err, allCafes) {
+        if (err) {
+            console.log(err);
+        } else {
+            // the req.user below is needed to check if the user is logged in or not...
+            res.render('cafes/index.ejs', { cafes: allCafes });
+        }
+    });
 });
 
 // NEW User Route - goes to new user registration form (AKA register...)
 router.get('/register', (req, res) => {
-  res.render('register.ejs');
+    res.render('register.ejs');
 });
 
 // CREATE User Route - creates/registers a new user AND handles  sign-up logic...
 router.post('/register', (req, res) => {
-  // from passport local mongoose package...
-  const newUser = new User({ username: req.body.username });
-  // the password as the second parameter, will be scrambled in the DB...
-  // also, Passport does things ike checks to see if the usename is already taken
-  User.register(newUser, req.body.password, (err, user) => {
-    if (err) {
-      console.log(err);
-      req.flash('error', err.message);
-      // return res.render('register.ejs');
-      return res.redirect("/register");
-    }
-    // again, this below is from passport local mongoose package...
-    passport.authenticate('local')(req, res, function () {
-      console.log("New User: ", user);
-      // req.flash('success', `Welcome, ${req.body.username}!`); or...
-      req.flash('success', `Welcome to Collocafe, ${user.username}!`);
-      res.redirect('/cafes');
+    // from passport local mongoose package...
+    const newUser = new User({ username: req.body.username });
+    // the password as the second parameter, will be scrambled in the DB...
+    // also, Passport does things ike checks to see if the usename is already taken
+    User.register(newUser, req.body.password, (err, user) => {
+        if (err) {
+            console.log(err);
+            req.flash('error', err.message);
+            // return res.render('register.ejs');
+            return res.redirect("/register");
+        }
+        // again, this below is from passport local mongoose package...
+        passport.authenticate('local')(req, res, function () {
+            console.log("New User: ", user);
+            // req.flash('success', `Welcome, ${req.body.username}!`); or...
+            req.flash('success', `Welcome to Collocafe, ${user.username}!`);
+            res.redirect('/cafes');
+        });
     });
-  });
 });
 
 // LOGIN Route 1 - shows the login form...
 router.get('/login', (req, res) => {
-  // handle incoming flash-connect messages in the render...
-  res.render('login.ejs');
+    // handle incoming flash-connect messages in the render...
+    res.render('login.ejs');
 });
 
 // LOGIN Route 2 - handles login logic...
 // middleware needed to run login authentication logic prior to rendering the next view....
 // router.post('/login, middlware, callback);
 router.post('/login', passport.authenticate('local',
-  {
-    successRedirect: '/cafes',
-    failureRedirect: '/login',
-  }),
-  function (req, res) {
-  });
+    {
+        successRedirect: '/cafes',
+        failureRedirect: '/login',
+    }),
+    function (req, res) {
+    });
 // =======================================================================
 
 
 // LOG OUT Route and Logic
 // // =======================================================================
 router.get('/logout', (req, res) => {
-  // again, this below is from passport local mongoose package...
-  req.logout();
-  // from flash-connect...
-  req.flash('success', "You have been logged out.");
-  res.redirect('/cafes');
+    // again, this below is from passport local mongoose package...
+    req.logout();
+    // from flash-connect...
+    req.flash('success', "You have been logged out.");
+    res.redirect('/cafes');
 });
 // =======================================================================
 
@@ -94,8 +94,8 @@ router.get('/logout', (req, res) => {
 
 // Default Route
 router.get('*', (req, res) => {
-  req.flash('error', "Are you lost?");
-  res.redirect('/cafes');
+    req.flash('error', "Are you lost?");
+    res.redirect('/cafes');
 });
 
 module.exports = router;
