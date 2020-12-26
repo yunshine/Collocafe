@@ -484,6 +484,23 @@ color: red;
         margin: 16px auto 0 auto;
     }
 }
+
+@media only screen and (max-width: 500px) {
+    .show-card {
+        width: 320px;
+        margin: 16px auto 0 auto;
+    }
+    .show-cafe-name {
+        font-size: 32px;
+    }
+    .show-cafe-area {
+        font-size: 18px;
+    }
+    /* .mapbox-show {
+        width: 440px;
+        margin: 16px auto 0 auto;
+    } */
+}
 /* ====================================================================== */
 
 
