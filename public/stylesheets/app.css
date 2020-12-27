@@ -496,10 +496,10 @@ color: red;
     .show-cafe-area {
         font-size: 18px;
     }
-    /* .mapbox-show {
-        width: 440px;
+    .mapbox-show {
+        width: 320px;
         margin: 16px auto 0 auto;
-    } */
+    }
 }
 /* ====================================================================== */
 
