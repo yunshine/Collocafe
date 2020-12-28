@@ -500,6 +500,31 @@ color: red;
         width: 320px;
         margin: 16px auto 0 auto;
     }
+    .show-comments-div {
+        min-width: 320px;
+    }
+    /* .footer-div {
+        font-size: 14px;
+        padding: 0 16px;
+    } */
+}
+
+@media only screen and (max-width: 440px) {
+    .footer-div .footer-left h6 {
+        font-size: 11px;
+    }
+    .footer-div .footer-right i {
+        font-size: 11px;
+    }
+    .footer-div {
+        padding: 0 4px;
+    }
+    /* .footer-div h6, a {
+        font-size: 11px !important;
+    }
+    .footer-div {
+        padding: 0 8px;
+    } */
 }
 /* ====================================================================== */
 
