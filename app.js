@@ -1,7 +1,8 @@
 if (process.env.NODE_ENV !== "production") {
+    console.log("process.env = ", process.env.NODE_ENV);
     require('dotenv').config();
 }
-// console.log(process.env.KEY);
+console.log(process.env.KEY);
 
 const express = require('express');
 const app = express();
@@ -39,7 +40,7 @@ mongoose.connect(url, {
     useFindAndModify: false
 })
     .then(() => console.log('Connected to database!'))
-    .catch(error => console.log(error.message));
+    .catch(error => console.log("Database not connected...", error.message));
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true })); // for data in url payloads, no JSON...
@@ -80,6 +81,7 @@ app.use(commentRoutes);
 app.use(indexRoutes);
 // =======================================================================
 
-app.listen(process.env.PORT || 3000, process.env.IP, () => {
+// app.listen(process.env.PORT || 3000, process.env.IP, () => {
+app.listen(3000, process.env.IP, () => {
     console.log("Welcome! You've created a server using Express. The server has started and is now listening on port 3000...");
 });
