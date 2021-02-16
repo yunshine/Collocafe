@@ -21,6 +21,7 @@ const User = require('./models/user');
 // require all routes...
 const cafeRoutes = require('./routes/cafes');
 const commentRoutes = require('./routes/comments');
+const userRoutes = require('./routes/users');
 const indexRoutes = require('./routes/index');
 
 
@@ -77,6 +78,7 @@ app.use(function (req, res, next) {
 
 app.use(cafeRoutes);
 app.use(commentRoutes);
+app.use(userRoutes);
 app.use(indexRoutes);
 // =======================================================================
 

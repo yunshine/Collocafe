@@ -4,17 +4,17 @@
 
 <!-- The method on an edit is POST, not PUT because we need to work around the fact that HTML does not support PUT by adding ?_method=PUT... -->
 <form method='POST' action='/cafes/<%= cafe_id %>/comments/<%= comment._id %>?_method=PUT' class="app-form">
-  <h3>Edit Comment</h3>
-  <div class="form-group">
+    <h3>Edit Comment</h3>
+    <div class="form-group">
     <label for="commentText">
-      Edit Your Comment
+        Edit Your Comment
     </label>
     <!-- <input type="text" name='author' placeholder="your name" required> -->
     <textarea id="commentText" type="text" rows=7" name='text' class='form-control'
-      value="<%= comment.text %>"><%= comment.text %></textarea>
+        value="<%= comment.text %>"><%= comment.text %></textarea>
     <button type="submit" class="btn-success-yun-med form-control mt-2">Comment</button>
-  </div>
-  <!-- <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a> -->
+    </div>
+    <!-- <a href="/cafes" class="button-all-cafes"><button class="btn btn-info button-all-cafes">See All Cafes</button></a> -->
 </form>
 
 <%- include("../partials/footer") %>

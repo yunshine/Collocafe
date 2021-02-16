@@ -51,6 +51,13 @@ router.post('/register', (req, res) => {
     });
 });
 
+// test route... - shows the profile page...
+// router.get('/users', (req, res) => {
+//     // handle incoming flash-connect messages in the render...
+//     res.send('testing...');
+// });
+
+
 // LOGIN Route 1 - shows the login form...
 router.get('/login', (req, res) => {
     // handle incoming flash-connect messages in the render...
@@ -95,7 +102,7 @@ router.get('/logout', (req, res) => {
 // Default Route
 router.get('*', (req, res) => {
     req.flash('error', "Are you lost?");
-    res.redirect('/cafes');
+    res.redirect('/');
 });
 
 module.exports = router;
