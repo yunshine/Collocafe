@@ -43,7 +43,7 @@ router.post('/register', (req, res) => {
         }
         // again, this below is from passport local mongoose package...
         passport.authenticate('local')(req, res, function () {
-            console.log("New User: ", user);
+            // console.log("New User: ", user);
             // req.flash('success', `Welcome, ${req.body.username}!`); or...
             req.flash('success', `Welcome to Collocafe, ${user.username}!`);
             res.redirect('/cafes');

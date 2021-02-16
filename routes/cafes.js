@@ -73,10 +73,9 @@ router.post('/search', async (req, res) => {
             res.redirect("/cafes");
         } else {
             foundCafes.push(...cafesByName);
-            console.log("foundCafes after name search...: ", foundCafes);
             if (cafesByName.length) {
                 uniqueIDS = foundCafes.map(obj => obj._id.toString());
-                console.log("uniqueIDS after name search...: ", uniqueIDS);
+                // console.log("uniqueIDS after name search...: ", uniqueIDS);
             }
         }
     });
@@ -84,9 +83,7 @@ router.post('/search', async (req, res) => {
     await Cafe.find({ area: regExp }, function (err, cafesByArea) {
         cafesByArea.forEach(cafe => {
             if (uniqueIDS.includes(cafe._id.toString())) {
-                console.log("by area: not pushing this cafe: ", cafe);
             } else {
-                console.log("by area: pushing this cafe: ", cafe);
                 foundCafes.push(cafe);
             }
 
@@ -132,7 +129,7 @@ router.post("/cafes", middleware.isLoggedIn, upload.array('image'), async (req, 
             username: req.user.username,
         }
     };
-    console.log("New Mapbox Data: ", geoData.body.features[0].geometry.coordinates);
+    // console.log("New Mapbox Data: ", geoData.body.features[0].geometry.coordinates);
 
     // req.body.cafe.body = req.sanitize(req.body.cafe.body);
     // *** Makes and saves a new cafe to the Cafe DB ***
@@ -144,9 +141,7 @@ router.post("/cafes", middleware.isLoggedIn, upload.array('image'), async (req, 
             res.redirect("/cafes");
             // or...   res.render("new.ejs");
         } else {
-            console.log("New Cafe: ", cafe);
             req.flash('success', "Your cafe has been added.");
-            console.log(newCafe)
             res.redirect("/cafes");
         }
     });
@@ -212,8 +207,8 @@ router.get("/cafes/:id/edit", middleware.checkCafeOwnership, (req, res) => {
             res.redirect("/cafes");
         } else {
             // middleware has already checked if the user is the cafe's author...
-            console.log("Found Cafe: ", foundCafe);
-            console.log("req.body: ", req.body);
+            // console.log("Found Cafe: ", foundCafe);
+            // console.log("req.body: ", req.body);
             res.render('cafes/edit.ejs', { cafe: foundCafe });
         }
     });

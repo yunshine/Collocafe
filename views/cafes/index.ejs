@@ -17,7 +17,6 @@
                 <h2><%= cafe.name %></h2>
                 <h4><%= cafe.area %></h4>
                 <h5><%= cafe.comments.length %> <%= cafe.comments.length === 1 ? 'Comment' : 'Comments' %></h5>
-                <% console.log(cafe.comments); %>
             </div>
             <div style='text-align: center;'>
                 <a href="/cafes/<%= cafe._id %>"><button>See More</button></a>
@@ -169,7 +168,7 @@
             var popupId = e.features[0].properties.cafeId;
             var popupArea = e.features[0].properties.cafeArea;
             var popupPhoto = e.features[0].properties.popupPhoto;
-            console.log("CAFE ID: ", popupId)
+            // console.log("CAFE ID: ", popupId)
 
             // var mag = e.features[0].properties.mag;
             // var tsunami;

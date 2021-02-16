@@ -2,7 +2,6 @@ if (process.env.NODE_ENV !== "production") {
     console.log("process.env = ", process.env.NODE_ENV);
     require('dotenv').config();
 }
-console.log(process.env.KEY);
 
 const express = require('express');
 const app = express();

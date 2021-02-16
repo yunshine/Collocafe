@@ -61,7 +61,6 @@
             <!-- <h3 class='leave-comment-h3'>Comments</h3> -->
             <h3 class='leave-comment-h3'><%= cafe.comments.length %>
                 <%= cafe.comments.length === 1 ? 'Comment' : 'Comments' %>
-                <% console.log(cafe, cafe.comments.length, cafe.comments); %>
             </h3>
             <a href='/cafes/<%= cafe._id %>/comments/new'><button
                     class="btn-success-yun-small leave-comment-button">Leave a
