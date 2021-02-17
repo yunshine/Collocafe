@@ -56,8 +56,6 @@ router.get('/cafes', async (req, res) => {
 // });
 
 
-
-
 // Search Post Route
 router.post('/search', async (req, res) => {
     // *** Look for cafes in DB ***
