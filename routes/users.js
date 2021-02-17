@@ -17,8 +17,7 @@ router.get('/users', (req, res) => {
     // *** Finds a cafe in the DB by its id & passes that cafe to the edit page with associated comments using .populate("comments").exec ***
     // User.findById(req.params.id).populate("comments").exec(function (err, foundCafe) {
 
-    // res.render("users/show.ejs");
-    res.send('hi testing...');
+    res.render("users/show.ejs");
 
     // await User.findById(req.params.id, function (err, foundUser) {
     //     if (err) {
