@@ -25,7 +25,8 @@ router.get("/users/:id", (req, res) => {
             res.redirect("/cafes");
         } else {
             // renders the show page view with the one user from the DB
-            console.log("foundUser from user show route: ", foundUser)
+            console.log("foundUser from user show route: ", foundUser);
+
             res.render("users/show.ejs", { user: foundUser });
         }
     });
