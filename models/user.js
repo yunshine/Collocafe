@@ -8,6 +8,13 @@ const userSchema = new mongoose.Schema({
     password: String,
     // how to set a default value in the schema...
     // created:  {type: Date, default: Date.now},
+
+    bookmarks: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Cafe", // refers to the model that we're referring to...
+        }
+    ],
 });
 
 // for authentication - adds methods to our user...

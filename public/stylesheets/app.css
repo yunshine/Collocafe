@@ -340,19 +340,6 @@ color: red;
     border: none;
     outline-style:none;
 }
-/* .bookmark-btn:focus-visible {
-    background-color: rgb(50, 193, 233);
-    outline: none;
-    border: none;
-    outline-style:none;
-}
-.bookmark-btn:active {
-    background-color: rgb(50, 193, 233);
-    outline: none;
-    border: none;
-    outline-style:none;
-} */
-
 
 .show-comments-div {
     /* border: 1px solid grey; */
