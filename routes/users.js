@@ -11,7 +11,7 @@ const middleware = require('../middleware/index.js');
 
 // UPDATE Route - saves the info about one cafe to the user model...
 // Q: first, before bookmarking, is the user logged in? Use middleware...
-router.get("/users/:userID/bookmark/:cafeID", middleware.isLoggedIn, (req, res) => {
+router.put("/users/:userID/bookmark/:cafeID", middleware.isLoggedIn, (req, res) => {
 
     Cafe.findById(req.params.cafeID, function (err, foundCafe) {
         if (err) {
@@ -33,44 +33,48 @@ router.get("/users/:userID/bookmark/:cafeID", middleware.isLoggedIn, (req, res) 
     // user: 5fa4f19ccf84ec1429e47128
     // cafe: 5fc5d8f75f084f05eb4c33c7
 
-    // User.findByIdAndUpdate(req.params.userID, function (err, foundUser) {
-    //     if (err) {
-    //         console.log(error);
-    //         req.flash('error', "There was an error, and...");
-    //         res.redirect("/cafes");
-    //     } else {
-    //         // middleware has already checked if the user is logged in...
-    //         console.log("Found User1: ", foundUser);
-    //         // console.log("User: ", currentUser);
-    //         // console.log("req.body: ", req.body);
-    //         // res.render('cafes/edit.ejs', { cafe: foundCafe });
-    //         // res.render('cafes/edit.ejs', { cafe: foundCafe });
-    //         // res.send("here is the bookmark1...")
-    //     }
-    // });
+    User.findById(req.params.userID, function (err, foundUser) {
+        if (err) {
+            console.log(error);
+            req.flash('error', "There was an error, and...");
+            res.redirect("/cafes");
+        } else {
+            // middleware has already checked if the user is logged in...
+            console.log("Found User1: ", foundUser);
+            // console.log("User: ", currentUser);
+            // console.log("req.body: ", req.body);
+            // res.render('cafes/edit.ejs', { cafe: foundCafe });
+            // res.render('cafes/edit.ejs', { cafe: foundCafe });
+            // res.send("here is the bookmark1...")
+        }
+    });
 
 
-    // let name = req.sanitize(req.body.name);
-    // let area = req.sanitize(req.body.area);
-    // let newCafe = {
+
+    // // let name = req.sanitize(req.body.name);
+    // // let area = req.sanitize(req.body.area);
+    // let newUser = {
     //     name: name,
     //     area: area,
     //     // images: [...req.files.map(f => ({ url: f.path, filename: f.filename }))],
     // };
-    // Cafe.findByIdAndUpdate(req.params.id, newCafe, function (err, updatedCafe) {
+
+    // User.findByIdAndUpdate(req.params.id, newUser, function (err, updatedUser) {
     //     let imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
-    //     updatedCafe.images.push(...imgs);
-    //     updatedCafe.save();
+    //     updatedUser.images.push(...imgs);
+    //     updatedUser.save();
     //     if (err) {
     //         console.log(error);
-    //         req.flash('error', "That cafe could not be found.");
-    //         res.redirect(`/ cafes / ${req.params.id}`);
+    //         req.flash('error', "This cafe could not be bookmarked.");
+    //         res.redirect(`/ cafes / ${req.params.cafeID}`);
     //     } else {
     //         // newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
-    //         req.flash('success', "This cafe has been updated.");
-    //         res.redirect(`/ cafes / ${req.params.id}`);
+    //         req.flash('success', "This cafe has been bookmarked.");
+    //         res.redirect(`/ cafes / ${req.params.cafeID}`);
     //     }
     // });
+
+
     res.send("here is the bookmark2...")
 });
 

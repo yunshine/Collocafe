@@ -43,8 +43,9 @@
                     <!-- hide or show edit/delete buttons if user is this cafe's author... -->
                     <!-- currentUser comes from app.js; everything, like the header, has access to it... -->
                         <div class="buttons-row">
-                            <button class='btn btn-primary btn-sm bookmark-btn'><i class="far fa-bookmark"></i>
-                                Bookmark</button>
+                            <form method='POST' action='/users/<%= currentUser._id %>/bookmark<%= cafe._id %>?_method=PUT' class='app-form' enctype="multipart/form-data">
+                                <button class='btn btn-primary btn-sm bookmark-btn'><i class="far fa-bookmark"></i>Bookmark</button>
+                            </form>
                             <!-- <button class='btn btn-primary btn-sm bookmark-btn'><i class="far fa-bookmark">
                                     Bookmark</i></button> -->
                             <!-- <button class='btn btn-danger btn-sm bookmark'><i class="fas fa-bookmark"> Bookmarked</i></button> -->
