@@ -324,21 +324,21 @@ color: red;
 .bookmark-btn {
     /* font-family: Arial, Helvetica, sans-serif; */
     background-color: rgb(50, 193, 233);
-    border: transparent;
-    outline: transparent;
+    border: 1px solid rgb(50, 193, 233);
+    /* outline: transparent; */
     /* color: white; */
     transition: all .1s ease-in-out;
 }
 .bookmark-btn:hover{
     background-color: rgb(46, 178, 214);
-    border: transparent;
-    outline: transparent;
+    border-color: rgb(46, 178, 214);
+    outline: none !important;
+    outline-style: none !important;
 }
 .bookmark-btn:focus, .btn-small:focus, btn-primary:focus, button:focus {
     background-color: rgb(50, 193, 233);
-    outline: none;
-    border: none;
-    outline-style:none;
+    /* border: none; */
+    outline-style: none;
 }
 
 .show-comments-div {

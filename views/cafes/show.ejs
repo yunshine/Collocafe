@@ -42,7 +42,6 @@
 
                     <!-- hide or show edit/delete buttons if user is this cafe's author... -->
                     <!-- currentUser comes from app.js; everything, like the header, has access to it... -->
-                    <% if (currentUser) { %>
                         <div class="buttons-row">
                             <button class='btn btn-primary btn-sm bookmark-btn'><i class="far fa-bookmark"></i>
                                 Bookmark</button>
@@ -55,14 +54,11 @@
                                 <!-- A form is needed for the DESTROY route... -->
                                 <!-- The method on a delete is POST, not DELETE because we need to work around the fact that HTML does not support DELETE by adding ?_method=DELTE... -->
                                 <form method='POST' action='/cafes/<%= cafe._id %>?_method=DELETE'>
-                                    <button class='btn btn-danger btn-sm'>Bookmark</button>
+                                    <button class='btn btn-danger btn-sm'>Delete</button>
                                     <!-- <button class='btn btn-danger btn-sm'>Delete This Cafe</button> -->
                                 </form>
                                 <% } %>
                         </div>
-                        <% } %>
-
-
 
                 </div>
             </div>
