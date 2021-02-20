@@ -321,6 +321,10 @@ color: red;
     margin: 0 8px 0 8px;
 }
 
+.buttons-row form {
+    margin: 0 8px 0 8px;
+}
+
 .bookmark-btn {
     /* font-family: Arial, Helvetica, sans-serif; */
     background-color: rgb(50, 193, 233);

@@ -32,6 +32,7 @@ router.put("/users/:userID/bookmark/:cafeID", middleware.isLoggedIn, (req, res) 
 
     // user: 5fa4f19ccf84ec1429e47128
     // cafe: 5fc5d8f75f084f05eb4c33c7
+    // http://localhost:3000/users/5fa4f19ccf84ec1429e47128/bookmark/5fc5d8f75f084f05eb4c33c7
 
     User.findById(req.params.userID, function (err, foundUser) {
         if (err) {
