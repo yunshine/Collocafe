@@ -13,42 +13,42 @@ const middleware = require('../middleware/index.js');
 // Q: first, before bookmarking, is the user logged in? Use middleware...
 router.put("/users/:userID/bookmark/:cafeID", middleware.isLoggedIn, (req, res) => {
 
-    Cafe.findById(req.params.cafeID, function (err, foundCafe) {
-        if (err) {
-            console.log(error);
-            req.flash('error', "There was an error, and that cafe could not be found...");
-            res.redirect("/cafes");
-        } else {
-            // middleware has already checked if the user is logged in...
-            console.log("Found Cafe1: ", foundCafe);
-            // console.log("User: ", currentUser);
-            // console.log("req.body: ", req.body);
-            // res.render('cafes/edit.ejs', { cafe: foundCafe });
-            // res.render('cafes/edit.ejs', { cafe: foundCafe });
-            // res.send("here is the bookmark1...")
-        }
-    });
+    // Cafe.findById(req.params.cafeID, function (err, foundCafe) {
+    //     if (err) {
+    //         console.log(error);
+    //         req.flash('error', "There was an error, and that cafe could not be found...");
+    //         res.redirect("/cafes");
+    //     } else {
+    //         // middleware has already checked if the user is logged in...
+    //         console.log("Found Cafe1: ", foundCafe);
+    //         // console.log("User: ", currentUser);
+    //         // console.log("req.body: ", req.body);
+    //         // res.render('cafes/edit.ejs', { cafe: foundCafe });
+    //         // res.render('cafes/edit.ejs', { cafe: foundCafe });
+    //         // res.send("here is the bookmark1...")
+    //     }
+    // });
 
 
     // user: 5fa4f19ccf84ec1429e47128
     // cafe: 5fc5d8f75f084f05eb4c33c7
     // http://localhost:3000/users/5fa4f19ccf84ec1429e47128/bookmark/5fc5d8f75f084f05eb4c33c7
 
-    User.findById(req.params.userID, function (err, foundUser) {
-        if (err) {
-            console.log(error);
-            req.flash('error', "There was an error, and...");
-            res.redirect("/cafes");
-        } else {
-            // middleware has already checked if the user is logged in...
-            console.log("Found User1: ", foundUser);
-            // console.log("User: ", currentUser);
-            // console.log("req.body: ", req.body);
-            // res.render('cafes/edit.ejs', { cafe: foundCafe });
-            // res.render('cafes/edit.ejs', { cafe: foundCafe });
-            // res.send("here is the bookmark1...")
-        }
-    });
+    // User.findById(req.params.userID, function (err, foundUser) {
+    //     if (err) {
+    //         console.log(error);
+    //         req.flash('error', "There was an error, and...");
+    //         res.redirect("/cafes");
+    //     } else {
+    //         // middleware has already checked if the user is logged in...
+    //         console.log("Found User1: ", foundUser);
+    //         // console.log("User: ", currentUser);
+    //         // console.log("req.body: ", req.body);
+    //         // res.render('cafes/edit.ejs', { cafe: foundCafe });
+    //         // res.render('cafes/edit.ejs', { cafe: foundCafe });
+    //         // res.send("here is the bookmark1...")
+    //     }
+    // });
 
 
 
