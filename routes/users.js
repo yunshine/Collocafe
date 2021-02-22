@@ -65,7 +65,7 @@ router.get("/users/:id", (req, res) => {
 
     // http://localhost:3000/users/5fb0c5904e6966001720ab8c
 
-    User.findById(req.params.id, function (err, foundUser) {
+    User.findById(req.params.id).populate("bookmarks").exec(function (err, foundUser) {
         if (err) {
             console.log(err);
             req.flash('error', "There was an error, and that user could not be found...");
