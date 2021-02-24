@@ -1,7 +1,7 @@
 <%- include("../partials/header") %>
 
 <h1>This is the user page...</h1>
-<% console.log(user) %>
+<% console.log("User from user show page: ",user) %>
 <%= user.username %>
 <%= user._id %>
 
@@ -9,7 +9,6 @@
 <br>
 <h2>bookmarks</h2>
 <br>
-<% console.log("user from user show page: ", user) %>
 <% user.bookmarks.forEach((cafe, i) => { %>
     <div>
         <h3><%= i + 1 %>) <%= cafe.name %></h3>
