@@ -10,10 +10,6 @@ const Cafe = require('../models/cafe');
 const middleware = require('../middleware/index.js');
 const { request } = require('express');
 
-// user: 5fa4f19ccf84ec1429e47128
-// cafe: 5fc5d8f75f084f05eb4c33c7
-// http://localhost:3000/users/5fa4f19ccf84ec1429e47128/bookmark/5fc5d8f75f084f05eb4c33c7
-
 // UPDATE User - bookmarks one cafe to the user model...
 // Q: first, before bookmarking, is the user logged in? Use middleware...
 router.put("/users/:userID/bookmark/:cafeID", middleware.isLoggedIn, (req, res) => {
@@ -22,17 +18,12 @@ router.put("/users/:userID/bookmark/:cafeID", middleware.isLoggedIn, (req, res) 
         if (err) {
             console.log(error);
             req.flash('error', "There was an error, and that cafe could not be found...");
-            res.redirect("/cafes");
+            res.redirect(`cafes/${req.params.cafeID}`);
         } else {
             // middleware has already checked if the user is logged in...
-            console.log("Found Cafe: ", foundCafe);
-            console.log("User: ", req.params.userID);
-
             let newUser = {};
 
             User.findByIdAndUpdate(req.params.userID, newUser, function (err, updatedUser) {
-                console.log("updatedUser1: ", updatedUser);
-
                 updatedUser.bookmarks.push(foundCafe);
                 updatedUser.save();
                 if (err) {
@@ -40,15 +31,12 @@ router.put("/users/:userID/bookmark/:cafeID", middleware.isLoggedIn, (req, res) 
                     req.flash('error', "That user could not be found.");
                     res.redirect(`/ users / ${req.params.userID}`);
                 } else {
-                    console.log("updatedUser2: ", updatedUser);
-                    // newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
-                    req.flash('success', "This cafe has been bookmarked.");
-                    // res.redirect(`/ cafes / ${req.params.id}`);
+                    req.flash('success', "That cafe has been bookmarked.");
+                    res.redirect(`/users/${req.params.userID}`);
                 }
             });
         }
     });
-    res.send("here is the bookmark route...");
 });
 
 // UPDATE User - bookmarks one cafe to the user model...
