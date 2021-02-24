@@ -40,7 +40,7 @@ router.put("/users/:userID/bookmark/:cafeID", middleware.isLoggedIn, (req, res) 
 });
 
 // UPDATE User - bookmarks one cafe to the user model...
-// Q: first, before bookmarking, is the user logged in? Use middleware...
+// Q: first, before deleting the bookmark, is user logged in? Use middleware...
 router.put("/users/:userID/deletebookmark/:cafeID", middleware.isLoggedIn, (req, res) => {
 
     Cafe.findById(req.params.cafeID, function (err, foundCafe) {
@@ -49,46 +49,32 @@ router.put("/users/:userID/deletebookmark/:cafeID", middleware.isLoggedIn, (req,
             req.flash('error', "There was an error, and that cafe could not be found...");
             res.redirect(`/users/${req.params.userID}`);
         } else {
-            console.log("test from deletebookmark route: typeof foundCafe._id.toString(): ", typeof foundCafe._id.toString());
-            console.log("test from deletebookmark route: typeof :cafeID.toString(): ", typeof req.params.cafeID.toString());
-
-            //         // middleware has already checked if the user is logged in...
-            //         console.log("Found Cafe: ", foundCafe);
-            //         console.log("User: ", req.params.userID);
-            //         // console.log("req.body: ", req.body);
-            //         // res.render('cafes/edit.ejs', { cafe: foundCafe });
-
+            // middleware has already checked if the user is logged in...
             let newUser = {};
 
             User.findByIdAndUpdate(req.params.userID, newUser, function (err, updatedUser) {
-
                 let indexToDelete;
-                console.log("bookmarks.length: ", updatedUser.bookmarks.length)
+
                 for (let i = 0; i < updatedUser.bookmarks.length; i++) {
                     if (updatedUser.bookmarks[i]._id.toString() === req.params.cafeID.toString()) {
-                        console.log("the thing to delete: ", updatedUser.bookmarks[i], i);
                         indexToDelete = i;
                         break;
                     }
                 };
-                // console.log("comparison should be true...: ", updatedUser.bookmarks[0].toString() === req.params.cafeID.toString());
+
                 updatedUser.bookmarks.splice(indexToDelete, 1);
                 updatedUser.save();
-
                 if (err) {
                     console.log(error);
-                    req.flash('error', "That cafe could not be found.");
-                    res.redirect(`/ cafes / ${req.params.cafeID}`);
+                    req.flash('error', "That user could not be found.");
+                    res.redirect(`/users/ ${req.params.userID}`);
                 } else {
-                    console.log("updatedUser2: ", updatedUser);
-                    //                 // newCafe.images.push(req.files.map(f => ({ url: f.path, filename: f.filename })));
                     req.flash('success', "That bookmark has been deleted.");
-                    // res.redirect(`/ cafes / ${req.params.id}`);
+                    res.redirect(`/users/${req.params.userID}`);
                 }
             });
         }
     });
-    res.send("here is the bookmark delete route......");
 });
 
 
