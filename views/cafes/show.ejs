@@ -43,45 +43,47 @@
                     <!-- hide or show edit/delete buttons if user is this cafe's author... -->
                     <!-- currentUser comes from app.js; everything, like the header, has access to it... -->
                     <div class="buttons-row">
-
-                        <% console.log("User from cafe show page...: ", currentUser) %>
-                        <% console.log("type of bookmark[0] from cafe show page...: ", typeof currentUser.bookmarks[0]._id.toString()) %>
-
                         <% if (currentUser) { %>
                             <% if (currentUser.bookmarks.includes(cafe.id)) { %>
-                                <p>delete bookmark</p>
-
-                            <% } else { %>
                                 <form method='POST'
-                                    action='/users/<%= currentUser._id %>/bookmark/<%= cafe._id %>?_method=PUT' class=''
-                                    enctype="multipart/form-data">
-                                    <button class='btn btn-primary btn-sm bookmark-btn'>
-                                        <i class="far fa-bookmark"></i>
-                                        Bookmark
+                                    action='/users/<%= currentUser._id %>/cafebookmarkdelete/<%= cafe._id %>?_method=PUT'
+                                    class='' enctype="multipart/form-data">
+                                    <button class='btn btn-danger btn-sm'>
+                                        <i class="far fa-bookmark"></i> Delete Bookmark
                                     </button>
                                 </form>
-                            <% } %>
-                            <% } else { %>
-                                <form method='POST' action='/users/nouser/bookmark/<%= cafe._id %>?_method=PUT' class=''
-                                    enctype="multipart/form-data">
-                                    <button class='btn btn-primary btn-sm bookmark-btn'><i class="far fa-bookmark"></i>
-                                        Bookmark</button>
-                                </form>
-                                <% } %>
-                                    <!-- <button class='btn btn-primary btn-sm bookmark-btn'><i class="far fa-bookmark">
+                                <% } else { %>
+                                    <form method='POST'
+                                        action='/users/<%= currentUser._id %>/bookmark/<%= cafe._id %>?_method=PUT'
+                                        class='' enctype="multipart/form-data">
+                                        <button class='btn btn-primary btn-sm bookmark-btn'>
+                                            <i class="far fa-bookmark"></i> Bookmark
+                                        </button>
+                                    </form>
+                                    <% } %>
+                                        <% } else { %>
+                                            <form method='POST'
+                                                action='/users/nouser/bookmark/<%= cafe._id %>?_method=PUT' class=''
+                                                enctype="multipart/form-data">
+                                                <button class='btn btn-primary btn-sm bookmark-btn'><i
+                                                        class="far fa-bookmark"></i>
+                                                    Bookmark</button>
+                                            </form>
+                                            <% } %>
+                                                <!-- <button class='btn btn-primary btn-sm bookmark-btn'><i class="far fa-bookmark">
                                     Bookmark</i></button> -->
-                                    <!-- <button class='btn btn-danger btn-sm bookmark'><i class="fas fa-bookmark"> Bookmarked</i></button> -->
-                                    <% if (currentUser && cafe.author.id.equals(currentUser._id)) { %>
-                                        <a href='/cafes/<%= cafe._id %>/edit'><button
-                                                class='btn btn-warning btn-sm'>Edit
-                                                Information</button></a>
-                                        <!-- A form is needed for the DESTROY route... -->
-                                        <!-- The method on a delete is POST, not DELETE because we need to work around the fact that HTML does not support DELETE by adding ?_method=DELTE... -->
-                                        <form method='POST' action='/cafes/<%= cafe._id %>?_method=DELETE'>
-                                            <button class='btn btn-danger btn-sm'>Delete</button>
-                                            <!-- <button class='btn btn-danger btn-sm'>Delete This Cafe</button> -->
-                                        </form>
-                                        <% } %>
+                                                <!-- <button class='btn btn-danger btn-sm bookmark'><i class="fas fa-bookmark"> Bookmarked</i></button> -->
+                                                <% if (currentUser && cafe.author.id.equals(currentUser._id)) { %>
+                                                    <a href='/cafes/<%= cafe._id %>/edit'><button
+                                                            class='btn btn-warning btn-sm'>Edit
+                                                            Information</button></a>
+                                                    <!-- A form is needed for the DESTROY route... -->
+                                                    <!-- The method on a delete is POST, not DELETE because we need to work around the fact that HTML does not support DELETE by adding ?_method=DELTE... -->
+                                                    <form method='POST' action='/cafes/<%= cafe._id %>?_method=DELETE'>
+                                                        <button class='btn btn-danger btn-sm'>Delete</button>
+                                                        <!-- <button class='btn btn-danger btn-sm'>Delete This Cafe</button> -->
+                                                    </form>
+                                                    <% } %>
                     </div>
 
                 </div>

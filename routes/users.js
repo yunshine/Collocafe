@@ -107,7 +107,7 @@ router.put("/users/:userID/cafebookmarkdelete/:cafeID", middleware.isLoggedIn, (
                     req.flash('error', "That user could not be found.");
                     res.redirect(`/users/ ${req.params.userID}`);
                 } else {
-                    req.flash('success', "That bookmark has been deleted.");
+                    req.flash('success', "Your bookmark has been deleted.");
                     res.redirect(`/cafes/${req.params.cafeID}`);
                 }
             });
