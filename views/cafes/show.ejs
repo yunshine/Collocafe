@@ -44,15 +44,23 @@
                     <!-- currentUser comes from app.js; everything, like the header, has access to it... -->
                     <div class="buttons-row">
 
+                        <% console.log("User from cafe show page...: ", currentUser) %>
+                        <% console.log("type of bookmark[0] from cafe show page...: ", typeof currentUser.bookmarks[0]._id.toString()) %>
+
                         <% if (currentUser) { %>
-                            <form method='POST'
-                                action='/users/<%= currentUser._id %>/bookmark/<%= cafe._id %>?_method=PUT' class=''
-                                enctype="multipart/form-data">
-                                <button class='btn btn-primary btn-sm bookmark-btn'>
-                                    <i class="far fa-bookmark"></i>
-                                    Bookmark
-                                </button>
-                            </form>
+                            <% if (currentUser.bookmarks.includes(cafe.id)) { %>
+                                <p>delete bookmark</p>
+
+                            <% } else { %>
+                                <form method='POST'
+                                    action='/users/<%= currentUser._id %>/bookmark/<%= cafe._id %>?_method=PUT' class=''
+                                    enctype="multipart/form-data">
+                                    <button class='btn btn-primary btn-sm bookmark-btn'>
+                                        <i class="far fa-bookmark"></i>
+                                        Bookmark
+                                    </button>
+                                </form>
+                            <% } %>
                             <% } else { %>
                                 <form method='POST' action='/users/nouser/bookmark/<%= cafe._id %>?_method=PUT' class=''
                                     enctype="multipart/form-data">
