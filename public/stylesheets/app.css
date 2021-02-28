@@ -555,13 +555,14 @@ color: red;
 
 /* Bookmark Page Styles 
 ====================================================================== */
-/* .card-product {
+.card-product {
     overflow: hidden;
     height: 120px;
     background: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    /* box-shadow: 0 0 15px rgba(0,0,0,0.2); */
 }
 
 .card-product img {
@@ -586,7 +587,7 @@ color: red;
 
 .card-product .card-product-infos {
     padding: 16px;
-} */
+}
 /* ====================================================================== */
 
 /* Navbar Styles 
