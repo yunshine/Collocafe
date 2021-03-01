@@ -556,6 +556,12 @@ color: red;
 
 /* Bookmark Page Styles 
 ====================================================================== */
+.bookmarks-main-div {
+    width: 80vw;
+    margin: 32px auto 0 auto;
+    /* border: 1px solid black; */
+}
+
 .card-product {
     overflow: hidden;
     height: 120px;
@@ -588,6 +594,12 @@ color: red;
 
 .card-product .card-product-infos {
     padding: 16px;
+}
+
+@media only screen and (max-width: 995px) {
+    .bookmarks-main-div {
+        width: 90vw;
+    }
 }
 /* ====================================================================== */
 
