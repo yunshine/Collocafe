@@ -6,11 +6,11 @@
 
         <div class=" bookmarks-main-div">
             <% user.bookmarks.forEach((cafe, i)=> { %>
-                <div class="card-product">
+                <div class="bookmark-card">
                     <a href='cafes/<%= cafe._id %>'>
                         <img src="<%= cafe.images[0].url %>" />
                     </a>
-                    <div class="card-product-infos">
+                    <div class="bookmark-card-infos">
                         <a href='cafes/<%= cafe._id %>'>
                             <h2>
                                 <%= cafe.name %>
