@@ -2,9 +2,11 @@
     <% console.log("User from user bookmark page...: ",user) %>
 
     <div id='map' class=" mapbox-index">
-        </div>
+    </div>
 
         <div class=" bookmarks-main-div">
+            <h2 class="bookmarks-length-h2"><%= user.username %>, you have <%= user.bookmarks.length %> <%= user.bookmarks.length === 1 ? "bookmark." : "bookmarks."  %></h2>
+
             <% user.bookmarks.forEach((cafe, i)=> { %>
                 <div class="bookmark-card">
                     <a href='cafes/<%= cafe._id %>'>
@@ -31,6 +33,7 @@
                     </div>
                 </div>
                 <% }); %>
+
         </div>
 
         <%- include("../partials/footer") %>
