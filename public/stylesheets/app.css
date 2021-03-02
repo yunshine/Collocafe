@@ -565,6 +565,12 @@ color: red;
 .bookmarks-length-text {
     text-align: center;
     margin-bottom: 16px;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(24, 24, 24, 0.85);
+    font-size: 28px;
+    font-weight: 200;
+
 }
 
 .bookmark-card {
