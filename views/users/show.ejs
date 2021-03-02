@@ -5,18 +5,16 @@
     </div>
 
         <div class=" bookmarks-main-div">
-            <h2 class="bookmarks-length-h2"><%= user.username %>, you have <%= user.bookmarks.length %> <%= user.bookmarks.length === 1 ? "bookmark." : "bookmarks."  %></h2>
+            <h2 class="bookmarks-length-text"><%= user.username %>, you have <%= user.bookmarks.length %> <%= user.bookmarks.length === 1 ? "bookmark." : "bookmarks."  %></h2>
 
             <% user.bookmarks.forEach((cafe, i)=> { %>
                 <div class="bookmark-card">
-                    <a href='cafes/<%= cafe._id %>'>
+                    <a class="bookmark-card-img-link" href='cafes/<%= cafe._id %>'>
                         <img src="<%= cafe.images[0].url %>" />
                     </a>
                     <div class="bookmark-card-infos">
-                        <a href='cafes/<%= cafe._id %>'>
-                            <h2>
+                        <a href='cafes/<%= cafe._id %>' class="bookmark-card-name-link">
                                 <%= cafe.name %>
-                            </h2>
                         </a>
 
                         <p>
@@ -25,7 +23,7 @@
 
                         <form method='POST' action='/users/<%= user._id %>/deletebookmark/<%= cafe._id %>?_method=PUT'
                             class='' enctype="multipart/form-data">
-                            <button class='btn btn-danger btn-sm'>
+                            <button class='btn btn-danger btn-sm bookmark-card-delete-button'>
                                 <i class="far fa-bookmark"></i>
                                 Delete Bookmark
                             </button>

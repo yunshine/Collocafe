@@ -562,14 +562,26 @@ color: red;
     /* border: 1px solid black; */
 }
 
+.bookmarks-length-text {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
 .bookmark-card {
     overflow: hidden;
-    height: 120px;
+    height: 140px;
     background: white;
     display: flex;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
-    /* box-shadow: 0 0 15px rgba(0,0,0,0.2); */
+    box-shadow: 0 0 4px rgba(0,0,0,0.16);
+    margin-bottom: 8px;
+}
+
+.bookmark-card-img-link {
+    padding: 0;
+    margin: 0;
+    height: 100%;
 }
 
 .bookmark-card img {
@@ -578,22 +590,33 @@ color: red;
     object-fit: cover;
 }
 
-.bookmark-card h2 {
-    font-size: 16px;
+.bookmark-card-name-link {
+    font-size: 18px;
     font-weight: bold;
     margin: 0;
+    padding: 0;
+    transition: all .1s ease-in-out;
+    color: rgba(50, 193, 233, 1); 
+    letter-spacing: 2px;
+}
+.bookmark-card-name-link:hover {
+    text-decoration: none;
+    color: rgb(46, 178, 214);
 }
 
 .bookmark-card p {
     font-size: 12px;
     line-height: 1.4;
     opacity: .7;
-    margin-bottom: 0;
-    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .bookmark-card .bookmark-card-infos {
     padding: 16px;
+}
+
+.bookmark-card-delete-button {
+    transition: all .1s ease-in-out;
 }
 
 @media only screen and (max-width: 995px) {
