@@ -9,7 +9,7 @@
 
             <% user.bookmarks.forEach((cafe, i)=> { %>
                 <div class="bookmark-card">
-                    <a class="bookmark-card-img-link" href='cafes/<%= cafe._id %>'>
+                    <a class="bookmark-card-img-link" href='/cafes/<%= cafe._id %>'>
                         <img src="<%= cafe.images[0].url %>" />
                     </a>
                     <div class="bookmark-card-infos">
