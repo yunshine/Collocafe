@@ -558,7 +558,7 @@ color: red;
 ====================================================================== */
 .bookmarks-main-div {
     width: 80vw;
-    margin: 32px auto 0 auto;
+    margin: 24px auto 0 auto;
     /* border: 1px solid black; */
 }
 
@@ -611,9 +611,9 @@ color: red;
 }
 
 .bookmark-card p {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.4;
-    opacity: .7;
+    opacity: .8;
     margin-bottom: 8px;
 }
 
@@ -628,6 +628,21 @@ color: red;
 @media only screen and (max-width: 995px) {
     .bookmarks-main-div {
         width: 90vw;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .bookmarks-main-div {
+        width: 96vw;
+    }
+}
+@media only screen and (max-width: 440px) {
+    .bookmarks-length-text {
+        font-size: 20px;
+        font-weight: 400;
+    }
+    .bookmark-card-name-link {
+        font-size: 17px;
+        font-weight: 600;
     }
 }
 /* ====================================================================== */
