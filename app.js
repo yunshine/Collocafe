@@ -85,5 +85,3 @@ app.use(indexRoutes);
 app.listen(process.env.PORT || 3000, process.env.IP, () => {
     console.log("Welcome! You've created a server using Express. The server has started and is now listening on port 3000...");
 });
-
-// testing connection to github...
